@@ -1,0 +1,6 @@
+{
+  "name": "Liza Chupanova Portfolio",
+  "description": "A highly polished, minimalist portfolio for Liza Chupanova, UGC & Content Creator.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
