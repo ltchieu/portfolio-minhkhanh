@@ -1,4 +1,3 @@
-import { ArrowUpRight } from "lucide-react";
 import { Project } from "../models/Project";
 import { projects } from "../data/projects";
 
@@ -46,7 +45,7 @@ export default function Work({ setSelectedProject }: WorkProps) {
                   </span>
                   <h4 className="font-display text-3xl sm:text-4xl text-white uppercase leading-none tracking-tight flex items-center justify-between">
                     {project.title}
-                    <ArrowUpRight className="w-6 h-6 text-white group-hover:text-[#E31E24] transition-colors" />
+                    <i className="fa-solid fa-arrow-up-right-from-square text-lg text-white group-hover:text-[#E31E24] transition-colors"></i>
                   </h4>
                   <p className="font-sans text-xs text-white/70 line-clamp-2 max-w-md pt-2">
                     {project.description}

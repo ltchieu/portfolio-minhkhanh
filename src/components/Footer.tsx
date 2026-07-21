@@ -1,10 +1,4 @@
-import { ArrowRight, Instagram, Linkedin, Twitter, Sparkles } from "lucide-react";
-
-interface FooterProps {
-  setShowContactDrawer: (show: boolean) => void;
-}
-
-export default function Footer({ setShowContactDrawer }: FooterProps) {
+export default function Footer() {
   return (
     <>
       <section id="contact" className="py-24 bg-[#111111] text-white scroll-mt-20">
@@ -20,14 +14,14 @@ export default function Footer({ setShowContactDrawer }: FooterProps) {
               </p>
               
               <div className="pt-6">
-                <button 
+                <a 
                   id="cta-say-hello"
-                  onClick={() => setShowContactDrawer(true)}
+                  href="mailto:liz.contentcreator@gmail.com"
                   className="inline-flex items-center gap-3 bg-[#E31E24] text-white px-8 py-4 font-narrow text-xs font-black tracking-[0.2em] uppercase rounded hover:bg-red-700 transition-all duration-300 hover:scale-105 shadow-md group cursor-pointer"
                 >
                   SAY HELLO
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform" />
-                </button>
+                  <i className="fa-solid fa-arrow-right group-hover:translate-x-1.5 transition-transform"></i>
+                </a>
               </div>
             </div>
 
@@ -47,22 +41,22 @@ export default function Footer({ setShowContactDrawer }: FooterProps) {
                   <ul className="space-y-2 font-narrow text-xs font-bold tracking-wider text-white/80">
                     <li>
                       <a href="https://instagram.com/mnisliz" target="_blank" rel="noopener noreferrer" className="hover:text-[#E31E24] transition-colors flex items-center gap-1.5">
-                        <Instagram className="w-3.5 h-3.5 text-[#E31E24]" /> INSTAGRAM
+                        <i className="fa-brands fa-instagram text-[#E31E24]"></i> INSTAGRAM
                       </a>
                     </li>
                     <li>
                       <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-[#E31E24] transition-colors flex items-center gap-1.5">
-                        <Linkedin className="w-3.5 h-3.5 text-[#E31E24]" /> LINKEDIN
+                        <i className="fa-brands fa-linkedin text-[#E31E24]"></i> LINKEDIN
                       </a>
                     </li>
                     <li>
                       <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="hover:text-[#E31E24] transition-colors flex items-center gap-1.5">
-                        <Twitter className="w-3.5 h-3.5 text-[#E31E24]" /> TWITTER
+                        <i className="fa-brands fa-x-twitter text-[#E31E24]"></i> TWITTER
                       </a>
                     </li>
                     <li>
                       <a href="https://dribbble.com" target="_blank" rel="noopener noreferrer" className="hover:text-[#E31E24] transition-colors flex items-center gap-1.5">
-                        <Sparkles className="w-3.5 h-3.5 text-[#E31E24]" /> DRIBBBLE
+                        <i className="fa-brands fa-dribbble text-[#E31E24]"></i> DRIBBBLE
                       </a>
                     </li>
                   </ul>

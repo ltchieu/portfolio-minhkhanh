@@ -1,4 +1,3 @@
-import { BookOpen, ArrowUpRight } from "lucide-react";
 
 interface AboutProps {
   setShowManifesto: (show: boolean) => void;
@@ -93,10 +92,10 @@ export default function About({ setShowManifesto }: AboutProps) {
               >
                 <span className="absolute inset-0 bg-[#111111] translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out z-0"></span>
                 <span className="relative z-10 mr-4 flex items-center gap-2">
-                  <BookOpen className="w-4 h-4 text-[#E31E24] group-hover:text-white transition-colors" />
+                  <i className="fa-solid fa-book-open text-xs text-[#E31E24] group-hover:text-white transition-colors"></i>
                   READ FULL MANIFESTO
                 </span>
-                <ArrowUpRight className="relative z-10 w-4 h-4 transition-transform duration-300 group-hover:rotate-45" />
+                <i className="fa-solid fa-arrow-up-right-from-square relative z-10 text-xs transition-transform duration-300 group-hover:rotate-45"></i>
               </button>
             </div>
           </div>

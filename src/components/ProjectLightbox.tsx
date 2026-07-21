@@ -1,4 +1,3 @@
-import { X, ArrowUpRight } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import { Project } from "../models/Project";
 import { ContactFormData } from "../models/Contact";
@@ -37,7 +36,7 @@ export default function ProjectLightbox({
               className="absolute top-6 right-6 p-2 rounded-full bg-white/90 text-[#111111] border border-[#CCCCCC] hover:border-[#E31E24] hover:text-[#E31E24] transition-colors z-30 shadow-md cursor-pointer"
               aria-label="Close project modal"
             >
-              <X className="w-5 h-5" />
+              <i className="fa-solid fa-xmark text-sm"></i>
             </button>
 
             {/* Left Column: Image */}

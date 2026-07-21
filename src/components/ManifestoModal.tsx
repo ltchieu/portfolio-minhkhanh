@@ -1,4 +1,3 @@
-import { X, BookOpen } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 
 interface ManifestoModalProps {
@@ -29,7 +28,7 @@ export default function ManifestoModal({ isOpen, onClose }: ManifestoModalProps)
               className="absolute top-6 right-6 p-1 rounded-full border border-[#CCCCCC] hover:border-[#E31E24] hover:text-[#E31E24] transition-colors cursor-pointer"
               aria-label="Close modal"
             >
-              <X className="w-5 h-5" />
+              <i className="fa-solid fa-xmark text-sm"></i>
             </button>
 
             <div className="space-y-6">

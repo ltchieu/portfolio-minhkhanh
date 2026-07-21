@@ -1,16 +1,13 @@
-import { Menu, X, ArrowRight } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 
 interface NavbarProps {
   isMobileMenuOpen: boolean;
   setIsMobileMenuOpen: (open: boolean) => void;
-  setShowContactDrawer: (show: boolean) => void;
 }
 
 export default function Navbar({
   isMobileMenuOpen,
   setIsMobileMenuOpen,
-  setShowContactDrawer,
 }: NavbarProps) {
   return (
     <>
@@ -34,12 +31,12 @@ export default function Navbar({
             <a href="#awards" className="font-narrow text-xs font-bold tracking-[0.15em] hover:text-[#E31E24] hover:scale-105 transition-all duration-300 uppercase">
               AWARDS
             </a>
-            <button 
-              onClick={() => setShowContactDrawer(true)} 
-              className="font-narrow text-xs font-bold tracking-[0.15em] text-[#E31E24] hover:opacity-75 hover:scale-105 transition-all duration-300 uppercase flex items-center gap-1 cursor-pointer"
+            <a 
+              href="#contact" 
+              className="font-narrow text-xs font-bold tracking-[0.15em] text-[#E31E24] hover:opacity-75 hover:scale-105 transition-all duration-300 uppercase flex items-center gap-1.5 cursor-pointer"
             >
-              CONTACT <ArrowRight className="w-3.5 h-3.5" />
-            </button>
+              CONTACT <i className="fa-solid fa-arrow-right text-xs"></i>
+            </a>
           </div>
           
           {/* Mobile hamburger menu */}
@@ -49,7 +46,7 @@ export default function Navbar({
             className="md:hidden p-1 hover:opacity-60 transition-all"
             aria-label="Open menu"
           >
-            <Menu className="w-6 h-6" />
+            <i className="fa-solid fa-bars text-lg"></i>
           </button>
         </div>
       </nav>
@@ -71,9 +68,9 @@ export default function Navbar({
               </span>
               <button 
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="p-1 hover:opacity-60 transition-all text-[#111111]"
+                className="p-1 hover:opacity-60 transition-all text-[#111111] flex items-center justify-center"
               >
-                <X className="w-7 h-7" />
+                <i className="fa-solid fa-xmark text-xl"></i>
               </button>
             </div>
 
@@ -106,15 +103,13 @@ export default function Navbar({
               >
                 04 / AWARDS
               </a>
-              <button 
-                onClick={() => {
-                  setIsMobileMenuOpen(false);
-                  setTimeout(() => setShowContactDrawer(true), 300);
-                }}
+              <a 
+                href="#contact"
+                onClick={() => setIsMobileMenuOpen(false)}
                 className="font-narrow text-4xl font-extrabold tracking-[0.05em] text-left text-[#E31E24] hover:opacity-80 transition-opacity cursor-pointer"
               >
                 05 / SAY HELLO →
-              </button>
+              </a>
             </div>
 
             <div className="border-t border-[#CCCCCC] pt-6 flex justify-between items-center text-xs font-mono text-[#5E5E5E]">

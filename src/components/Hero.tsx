@@ -1,4 +1,3 @@
-import { Clock, ArrowRight, MapPin } from "lucide-react";
 import { motion } from "motion/react";
 
 interface HeroProps {
@@ -19,10 +18,10 @@ export default function Hero({ currentDateString, currentTime }: HeroProps) {
         <div className="flex items-center gap-3 font-narrow text-xs font-black tracking-[0.1em] text-[#111111]">
           <span className="hidden sm:inline">{currentDateString}</span>
           <div className="flex items-center gap-1.5 bg-[#111111] text-white py-1 px-2.5 rounded font-mono text-[11px]">
-            <Clock className="w-3 h-3 text-[#E31E24] animate-pulse" />
-            <span>{currentTime || "00:00:00"} KRR</span>
+            <i className="fa-regular fa-clock text-xs text-[#E31E24] animate-pulse"></i>
+            <span>{currentTime || "00:00:00"} GMT+7</span>
           </div>
-          <ArrowRight className="w-4 h-4 text-[#E31E24] animate-bounce-horizontal" />
+          <i className="fa-solid fa-arrow-right text-xs text-[#E31E24] animate-bounce-horizontal"></i>
         </div>
       </div>
 
@@ -66,7 +65,7 @@ export default function Hero({ currentDateString, currentTime }: HeroProps) {
           </a>
         </div>
         <div className="text-right sm:text-left md:text-right flex items-center justify-end gap-1.5">
-          <MapPin className="w-3 h-3 text-[#E31E24]" />
+          <i className="fa-solid fa-location-dot text-xs text-[#E31E24]"></i>
           <span>Krasnodar, Russia — Global Remote</span>
         </div>
       </div>

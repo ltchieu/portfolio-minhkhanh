@@ -1,4 +1,3 @@
-import { Plus } from "lucide-react";
 import { motion, AnimatePresence } from "motion/react";
 import { experiences } from "../data/experiences";
 
@@ -70,7 +69,7 @@ export default function ExperienceSection({
                       aria-expanded={isOpen}
                       aria-label="Expand role details"
                     >
-                      <Plus className="w-5 h-5" />
+                      <i className="fa-solid fa-plus text-sm"></i>
                     </button>
                   </div>
 
