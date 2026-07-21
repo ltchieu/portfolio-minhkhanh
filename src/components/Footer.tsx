@@ -50,11 +50,6 @@ export default function Footer() {
                       </a>
                     </li>
                     <li>
-                      <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors flex items-center gap-1.5">
-                        <i className="fa-brands fa-x-twitter hologram-metal-text"></i> TWITTER
-                      </a>
-                    </li>
-                    <li>
                       <a href="https://dribbble.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors flex items-center gap-1.5">
                         <i className="fa-brands fa-dribbble hologram-metal-text"></i> DRIBBBLE
                       </a>

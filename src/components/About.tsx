@@ -7,21 +7,21 @@ export default function About({ setShowManifesto }: AboutProps) {
   return (
     <section id="about" className="py-24 bg-white border-b border-[#CCCCCC]/60 scroll-mt-20">
       <div className="max-w-[1440px] mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-        
+
         {/* Left Column: Image and Huge Title */}
         <div className="lg:col-span-5 space-y-8">
+          <h3 className="font-display text-5xl sm:text-6xl md:text-7xl leading-none uppercase text-[#111111] tracking-tighter">
+            INTRODUCE
+          </h3>
           <div className="aspect-[4/3] sm:aspect-[16/10] lg:aspect-[4/5] overflow-hidden bg-[#EBEBEB] group relative rounded-sm shadow-sm">
-            <img 
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXgHkqjkGu-wSkNZZauWNliukyIO-n_VbfAoEJoC37EpQPlg87xiX-SbMm6BXIwa7NoZPrufdp43cDLO-mu2rDu6XszZoD60YUNKMduihvVdimb-4nwsJjMT5Xtq3TPb3IGbffA1c5HqWCUL-yFBtNWztJMpRCoPCu90GVYMZZsTor2nsZm0qskFsieRLdvxoQwo8DVidicztlww9LuFaxSaQuheIPkDAVP9_oH4pjnI6wOeCi6Z_DOrdTTh6QON_fyfX51rJfMPU" 
-              alt="Portrait of Liza Chupanova" 
+            <img
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXgHkqjkGu-wSkNZZauWNliukyIO-n_VbfAoEJoC37EpQPlg87xiX-SbMm6BXIwa7NoZPrufdp43cDLO-mu2rDu6XszZoD60YUNKMduihvVdimb-4nwsJjMT5Xtq3TPb3IGbffA1c5HqWCUL-yFBtNWztJMpRCoPCu90GVYMZZsTor2nsZm0qskFsieRLdvxoQwo8DVidicztlww9LuFaxSaQuheIPkDAVP9_oH4pjnI6wOeCi6Z_DOrdTTh6QON_fyfX51rJfMPU"
+              alt="Portrait of Liza Chupanova"
               referrerPolicy="no-referrer"
               className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 ease-in-out scale-100 group-hover:scale-105"
             />
             <div className="absolute inset-0 bg-black/5 mix-blend-multiply opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
           </div>
-          <h3 className="font-display text-5xl sm:text-6xl md:text-7xl leading-none uppercase text-[#111111] tracking-tighter">
-            INTRODUCE
-          </h3>
         </div>
 
         {/* Right Column: Statement, Summary, Skills, and manifesto button */}
@@ -85,7 +85,7 @@ export default function About({ setShowManifesto }: AboutProps) {
 
             {/* Manifesto CTA Button */}
             <div className="pt-4">
-              <button 
+              <button
                 id="manifesto-btn"
                 onClick={() => setShowManifesto(true)}
                 className="group relative inline-flex items-center justify-between border border-[#111111] text-[#111111] px-6 py-3.5 font-narrow text-xs font-black tracking-[0.2em] uppercase overflow-hidden transition-all duration-300 hover:text-white cursor-pointer"
