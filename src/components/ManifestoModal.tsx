@@ -25,14 +25,14 @@ export default function ManifestoModal({ isOpen, onClose }: ManifestoModalProps)
             <button 
               id="manifesto-close"
               onClick={onClose}
-              className="absolute top-6 right-6 p-1 rounded-full border border-[#CCCCCC] hover:border-[#E31E24] hover:text-[#E31E24] transition-colors cursor-pointer"
+              className="absolute top-6 right-6 p-1 rounded-full border border-[#CCCCCC] hover:border-black hover:text-black transition-colors cursor-pointer"
               aria-label="Close modal"
             >
               <i className="fa-solid fa-xmark text-sm"></i>
             </button>
 
             <div className="space-y-6">
-              <span className="font-narrow text-xs font-black text-[#E31E24] tracking-[0.25em] block uppercase">
+              <span className="font-narrow text-xs font-black hologram-metal-text tracking-[0.25em] block uppercase">
                 CREATOR STATEMENT
               </span>
               
@@ -58,12 +58,12 @@ export default function ManifestoModal({ isOpen, onClose }: ManifestoModalProps)
               </div>
 
               <div className="pt-6 border-t border-[#CCCCCC]/40 flex justify-between items-center">
-                <div className="font-cursive text-[#E31E24] text-3xl">
+                <div className="font-cursive hologram-metal-text text-3xl">
                   Liza Chupanova
                 </div>
                 <button 
                   onClick={onClose}
-                  className="bg-[#111111] text-white font-narrow text-xs font-black tracking-widest uppercase px-5 py-2.5 rounded hover:bg-[#E31E24] transition-colors cursor-pointer"
+                  className="bg-[#111111] text-white font-narrow text-xs font-black tracking-widest uppercase px-5 py-2.5 rounded hover:bg-[#333333] transition-colors cursor-pointer"
                 >
                   CLOSE READ
                 </button>

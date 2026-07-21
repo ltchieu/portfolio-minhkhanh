@@ -40,12 +40,12 @@ export default function Work({ setSelectedProject }: WorkProps) {
               {/* Gradient shade that covers card on hover */}
               <div className="absolute inset-0 bg-gradient-to-t from-[#111111]/90 via-[#111111]/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-end p-8">
                 <div className="space-y-2 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                  <span className="font-narrow text-xs font-black text-[#E31E24] tracking-[0.2em] uppercase block">
+                  <span className="font-narrow text-xs font-black hologram-metal-text tracking-[0.2em] uppercase block">
                     {project.category}
                   </span>
                   <h4 className="font-display text-3xl sm:text-4xl text-white uppercase leading-none tracking-tight flex items-center justify-between">
                     {project.title}
-                    <i className="fa-solid fa-arrow-up-right-from-square text-lg text-white group-hover:text-[#E31E24] transition-colors"></i>
+                    <i className="fa-solid fa-arrow-up-right-from-square text-lg text-white/70 group-hover:text-white transition-colors"></i>
                   </h4>
                   <p className="font-sans text-xs text-white/70 line-clamp-2 max-w-md pt-2">
                     {project.description}

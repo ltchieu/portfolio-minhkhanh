@@ -17,7 +17,7 @@ export default function About({ setShowManifesto }: AboutProps) {
               referrerPolicy="no-referrer"
               className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 ease-in-out scale-100 group-hover:scale-105"
             />
-            <div className="absolute inset-0 bg-[#E31E24]/10 mix-blend-multiply opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
+            <div className="absolute inset-0 bg-black/5 mix-blend-multiply opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
           </div>
           <h3 className="font-display text-5xl sm:text-6xl md:text-7xl leading-none uppercase text-[#111111] tracking-tighter">
             INTRODUCE
@@ -30,7 +30,7 @@ export default function About({ setShowManifesto }: AboutProps) {
             <p className="font-narrow text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#111111] leading-tight tracking-tight">
               Designing the future of digital and physical experiences through a lens of aggressive minimalism and structural integrity.
             </p>
-            <div className="h-[2px] w-24 bg-[#E31E24] mt-6"></div>
+            <div className="h-[2px] w-24 hologram-metal-bg mt-6"></div>
           </div>
 
           <div className="space-y-10">
@@ -51,19 +51,19 @@ export default function About({ setShowManifesto }: AboutProps) {
                 </p>
                 <ul className="font-sans text-sm text-[#111111] space-y-2">
                   <li className="flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#E31E24]"></span>
+                    <span className="w-1.5 h-1.5 rounded-full hologram-metal-bg"></span>
                     <span>UI/UX &amp; Brand Curation</span>
                   </li>
                   <li className="flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#E31E24]"></span>
+                    <span className="w-1.5 h-1.5 rounded-full hologram-metal-bg"></span>
                     <span>Architectural Visualization</span>
                   </li>
                   <li className="flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#E31E24]"></span>
+                    <span className="w-1.5 h-1.5 rounded-full hologram-metal-bg"></span>
                     <span>UGC Strategy &amp; Video Art</span>
                   </li>
                   <li className="flex items-center gap-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#E31E24]"></span>
+                    <span className="w-1.5 h-1.5 rounded-full hologram-metal-bg"></span>
                     <span>Parametric Concept Modeling</span>
                   </li>
                 </ul>
@@ -92,7 +92,7 @@ export default function About({ setShowManifesto }: AboutProps) {
               >
                 <span className="absolute inset-0 bg-[#111111] translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-out z-0"></span>
                 <span className="relative z-10 mr-4 flex items-center gap-2">
-                  <i className="fa-solid fa-book-open text-xs text-[#E31E24] group-hover:text-white transition-colors"></i>
+                  <i className="fa-solid fa-book-open text-xs text-[#111111] group-hover:text-white transition-colors"></i>
                   READ FULL MANIFESTO
                 </span>
                 <i className="fa-solid fa-arrow-up-right-from-square relative z-10 text-xs transition-transform duration-300 group-hover:rotate-45"></i>

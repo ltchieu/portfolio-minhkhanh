@@ -25,7 +25,7 @@ export default function Awards() {
               className="group py-6 flex flex-col md:flex-row md:items-center justify-between border-b border-[#CCCCCC] hover:bg-white/40 transition-all duration-300 px-4 -mx-4 cursor-default"
             >
               <div className="flex flex-col space-y-1">
-                <span className="font-narrow text-xs font-black text-[#E31E24] tracking-widest uppercase">
+                <span className="font-narrow text-xs font-black hologram-metal-text tracking-widest uppercase">
                   {award.year} / {award.category}
                 </span>
                 <h3 className="font-display text-2xl sm:text-3xl md:text-4xl uppercase leading-none group-hover:translate-x-3 transition-transform duration-300 text-[#111111]">

@@ -33,7 +33,7 @@ export default function ProjectLightbox({
             <button 
               id="lightbox-close"
               onClick={onClose}
-              className="absolute top-6 right-6 p-2 rounded-full bg-white/90 text-[#111111] border border-[#CCCCCC] hover:border-[#E31E24] hover:text-[#E31E24] transition-colors z-30 shadow-md cursor-pointer"
+              className="absolute top-6 right-6 p-2 rounded-full bg-white/90 text-[#111111] border border-[#CCCCCC] hover:border-black hover:text-black transition-colors z-30 shadow-md cursor-pointer"
               aria-label="Close project modal"
             >
               <i className="fa-solid fa-xmark text-sm"></i>
@@ -56,7 +56,7 @@ export default function ProjectLightbox({
             <div className="lg:col-span-6 p-8 sm:p-10 flex flex-col justify-between space-y-8">
               <div className="space-y-6">
                 <div className="space-y-1">
-                  <span className="font-narrow text-xs font-black text-[#E31E24] tracking-[0.25em] uppercase block">
+                  <span className="font-narrow text-xs font-black hologram-metal-text tracking-[0.25em] uppercase block">
                     {project.category}
                   </span>
                   <h3 className="font-display text-3xl sm:text-4xl uppercase leading-none text-[#111111]">
@@ -64,7 +64,7 @@ export default function ProjectLightbox({
                   </h3>
                 </div>
                 
-                <div className="h-0.5 bg-[#E31E24] w-16"></div>
+                <div className="h-0.5 hologram-metal-bg w-16"></div>
 
                 <p className="font-sans text-sm text-[#5E5E5E] leading-relaxed">
                   {project.narrative}
@@ -108,7 +108,7 @@ export default function ProjectLightbox({
                 </button>
                 <button 
                   onClick={() => onInquire(project.title)}
-                  className="bg-[#E31E24] text-white font-narrow text-xs font-black tracking-widest uppercase px-5 py-2.5 rounded hover:bg-red-700 transition-colors cursor-pointer"
+                  className="hologram-metal-bg text-black font-narrow text-xs font-black tracking-widest uppercase px-5 py-2.5 rounded hover:opacity-85 transition-opacity cursor-pointer"
                 >
                   INQUIRE CONCEPT
                 </button>

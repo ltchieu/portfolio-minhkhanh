@@ -23,7 +23,7 @@ export default function ExperienceSection({
               EXPERIENCE
             </h2>
           </div>
-          <span className="font-narrow text-xs font-black text-[#5E5E5E] tracking-[0.25em] border-b-2 border-[#E31E24] pb-1 uppercase">
+          <span className="font-narrow text-xs font-black text-[#5E5E5E] tracking-[0.25em] pb-1 uppercase border-b-2 hologram-metal-border">
             2018 — PRESENT
           </span>
         </div>
@@ -44,7 +44,7 @@ export default function ExperienceSection({
                 {/* Point node on timeline axis */}
                 <div className="hidden lg:block absolute left-1/2 top-8 w-3 h-3 rounded-full bg-[#111111] border-2 border-[#FAF9F6] -translate-x-1/2 z-20 transition-colors"></div>
 
-                <div className={`w-full lg:w-[46%] bg-white/45 backdrop-blur-sm border border-[#CCCCCC]/40 p-6 md:p-8 rounded transition-all duration-300 hover:bg-white hover:shadow-md ${isOpen ? "bg-white shadow-sm border-l-4 border-l-[#E31E24]" : ""}`}>
+                <div className={`w-full lg:w-[46%] bg-white/45 backdrop-blur-sm border border-[#CCCCCC]/40 p-6 md:p-8 rounded transition-all duration-300 hover:bg-white hover:shadow-md ${isOpen ? "bg-white shadow-sm border-l-4 border-l-[#111111]" : ""}`}>
                   
                   {/* Header trigger */}
                   <div 
@@ -52,7 +52,7 @@ export default function ExperienceSection({
                     className="cursor-pointer flex items-center justify-between gap-4 select-none"
                   >
                     <div className="space-y-1">
-                      <span className="font-narrow text-xs font-black text-[#E31E24] tracking-widest block">
+                      <span className="font-narrow text-xs font-black hologram-metal-text tracking-widest block">
                         {exp.index} / {exp.role}
                       </span>
                       <h3 className="font-display text-2xl sm:text-3xl uppercase leading-none text-[#111111]">
@@ -65,7 +65,7 @@ export default function ExperienceSection({
 
                     {/* Icon */}
                     <button 
-                      className={`p-2 rounded-full border border-[#CCCCCC] hover:border-[#111111] hover:bg-[#111111] hover:text-white transition-all duration-300 ${isOpen ? "rotate-45 border-[#E31E24] bg-[#E31E24] text-white" : ""}`}
+                      className={`p-2 rounded-full border border-[#CCCCCC] hover:border-[#111111] hover:bg-[#111111] hover:text-white transition-all duration-300 ${isOpen ? "rotate-45 border-[#111111] bg-[#111111] text-white" : ""}`}
                       aria-expanded={isOpen}
                       aria-label="Expand role details"
                     >

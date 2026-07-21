@@ -63,7 +63,7 @@ export default function App() {
   };
 
   return (
-    <div className="bg-[#FAF9F6] text-[#111111] font-sans antialiased overflow-x-hidden min-h-screen selection:bg-[#E31E24] selection:text-white">
+    <div className="bg-[#FAF9F6] text-[#111111] font-sans antialiased overflow-x-hidden min-h-screen selection:bg-[#111111] selection:text-white">
       {/* 1. Header Navigation */}
       <Navbar 
         isMobileMenuOpen={isMobileMenuOpen}
