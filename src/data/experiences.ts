@@ -2,36 +2,47 @@ import { Experience } from "../models/Experience";
 
 export const experiences: Experience[] = [
   {
-    id: "axon-studio",
+    id: "freelance-event-coordinator",
     index: "01",
-    role: "DESIGN DIRECTOR",
-    company: "AXON STUDIO",
-    location: "NEW YORK, NY",
-    summary: "Scaling visual identities for Fortune 500 tech leaders.",
-    description: "Led the design of award-winning digital ecosystems for global clients, focusing on the intersection of brand identity, organic visual narratives, and immersive interactive user experiences. Orchestrated user-centric content campaigns reaching millions globally.",
-    image: "https://lh3.googleusercontent.com/aida/AP1WRLut6zYEzuxoORK4_0xV56CPqCLaqKLXuYBgBZh0lueij15hmZvBDa8BiPfDNiOUjDaygbw1D6etdsx8r5n-wI3WXVdyzbZ7tcBhMSvegjmhHAZOs8JkZi_jYK2A3kw3UvPTOnQKO4CynFGmEKF344t-spw4rtdGSXTJmK0kkHefct6A48Kj1M1Bq8_X7RvfwDIqQ31rTAbqMwOZoUmOD7Cpdo4_2vY2rIEK3v_7RDAQUVK0YJngRvHv-Q",
-    tech: ["Figma", "After Effects", "Webflow", "Spline 3D", "Brand Guidelines"]
+    role: "Independent Communications Associate & Event Coordinator",
+    company: "Freelance Project Coordinator",
+    location: "Q2/2025 — PRESENT",
+    summary: "Coordinating end-to-end communication and event projects with 350+ attendees.",
+    description: "Coordinate end-to-end communication and event projects for HCMC Open University, including content production, photography, creative design, and event execution. Managed events with 350+ attendees, overseeing project planning, on-site operations, timeline management, and customer experience. Coordinated 5 external vendors (venue, MC, photography, printing, decoration) to ensure seamless delivery. Developed operational SOPs, timelines, and checklists while proactively resolving execution issues.",
+    image: "https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=1000&auto=format&fit=crop",
+    tech: ["Event Planning", "Vendor Coordination", "SOP Development", "On-site Operations", "Content Production"]
   },
   {
-    id: "kinetic-form",
+    id: "amor-resort-marketing-executive",
     index: "02",
-    role: "SENIOR ARCHITECT",
-    company: "KINETIC FORM",
-    location: "BERLIN, DE",
-    summary: "Redefining urban spaces through parametric modeling.",
-    description: "Specializing in computational design, generative structures, and sustainable urbanism. Focused on the organic integration of dynamic spatial patterns into rigid, historical city layouts, crafting architectural models used in multiple European capitals.",
-    image: "https://lh3.googleusercontent.com/aida/AP1WRLvkbvAqeJcU24wVeshZeSsH68JakWhJuOOGJy1ikxHjWA5oJW-iK1LK3R5Fq2ES2ikknTEA6CHWMoaJDFuT7aPn5AP4UluTfZ0FA77cTxUeB8dDHh7Ib-j8uoJhBLKQ6Jybvaepavlsng9DSucEy5xkfd58Tj-JEtF3PAu4P-3corpht2foyJKKc4Svh8JBy31KjaKTZANdiCahA7XgHX1PPnBuFfmZPc0W1g4OYlhPJdjpve8O2t9dT40",
-    tech: ["Rhinoceros 3D", "Grasshopper", "Cinema 4D", "V-Ray", "Physical Prototyping"]
+    role: "Marketing Executive (Probation)",
+    company: "Amor Resort | Protea Garden | Aqua Jardin",
+    location: "Q1 2025",
+    summary: "Executed integrated marketing & influencer campaigns for hospitality and F&B brands.",
+    description: "Executed integrated marketing campaigns for hospitality, F&B, and wedding brands. Produced multimedia content including photography, graphic design, and short-form videos across Facebook and TikTok. Collaborated with KOLs/KOCs for influencer marketing activations. Contributed to International Women's Day campaign performance achieving +162 Facebook followers, 2,189 likes, +561 TikTok followers, and 423 comments and shares.",
+    image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=1000&auto=format&fit=crop",
+    tech: ["Integrated Marketing", "KOL / KOC Collaboration", "Social Media Campaigns", "Photography & Video", "Hospitality & F&B"]
   },
   {
-    id: "neural-labs",
+    id: "ou-news-marcom-associate",
     index: "03",
-    role: "LEAD INTERACTIVE",
-    company: "NEURAL LABS",
-    location: "TOKYO, JP",
-    summary: "Exploring the intersection of AI and human emotion.",
-    description: "Developed highly emotive, gesture-controlled responsive interfaces that react to real-time bio-feedback and sentiment analysis. Crafted experiential digital installations exhibited at leading galleries in Tokyo and Kyoto.",
-    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBBxVmpZPvRtPzDxDc9TuGpct2PlpzqvbC16fQpsuZhFjA7PNkO2HmRAC3CIxBgJMMoRI8HnqBDfC_XVqgksY-A8iV6ugKwNm0kVXiEb9_JP5WjgMoF14GUeUsh7FYnUyMge9x7W8agRa7yeNRibnfTVMDYWQXy7BGegIDY2Eiip28WVCOsSLmMfBirAb5pZXJdt1L6PeHL6qvviCntCxndbS6iZyhmyHm4_3IVVXx9Ic-hLQCFotuQ_ltaoCqw1lIdAzY9BANoaoE",
-    tech: ["React.js", "Three.js", "GLSL Shaders", "TensorFlow", "Node.js"]
+    role: "Freelance MarCom Associate | Team Leader Assistant",
+    company: "OU NEWS - HCMC Open University",
+    location: "Q1 2021 — Q2 2023 | Q1 2024 — PRESENT",
+    summary: "Leading communication workflows, press releases, media materials, and student teams.",
+    description: "Produced multimedia content including website articles, social media posts, photography, video production, and livestreams. Drafted press releases, official correspondence, sponsorship proposals, and media materials. Designed and optimized communication workflows, reducing content approval time and improving publication accuracy. Supervised and trained 10+ student collaborators. Supported campaigns for The Open Run 2025 (600+ participants, 3,000+ online users) and Miss & Mister OU 2025 (100+ registrations, 1,000+ interactions).",
+    image: "https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=1000&auto=format&fit=crop",
+    tech: ["MarCom Strategy", "Press Releases", "Workflow Optimization", "Team Leadership", "Livestream & Media"]
+  },
+  {
+    id: "school-advanced-study-pr",
+    index: "04",
+    role: "Public Relations Practitioner Intern",
+    company: "School of Advanced Study - HCMC Open University",
+    location: "Q3 2023 — Q4 2023",
+    summary: "PR campaigns, international credit transfers, and corporate partnerships.",
+    description: "Implemented PR and student recruitment campaigns for 4 international credit-transfer programs with universities in Australia and the UK. Converted 30+ enrollments from over 70 prospective students through integrated communication activities. Coordinated partnerships with 10+ corporate and educational organizations including Be Group, WESET, LPBank, and University of South Wales. Translated speeches, press materials, invitations, and communication assets between Vietnamese and English.",
+    image: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=1000&auto=format&fit=crop",
+    tech: ["PR & Recruitment", "International Partnerships", "Enrollment Conversion", "Corporate Relations", "Translation"]
   }
 ];
