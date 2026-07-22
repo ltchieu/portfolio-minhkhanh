@@ -181,6 +181,8 @@ export default function ExperienceSection({
                                 <button
                                   onClick={(e) => {
                                     e.stopPropagation();
+                                    sessionStorage.setItem("portfolio_home_scroll_pos", window.scrollY.toString());
+                                    sessionStorage.setItem("portfolio_from_detail", "true");
                                     navigate("/experience/freelance-event-coordinator");
                                   }}
                                   className="w-full sm:w-auto px-5 py-3 bg-[#111111] text-white hover:bg-[#333333] transition-all font-narrow text-xs uppercase tracking-[0.2em] font-bold rounded flex items-center justify-center gap-2 group shadow-sm"

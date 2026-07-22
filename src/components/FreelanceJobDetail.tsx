@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
 import { freelanceProjects } from '../data/freelanceProjectsData';
 import type { FreelanceProject } from '../models/freelanceProjects';
+import ScrollReveal from './common/ScrollReveal';
 
 // 1. Dynamic / Lazy Imports for Heavy 3D Components (Bundle Size & LCP Optimization)
 const Stack = lazy(() => import('./common/Stack'));
@@ -69,81 +70,83 @@ const HeroSection = memo(function HeroSection() {
       </div>
 
       <div className="max-w-[1440px] mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
-          <div className="lg:col-span-8 space-y-6">
-            <div className="flex flex-wrap items-center gap-3">
-              <span className="font-narrow text-xs font-black text-[#5E5E5E] tracking-[0.25em] uppercase block">
-                ROLE & EXPERTISE
-              </span>
-              <span className="text-[#CCCCCC]">•</span>
-              <span className="font-narrow text-xs font-bold text-[#111111] tracking-widest uppercase">
-                Q2/2025 — PRESENT
-              </span>
+        <ScrollReveal direction="up" distance={30}>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
+            <div className="lg:col-span-8 space-y-6">
+              <div className="flex flex-wrap items-center gap-3">
+                <span className="font-narrow text-xs font-black text-[#5E5E5E] tracking-[0.25em] uppercase block">
+                  ROLE & EXPERTISE
+                </span>
+                <span className="text-[#CCCCCC]">•</span>
+                <span className="font-narrow text-xs font-bold text-[#111111] tracking-widest uppercase">
+                  Q2/2025 — PRESENT
+                </span>
+              </div>
+
+              <h2 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl uppercase tracking-tighter text-[#111111] leading-[1.05]">
+                Independent Communications Associate & Event Coordinator
+              </h2>
+
+              <p className="font-sans text-lg sm:text-xl text-[#5E5E5E] max-w-3xl leading-relaxed">
+                Coordinating end-to-end communication, brand activations, and event projects for HCMC Open University and independent clients. Overseeing creative production, vendor logistics, micro-timelines, and attendee experience for events scaling up to 350+ guests.
+              </p>
             </div>
 
-            <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl uppercase tracking-tighter text-[#111111] leading-[1.05]">
-              Independent Communications Associate & Event Coordinator
-            </h1>
+            <div className="lg:col-span-4 grid grid-cols-2 gap-4">
+              <div className="bg-white border border-[#CCCCCC]/50 p-5 rounded shadow-sm hover:border-[#111111] transition-all">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="font-narrow text-xs font-bold text-[#5E5E5E] uppercase tracking-wider">
+                    Max Attendance
+                  </span>
+                  <i className="fa-solid fa-users text-[#111111] text-sm"></i>
+                </div>
+                <span className="font-display text-2xl sm:text-3xl text-[#111111]">
+                  350+
+                </span>
+                <p className="font-sans text-xs text-[#5E5E5E] mt-1">Live guests managed</p>
+              </div>
 
-            <p className="font-sans text-lg sm:text-xl text-[#5E5E5E] max-w-3xl leading-relaxed">
-              Coordinating end-to-end communication, brand activations, and event projects for HCMC Open University and independent clients. Overseeing creative production, vendor logistics, micro-timelines, and attendee experience for events scaling up to 350+ guests.
-            </p>
+              <div className="bg-white border border-[#CCCCCC]/50 p-5 rounded shadow-sm hover:border-[#111111] transition-all">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="font-narrow text-xs font-bold text-[#5E5E5E] uppercase tracking-wider">
+                    Vendors
+                  </span>
+                  <i className="fa-solid fa-handshake text-[#111111] text-sm"></i>
+                </div>
+                <span className="font-display text-2xl sm:text-3xl text-[#111111]">
+                  5 Partners
+                </span>
+                <p className="font-sans text-xs text-[#5E5E5E] mt-1">SOP & timeline sync</p>
+              </div>
+
+              <div className="bg-white border border-[#CCCCCC]/50 p-5 rounded shadow-sm hover:border-[#111111] transition-all">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="font-narrow text-xs font-bold text-[#5E5E5E] uppercase tracking-wider">
+                    Assets
+                  </span>
+                  <i className="fa-solid fa-photo-film text-[#111111] text-sm"></i>
+                </div>
+                <span className="font-display text-2xl sm:text-3xl text-[#111111]">
+                  100+
+                </span>
+                <p className="font-sans text-xs text-[#5E5E5E] mt-1">Creative media files</p>
+              </div>
+
+              <div className="bg-white border border-[#CCCCCC]/50 p-5 rounded shadow-sm hover:border-[#111111] transition-all">
+                <div className="flex items-center justify-between mb-2">
+                  <span className="font-narrow text-xs font-bold text-[#5E5E5E] uppercase tracking-wider">
+                    Projects
+                  </span>
+                  <i className="fa-solid fa-cubes text-[#111111] text-sm"></i>
+                </div>
+                <span className="font-display text-2xl sm:text-xl text-[#111111]">
+                  6 Delivered
+                </span>
+                <p className="font-sans text-xs text-[#5E5E5E] mt-1">Full case portfolio</p>
+              </div>
+            </div>
           </div>
-
-          <div className="lg:col-span-4 grid grid-cols-2 gap-4">
-            <div className="bg-white border border-[#CCCCCC]/50 p-5 rounded shadow-sm hover:border-[#111111] transition-all">
-              <div className="flex items-center justify-between mb-2">
-                <span className="font-narrow text-xs font-bold text-[#5E5E5E] uppercase tracking-wider">
-                  Max Attendance
-                </span>
-                <i className="fa-solid fa-users text-[#111111] text-sm"></i>
-              </div>
-              <span className="font-display text-3xl sm:text-4xl text-[#111111]">
-                350+
-              </span>
-              <p className="font-sans text-xs text-[#5E5E5E] mt-1">Live guests managed</p>
-            </div>
-
-            <div className="bg-white border border-[#CCCCCC]/50 p-5 rounded shadow-sm hover:border-[#111111] transition-all">
-              <div className="flex items-center justify-between mb-2">
-                <span className="font-narrow text-xs font-bold text-[#5E5E5E] uppercase tracking-wider">
-                  Vendors
-                </span>
-                <i className="fa-solid fa-handshake text-[#111111] text-sm"></i>
-              </div>
-              <span className="font-display text-3xl sm:text-4xl text-[#111111]">
-                5 Partners
-              </span>
-              <p className="font-sans text-xs text-[#5E5E5E] mt-1">SOP & timeline sync</p>
-            </div>
-
-            <div className="bg-white border border-[#CCCCCC]/50 p-5 rounded shadow-sm hover:border-[#111111] transition-all">
-              <div className="flex items-center justify-between mb-2">
-                <span className="font-narrow text-xs font-bold text-[#5E5E5E] uppercase tracking-wider">
-                  Assets
-                </span>
-                <i className="fa-solid fa-photo-film text-[#111111] text-sm"></i>
-              </div>
-              <span className="font-display text-3xl sm:text-4xl text-[#111111]">
-                100+
-              </span>
-              <p className="font-sans text-xs text-[#5E5E5E] mt-1">Creative media files</p>
-            </div>
-
-            <div className="bg-white border border-[#CCCCCC]/50 p-5 rounded shadow-sm hover:border-[#111111] transition-all">
-              <div className="flex items-center justify-between mb-2">
-                <span className="font-narrow text-xs font-bold text-[#5E5E5E] uppercase tracking-wider">
-                  Projects
-                </span>
-                <i className="fa-solid fa-cubes text-[#111111] text-sm"></i>
-              </div>
-              <span className="font-display text-3xl sm:text-4xl text-[#111111]">
-                6 Delivered
-              </span>
-              <p className="font-sans text-xs text-[#5E5E5E] mt-1">Full case portfolio</p>
-            </div>
-          </div>
-        </div>
+        </ScrollReveal>
       </div>
     </section>
   );
@@ -159,31 +162,33 @@ const FilterTabs = memo(function FilterTabs({
 }) {
   return (
     <section className="max-w-[1440px] mx-auto px-6 pt-12 pb-6">
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6 border-b border-[#CCCCCC]/40 pb-6">
-        <div>
-          <span className="font-narrow text-xs font-black text-[#5E5E5E] tracking-[0.25em] block uppercase mb-1">
-            PROJECT ARCHIVE
-          </span>
-          <h2 className="font-display text-3xl sm:text-4xl uppercase tracking-tighter text-[#111111]">
-            FREELANCE CASE STUDIES
-          </h2>
-        </div>
+      <ScrollReveal direction="up" distance={20}>
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6 border-b border-[#CCCCCC]/40 pb-6">
+          <div>
+            <span className="font-narrow text-xs font-black text-[#5E5E5E] tracking-[0.25em] block uppercase mb-1">
+              PROJECT ARCHIVE
+            </span>
+            <h2 className="font-display text-3xl sm:text-4xl uppercase tracking-tighter text-[#111111]">
+              FREELANCE CASE STUDIES
+            </h2>
+          </div>
 
-        <div className="flex flex-wrap gap-2">
-          {FILTER_TABS.map((tab) => (
-            <button
-              key={tab.id}
-              onClick={() => onTabChange(tab.id)}
-              className={`px-4 py-2 text-xs font-narrow font-bold uppercase tracking-wider rounded transition-all ${activeTab === tab.id
+          <div className="flex flex-wrap gap-2">
+            {FILTER_TABS.map((tab) => (
+              <button
+                key={tab.id}
+                onClick={() => onTabChange(tab.id)}
+                className={`px-4 py-2 text-xs font-narrow font-bold uppercase tracking-wider rounded transition-all ${activeTab === tab.id
                   ? 'bg-[#111111] text-white shadow-sm'
                   : 'bg-white text-[#5E5E5E] border border-[#CCCCCC]/60 hover:border-[#111111]'
-                }`}
-            >
-              {tab.label}
-            </button>
-          ))}
+                  }`}
+              >
+                {tab.label}
+              </button>
+            ))}
+          </div>
         </div>
-      </div>
+      </ScrollReveal>
     </section>
   );
 });
@@ -203,11 +208,7 @@ const ProjectCard = memo(function ProjectCard({
   const stackCards = useMemo(() => {
     if (project.displayType !== 'stack') return [];
     return project.images.map((src, imgIdx) => (
-      <div
-        key={imgIdx}
-        className="w-full h-full cursor-pointer relative group"
-        onClick={() => onSelectImage(src)}
-      >
+      <div key={imgIdx} className="w-full h-full relative">
         <img
           src={src}
           alt={`Cốm Gừng Ceramic ${imgIdx + 1}`}
@@ -215,21 +216,17 @@ const ProjectCard = memo(function ProjectCard({
           decoding="async"
           className="w-full h-full object-cover rounded-xl"
         />
-        <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center rounded-xl">
-          <span className="text-white text-xs font-narrow font-bold uppercase tracking-wider bg-black/60 px-3 py-1.5 rounded flex items-center gap-2">
-            <i className="fa-solid fa-expand"></i> View Fullscreen
-          </span>
-        </div>
       </div>
     ));
-  }, [project.displayType, project.images, onSelectImage]);
+  }, [project.displayType, project.images]);
 
   return (
-    <article
-      id={project.id}
-      className="bg-white border border-[#CCCCCC]/50 rounded-lg p-6 sm:p-10 shadow-sm hover:shadow-md transition-shadow duration-300"
-    >
-      {/* Top Meta info bar */}
+    <ScrollReveal direction="up" distance={30}>
+      <article
+        id={project.id}
+        className="bg-white border border-[#CCCCCC]/50 rounded-lg p-6 sm:p-10 shadow-sm hover:shadow-md transition-shadow duration-300"
+      >
+        {/* Top Meta info bar */}
       <div className="flex flex-col md:flex-row md:items-center justify-between pb-6 mb-8 border-b border-[#CCCCCC]/30 gap-4">
         <div className="space-y-1">
           <div className="flex items-center gap-3">
@@ -500,7 +497,8 @@ const ProjectCard = memo(function ProjectCard({
           </div>
         </div>
       )}
-    </article>
+      </article>
+    </ScrollReveal>
   );
 });
 
@@ -556,6 +554,7 @@ export default function JobDetail() {
 
   // Stable callbacks for handlers
   const handleNavigateHome = useCallback(() => {
+    sessionStorage.setItem("portfolio_from_detail", "true");
     navigate('/');
   }, [navigate]);
 
@@ -604,25 +603,27 @@ export default function JobDetail() {
       </section>
 
       {/* 5. Bottom Navigation & CTA */}
-      <section className="max-w-[1440px] mx-auto px-6 pt-16 flex flex-col sm:flex-row justify-between items-center gap-6 border-t border-[#CCCCCC]/40 mt-20">
-        <button
-          onClick={handleNavigateHome}
-          className="group flex items-center gap-3 font-narrow text-xs uppercase tracking-[0.2em] font-bold text-[#111111] hover:text-[#5E5E5E] transition-colors"
-        >
-          <span className="w-10 h-10 rounded-full border border-[#111111] group-hover:bg-[#111111] group-hover:text-white flex items-center justify-center transition-all duration-300">
-            <i className="fa-solid fa-arrow-left text-sm"></i>
-          </span>
-          <span>Back to Portfolio Main Page</span>
-        </button>
+      <ScrollReveal direction="up" distance={20}>
+        <section className="max-w-[1440px] mx-auto px-6 pt-16 flex flex-col sm:flex-row justify-between items-center gap-6 border-t border-[#CCCCCC]/40 mt-20">
+          <button
+            onClick={handleNavigateHome}
+            className="group flex items-center gap-3 font-narrow text-xs uppercase tracking-[0.2em] font-bold text-[#111111] hover:text-[#5E5E5E] transition-colors"
+          >
+            <span className="w-10 h-10 rounded-full border border-[#111111] group-hover:bg-[#111111] group-hover:text-white flex items-center justify-center transition-all duration-300">
+              <i className="fa-solid fa-arrow-left text-sm"></i>
+            </span>
+            <span>Back to Portfolio Main Page</span>
+          </button>
 
-        <button
-          onClick={handleScrollTop}
-          className="font-narrow text-xs font-bold text-[#5E5E5E] hover:text-[#111111] uppercase tracking-widest flex items-center gap-2"
-        >
-          <span>Top of Page</span>
-          <i className="fa-solid fa-arrow-up text-xs"></i>
-        </button>
-      </section>
+          <button
+            onClick={handleScrollTop}
+            className="font-narrow text-xs font-bold text-[#5E5E5E] hover:text-[#111111] uppercase tracking-widest flex items-center gap-2"
+          >
+            <span>Top of Page</span>
+            <i className="fa-solid fa-arrow-up text-xs"></i>
+          </button>
+        </section>
+      </ScrollReveal>
 
       {/* 6. Image Lightbox Modal */}
       <LightboxModal selectedImage={selectedImage} onClose={handleCloseLightbox} />
