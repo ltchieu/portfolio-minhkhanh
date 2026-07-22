@@ -218,14 +218,19 @@ export default function DomeGallery({
 
         const hasCustomSize = openedImageWidth && openedImageHeight;
         if (hasCustomSize) {
-          const tempDiv = document.createElement('div');
-          tempDiv.style.cssText = `position: absolute; width: ${openedImageWidth}; height: ${openedImageHeight}; visibility: hidden;`;
-          document.body.appendChild(tempDiv);
-          const tempRect = tempDiv.getBoundingClientRect();
-          document.body.removeChild(tempDiv);
+          const parseDim = (val: string | undefined, refPx: number) => {
+            if (!val) return refPx;
+            if (val.endsWith('px')) return parseFloat(val) || refPx;
+            if (val.endsWith('%')) return (parseFloat(val) / 100) * refPx;
+            if (val.endsWith('vw')) return (parseFloat(val) / 100) * window.innerWidth;
+            if (val.endsWith('vh')) return (parseFloat(val) / 100) * window.innerHeight;
+            return parseFloat(val) || refPx;
+          };
+          const tempW = parseDim(openedImageWidth, frameR.width);
+          const tempH = parseDim(openedImageHeight, frameR.height);
 
-          const centeredLeft = frameR.left - mainR.left + (frameR.width - tempRect.width) / 2;
-          const centeredTop = frameR.top - mainR.top + (frameR.height - tempRect.height) / 2;
+          const centeredLeft = frameR.left - mainR.left + (frameR.width - tempW) / 2;
+          const centeredTop = frameR.top - mainR.top + (frameR.height - tempH) / 2;
 
           enlargedOverlay.style.left = `${centeredLeft}px`;
           enlargedOverlay.style.top = `${centeredTop}px`;
@@ -643,7 +648,7 @@ export default function DomeGallery({
                   onClick={onTileClick}
                   onPointerUp={onTilePointerUp}
                 >
-                  <img src={it.src} draggable={false} alt={it.alt} />
+                  <img src={it.src} draggable={false} alt={it.alt} loading="lazy" decoding="async" />
                 </div>
               </div>
             ))}

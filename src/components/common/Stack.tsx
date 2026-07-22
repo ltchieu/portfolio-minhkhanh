@@ -1,5 +1,5 @@
 import { motion, useMotionValue, useTransform } from 'motion/react';
-import { useState, useEffect, ReactNode, PanInfo } from 'react';
+import { useState, useEffect, useMemo, useCallback, memo, ReactNode, PanInfo } from 'react';
 import './Stack.css';
 
 interface CardRotateProps {
@@ -7,23 +7,25 @@ interface CardRotateProps {
   onSendToBack: () => void;
   sensitivity: number;
   disableDrag?: boolean;
-  key?: string | number;
 }
 
-function CardRotate({ children, onSendToBack, sensitivity, disableDrag = false }: CardRotateProps) {
+const CardRotate = memo(function CardRotate({ children, onSendToBack, sensitivity, disableDrag = false }: CardRotateProps) {
   const x = useMotionValue(0);
   const y = useMotionValue(0);
   const rotateX = useTransform(y, [-100, 100], [60, -60]);
   const rotateY = useTransform(x, [-100, 100], [-60, 60]);
 
-  function handleDragEnd(_: unknown, info: PanInfo) {
-    if (Math.abs(info.offset.x) > sensitivity || Math.abs(info.offset.y) > sensitivity) {
-      onSendToBack();
-    } else {
-      x.set(0);
-      y.set(0);
-    }
-  }
+  const handleDragEnd = useCallback(
+    (_: unknown, info: PanInfo) => {
+      if (Math.abs(info.offset.x) > sensitivity || Math.abs(info.offset.y) > sensitivity) {
+        onSendToBack();
+      } else {
+        x.set(0);
+        y.set(0);
+      }
+    },
+    [onSendToBack, sensitivity, x, y]
+  );
 
   if (disableDrag) {
     return (
@@ -46,7 +48,7 @@ function CardRotate({ children, onSendToBack, sensitivity, disableDrag = false }
       {children}
     </motion.div>
   );
-}
+});
 
 interface StackProps {
   randomRotation?: boolean;
@@ -61,7 +63,7 @@ interface StackProps {
   mobileBreakpoint?: number;
 }
 
-export default function Stack({
+function Stack({
   randomRotation = false,
   sensitivity = 200,
   cards = [],
@@ -77,13 +79,11 @@ export default function Stack({
   const [isPaused, setIsPaused] = useState(false);
 
   useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < mobileBreakpoint);
-    };
-
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
+    const mql = window.matchMedia(`(max-width: ${mobileBreakpoint}px)`);
+    setIsMobile(mql.matches);
+    const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches);
+    mql.addEventListener('change', handler);
+    return () => mql.removeEventListener('change', handler);
   }, [mobileBreakpoint]);
 
   const shouldDisableDrag = mobileClickOnly && isMobile;
@@ -101,6 +101,8 @@ export default function Stack({
               src="https://images.unsplash.com/photo-1480074568708-e7b720bb3f09?q=80&w=500&auto=format"
               alt="card-1"
               className="card-image"
+              loading="lazy"
+              decoding="async"
             />
           )
         },
@@ -111,6 +113,8 @@ export default function Stack({
               src="https://images.unsplash.com/photo-1449844908441-8829872d2607?q=80&w=500&auto=format"
               alt="card-2"
               className="card-image"
+              loading="lazy"
+              decoding="async"
             />
           )
         },
@@ -121,6 +125,8 @@ export default function Stack({
               src="https://images.unsplash.com/photo-1452626212852-811d58933cae?q=80&w=500&auto=format"
               alt="card-3"
               className="card-image"
+              loading="lazy"
+              decoding="async"
             />
           )
         },
@@ -131,6 +137,8 @@ export default function Stack({
               src="https://images.unsplash.com/photo-1572120360610-d971b9d7767c?q=80&w=500&auto=format"
               alt="card-4"
               className="card-image"
+              loading="lazy"
+              decoding="async"
             />
           )
         }
@@ -144,7 +152,15 @@ export default function Stack({
     }
   }, [cards]);
 
-  const sendToBack = (id: number) => {
+  const cardRotationsMap = useMemo(() => {
+    const map = new Map<number, number>();
+    stack.forEach(card => {
+      map.set(card.id, randomRotation ? Math.random() * 10 - 5 : 0);
+    });
+    return map;
+  }, [randomRotation, stack.length]);
+
+  const sendToBack = useCallback((id: number) => {
     setStack(prev => {
       const newStack = [...prev];
       const index = newStack.findIndex(card => card.id === id);
@@ -153,7 +169,7 @@ export default function Stack({
       newStack.unshift(card);
       return newStack;
     });
-  };
+  }, []);
 
   useEffect(() => {
     if (autoplay && stack.length > 1 && !isPaused) {
@@ -164,7 +180,7 @@ export default function Stack({
 
       return () => clearInterval(interval);
     }
-  }, [autoplay, autoplayDelay, stack, isPaused]);
+  }, [autoplay, autoplayDelay, stack, isPaused, sendToBack]);
 
   return (
     <div
@@ -173,7 +189,7 @@ export default function Stack({
       onMouseLeave={() => pauseOnHover && setIsPaused(false)}
     >
       {stack.map((card, index) => {
-        const randomRotate = randomRotation ? Math.random() * 10 - 5 : 0;
+        const randomRotate = cardRotationsMap.get(card.id) ?? 0;
         return (
           <CardRotate
             key={card.id}
@@ -204,3 +220,5 @@ export default function Stack({
     </div>
   );
 }
+
+export default memo(Stack);

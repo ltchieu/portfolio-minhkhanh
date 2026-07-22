@@ -1,9 +1,9 @@
 @keyframes marquee-scroll {
   0% {
-    transform: translateX(0%);
+    transform: translate3d(0%, 0, 0);
   }
   100% {
-    transform: translateX(-50%);
+    transform: translate3d(-50%, 0, 0);
   }
 }
 
@@ -12,12 +12,15 @@
   width: 100%;
   overflow: hidden;
   user-select: none;
+  contain: layout paint style;
 }
 
 .infinite-marquee-track {
   display: flex;
   width: max-content;
   animation: marquee-scroll 35s linear infinite;
+  will-change: transform;
+  transform: translateZ(0);
 }
 
 .infinite-marquee-container:hover .infinite-marquee-track {
@@ -27,4 +30,5 @@
 .infinite-marquee-item {
   flex-shrink: 0;
   padding: 0 12px;
+  will-change: transform;
 }

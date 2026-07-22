@@ -1,3 +1,4 @@
+import { useMemo, memo } from 'react';
 import './InfiniteMarquee.css';
 
 export interface MarqueeItem {
@@ -14,13 +15,13 @@ interface InfiniteMarqueeProps {
   className?: string;
 }
 
-export default function InfiniteMarquee({
+function InfiniteMarquee({
   items,
   speed = 35,
   onItemClick,
   className = ''
 }: InfiniteMarqueeProps) {
-  const duplicatedItems = [...items, ...items];
+  const duplicatedItems = useMemo(() => [...items, ...items], [items]);
 
   return (
     <div className={`infinite-marquee-container ${className}`}>
@@ -40,6 +41,7 @@ export default function InfiniteMarquee({
                 alt={item.title || 'Campaign Visual'}
                 className="h-56 md:h-64 object-cover w-auto max-w-[380px]"
                 loading="lazy"
+                decoding="async"
               />
               {item.title && (
                 <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end">
@@ -60,3 +62,5 @@ export default function InfiniteMarquee({
     </div>
   );
 }
+
+export default memo(InfiniteMarquee);
