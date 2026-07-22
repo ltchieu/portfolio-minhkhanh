@@ -2,6 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 import MainPortfolio from './MainPortfolio';
 import FreelanceJobDetail from '../components/FreelanceJobDetail';
 import MarketingExecutiveJobDetail from '../components/MarketingExecutiveJobDetail';
+import MarComAssociateJobDetail from '../components/MarComAssociateJobDetail';
 import ScrollManager from './ScrollManager';
 
 export default function AppRouter() {
@@ -17,6 +18,10 @@ export default function AppRouter() {
         <Route
           path="/experience/marketing-executive-probation"
           element={<MarketingExecutiveJobDetail />}
+        />
+        <Route
+          path="/experience/ou-news-marcom-associate"
+          element={<MarComAssociateJobDetail />}
         />
         {/* Fallback route to home page */}
         <Route path="*" element={<MainPortfolio />} />
