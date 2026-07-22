@@ -31,7 +31,6 @@ export default function MainPortfolio() {
       const seconds = String(gmt7Date.getUTCSeconds()).padStart(2, "0");
       setCurrentTime(`${hours}:${minutes}:${seconds}`);
 
-      const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
       const months = [
         "January", "February", "March", "April", "May", "June",
         "July", "August", "September", "October", "November", "December"
@@ -48,13 +47,6 @@ export default function MainPortfolio() {
     const interval = setInterval(updateTimeAndDate, 1000);
     return () => clearInterval(interval);
   }, []);
-
-  const handleInquireProject = (title: string) => {
-    setSelectedProject(null);
-    const subject = encodeURIComponent(`Inquiry: ${title}`);
-    const body = encodeURIComponent(`Hi Liza! I absolutely love your "${title}" project and would love to collaborate on a similar concept for my brand.`);
-    window.location.href = `mailto:liz.contentcreator@gmail.com?subject=${subject}&body=${body}`;
-  };
 
   return (
     <div className="bg-[#FAF9F6] text-[#111111] font-sans antialiased overflow-x-hidden min-h-screen selection:bg-[#111111] selection:text-white">
@@ -96,13 +88,6 @@ export default function MainPortfolio() {
       <ManifestoModal
         isOpen={showManifesto}
         onClose={() => setShowManifesto(false)}
-      />
-
-      {/* 9. Portfolio Works Detail Lightbox */}
-      <ProjectLightbox
-        project={selectedProject}
-        onClose={() => setSelectedProject(null)}
-        onInquire={handleInquireProject}
       />
     </div>
   );

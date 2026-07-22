@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { freelanceProjects } from '../data/freelanceProjectsData';
 import type { FreelanceProject } from '../models/freelanceProjects';
 import ScrollReveal from './common/ScrollReveal';
+import TikTokEmbed from './common/TikTokEmbed';
 
 // 1. Dynamic / Lazy Imports for Heavy 3D Components (Bundle Size & LCP Optimization)
 const Stack = lazy(() => import('./common/Stack'));
@@ -374,14 +375,13 @@ const ProjectCard = memo(function ProjectCard({
               </span>
             </div>
 
-            <div className="w-full flex-1 flex justify-center items-center py-2">
-              <iframe
-                src="https://www.tiktok.com/embed/v2/7546055391021419797"
-                className="w-full max-w-[325px] h-[520px] rounded-xl border border-white/10 shadow-2xl bg-black"
-                title="Cốm Gừng Ceramic TikTok Video"
-                allowFullScreen
-                allow="encrypted-media;"
-              ></iframe>
+            <div className="w-full flex-1 flex justify-center items-center py-2 overflow-auto">
+              <TikTokEmbed
+                url={project.tiktokUrl || "https://www.tiktok.com/@comgung_ceramic/video/7546055391021419797"}
+                videoId="7546055391021419797"
+                title="Cốm Gừng Ceramic Side project"
+                author="@comgung_ceramic"
+              />
             </div>
 
             <div className="w-full mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-xs font-narrow text-white/70">
