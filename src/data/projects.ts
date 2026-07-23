@@ -1,48 +1,67 @@
 import { Project } from "../models/Project";
 
+// Vite glob to import authentic image assets from /assets/image/Activities/
+// Note: Relative path from src/data/ to root assets/ is ../../assets/
+const activityImages = import.meta.glob<string>(
+  '../../assets/image/Activities/**/*.{png,jpg,jpeg,PNG,JPG,JPEG}',
+  { eager: true, import: 'default' }
+);
+
+export function getActivityImage(pathSubstring: string): string {
+  const matchKey = Object.keys(activityImages).find(key =>
+    key.toLowerCase().includes(pathSubstring.toLowerCase())
+  );
+  if (matchKey && activityImages[matchKey]) {
+    return activityImages[matchKey];
+  }
+  // Fallback to first available image key if exact substring match is not found
+  const firstKey = Object.keys(activityImages)[0];
+  return firstKey ? activityImages[firstKey] : '';
+}
+
 export const projects: Project[] = [
   {
-    id: "noir-monolith",
-    title: "NOIR MONOLITH",
-    category: "BRANDING / FASHION",
-    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuAf-E3wVAtTjohp275SAm8rh8H71zZkw7Jh5GghfEiR5Cw_8ug3JamOtGf9w_o4i66jMDM5_SFSnBtVkhkK5xrtIEDDuBK8xOfQ3FORoXQ8VK9LkOyYttGy2lRPFoUvBf1ut9P4n1wsWUOpKMx0g0ujChGmgUl3UFPiW8OxtoevuU84_1_mMewigOu2W0djhhmkzGgMj5jUjpDPGnaYxLxDpH6sqsyzKRgF5U_ugeHro49gtdypGZi3HRSafbUfI7vgSTdTt9nGsaY",
-    description: "A dark high-contrast visual campaign and digital identity for high fashion brand Monolith.",
-    narrative: "Noir Monolith redefines luxury haute couture in the digital age. Built around stark, pure shadows, brutalist geometric layouts, and extreme high-contrast photography, the project covers the full digital experience from custom e-commerce interfaces to ambient motion graphics. The campaign achieved 4.2 million unique impressions and set a new standard for online luxury presentations.",
-    deliverables: ["Brand Identity", "UX Design System", "Production Video Art", "Packaging Design"],
-    tools: ["Figma", "After Effects", "DaVinci Resolve", "Blender"],
-    year: "2024"
+    id: "xuan-tinh-nguyen-2021",
+    title: "XUÂN TÌNH NGUYỆN 2021",
+    category: "COMMUNITY & VOLUNTEER CAMPAIGN",
+    image: getActivityImage('XTN21 FB Cover.png') || getActivityImage('Background XTN21') || getActivityImage('Poster.png'),
+    description: "End-to-end event management, wall painting art, porridge preparation, and night delivery for underprivileged communities.",
+    narrative: "Xuân Tình Nguyện 2021 was a major community outreach campaign organized by the Faculty Youth Union. Khanh coordinated volunteer teams across multiple operational fronts: wall mural painting for local primary schools, preparing and distributing midnight porridge to night workers, and designing the full campaign branding package including social media covers, avatars, and official gratitude letters.",
+    deliverables: ["Campaign Visual Identity", "Midnight Porridge Outreach", "Community Wall Mural Painting", "Social Media & Avatar Frames"],
+    tools: ["Adobe Photoshop", "Event Logistics", "Community Relations", "Content Production"],
+    year: "2021"
   },
   {
-    id: "velocity-prime",
-    title: "VELOCITY PRIME",
-    category: "INDUSTRIAL / MOTION",
-    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBS3o_tMZvqj2NSV3uzvkoyRYp5RpHGt8w8YQIIosoWgjkqrBr05Ojfs3raVZIZyB-fOszJdudw02-SRtx0bvzIz4CnZp3zbAQaZaQM7HuBoavtOgg0GublWk55Rjy6JtRcFgbquGY7vEhbm2OL_HmgEPII3TdNY2D-PSAw1lzgeg9PFevfN5Lfr-rGCMuL70jrIzfp-hNwu5EtoGkOdGOjWYk1AqBN5zJTs7ikQq_ncURYRWIzCbApl0J5ew1x3dRBTyyQyYYMSDw",
-    description: "An advanced aerodynamic frame design and interactive launching campaign for Velocity.",
-    narrative: "Velocity Prime brings aerospace-grade aerodynamic modeling to high-performance cycling. Stripping the standard bicycle frame to its structural boundaries, we utilized parametric modeling to cut air drag by 14%. The digital rollout was driven by custom web interactions and high-fidelity real-time physics simulators embedded inside the WebGL showcase.",
-    deliverables: ["Industrial Modeling", "Aerodynamic Simulation", "WebGL Interaction", "Launch Campaign Film"],
-    tools: ["Grasshopper", "Keyshot 11", "React Three Fiber", "Web Audio API"],
-    year: "2024"
+    id: "xuan-tinh-nguyen-2022",
+    title: "XUÂN TÌNH NGUYỆN 2022",
+    category: "COMMUNITY OUTREACH & EXHIBITION",
+    image: getActivityImage('XTN22 Cover-01.png') || getActivityImage('Saigon lưu lạc ký-01.png'),
+    description: "Documentary filmmaking, orphan shelter visits, volunteer game organizing, and 'Saigon Lưu Lạc Ký' thematic exhibition.",
+    narrative: "In Xuân Tình Nguyện 2022, Khanh led communications and event production for the 'Saigon Lưu Lạc Ký' campaign. The program combined volunteer games, visits to children's shelters, official project acceptance ceremonies, and documentary film production highlighting community resilience during the post-pandemic spring season.",
+    deliverables: ["Thematic Exhibition Design", "Documentary Video Production", "Children Shelter Workshops", "Volunteer Game Organization"],
+    tools: ["Adobe Premiere Pro", "Creative Direction", "Exhibition Scenography", "Event Operations"],
+    year: "2022"
   },
   {
-    id: "silent-space",
-    title: "SILENT SPACE",
-    category: "INTERIOR / SPATIAL",
-    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuAC8_KxLJY0llH6IznPvVxe9zBgb-UKw_C5Xhz8BeG3RH6hcF81BGlD48a9j5SzPa9v3A8QsNVcFaxIf8Gew_0YKYSO5JmZ4lGphP7xaq4JO0_lKjVBeFN7cFZAXMkPXTxbzklHNAra9JH2eZsbBSRP2zRNvuc5RIQ2ZPEKkfI0O7S3YstNUanAt8ELb_oVcxMptNK6aLwsOga_69ASIsJcgFr4Ejti86PLHtUzLxoi0c2uDvUaoBaMsXZrnvHSAltyJU34UnwR2ss",
-    description: "A conceptual brutalist interior showroom reflecting calm and complete negative spatial design.",
-    narrative: "Silent Space is a digital and physical research laboratory examining physical isolation and architectural sensory reduction. Using raw monolithic concrete surfaces, carefully aligned natural lighting wells, and optimized acoustics, we crafted a high-end digital interactive tour that mimics the somatic psychological response of absolute stillness.",
-    deliverables: ["Spatial Layout", "Interactive Web Tour", "Acoustic Modeling", "Exhibition Scenography"],
-    tools: ["Unreal Engine 5", "Rhinoceros 3D", "Framer Motion", "Spatial Audio"],
-    year: "2023"
+    id: "phoenix-music-festival-2022",
+    title: "THE PHOENIX MUSIC FESTIVAL",
+    category: "MUSIC FESTIVAL & BRAND ACTIVATION",
+    image: getActivityImage('Poster-02-edited.png') || getActivityImage('Poster-04-01.png'),
+    description: "Full visual identity, promotional poster design, VIP wristband graphics, and 1x2m standee campaign for live music festival.",
+    narrative: "The Phoenix 2022 was an energetic music festival gathering over 500+ attendees. Khanh developed the complete visual package including high-impact key visuals, promotional poster series, VIP wristband entry passes, stage branding, and promotional standees displayed across campus venues.",
+    deliverables: ["Key Visual & Poster Design", "Festival Wristbands & Lanyards", "1x2m Promotional Standees", "Social Media Teaser Campaign"],
+    tools: ["Adobe Illustrator", "Photoshop", "Print Production", "Brand Identity"],
+    year: "2022"
   },
   {
-    id: "core-interface",
-    title: "CORE INTERFACE",
-    category: "UI / FUTURE SYSTEMS",
-    image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBBxVmpZPvRtPzDxDc9TuGpct2PlpzqvbC16fQpsuZhFjA7PNkO2HmRAC3CIxBgJMMoRI8HnqBDfC_XVqgksY-A8iV6ugKwNm0kVXiEb9_JP5WjgMoF14GUeUsh7FYnUyMge9x7W8agRa7yeNRibnfTVMDYWQXy7BGegIDY2Eiip28WVCOsSLmMfBirAb5pZXJdt1L6PeHL6qvviCntCxndbS6iZyhmyHm4_3IVVXx9Ic-hLQCFotuQ_ltaoCqw1lIdAzY9BANoaoE",
-    description: "An interactive, sci-fi inspired dashboard for telemetry and immersive system control.",
-    narrative: "Core Interface explores the next evolution of human-computer collaboration. Designed as an operating console for telemetry and spatial navigation, it bridges complex multi-variate datastreams into highly intuitive, physical-feeling visual components. Highly optimized GLSL shaders provide dynamic background ripples while maintaining 60fps on mobile browsers.",
-    deliverables: ["Visual Dashboard", "Interactive Shader Design", "Data Visualization", "Sound System Synthesis"],
-    tools: ["TypeScript", "WebGL / GLSL", "D3.js", "Web Audio Synthesizer"],
-    year: "2024"
+    id: "dai-hoi-doan-2022",
+    title: "YOUTH UNION CONGRESS 2022",
+    category: "CORPORATE & DIPLOMATIC EVENT",
+    image: getActivityImage('Cover-01.png') || getActivityImage('Avatar-01.png'),
+    description: "Official publication design, delegate badges, invitation covers, and executive slide presentations for Youth Union Congress.",
+    narrative: "For the Youth Union Congress 2022 (Đại Hội Đoàn Khoa), Khanh was responsible for all official corporate graphics and print publications. This included designing the congress draft booklet, voting cards, guest badges, official invitations sent to District 3 Youth Union, and presentation background decks for executive board reporting.",
+    deliverables: ["Official Draft & Report Booklets", "Delegate & VIP Guest Badges", "Voting Cards & Invitations", "Presentation Decks & Wallpapers"],
+    tools: ["InDesign", "Illustrator", "Typography", "Official Press Logistics"],
+    year: "2022"
   }
 ];

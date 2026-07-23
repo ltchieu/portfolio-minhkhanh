@@ -27,7 +27,7 @@ function InfiniteMarquee({
                 src={item.img}
                 alt={item.title || 'Campaign Visual'}
                 className="h-56 md:h-64 object-cover w-auto max-w-[380px]"
-                loading="lazy"
+                loading="eager"
                 decoding="async"
               />
               {item.title && (

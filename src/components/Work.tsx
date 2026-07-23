@@ -1,12 +1,22 @@
+import { useNavigate } from "react-router-dom";
 import { Project } from "../models/Project";
 import { projects } from "../data/projects";
 import ScrollReveal from "./common/ScrollReveal";
 
 interface WorkProps {
-  setSelectedProject: (project: Project) => void;
+  setSelectedProject?: (project: Project) => void;
 }
 
 export default function Work({ setSelectedProject }: WorkProps) {
+  const navigate = useNavigate();
+
+  const handleProjectClick = (project: Project) => {
+    if (setSelectedProject) {
+      setSelectedProject(project);
+    }
+    navigate(`/project/${project.id}`);
+  };
+
   return (
     <section id="work" className="py-24 bg-white scroll-mt-20">
       <div className="max-w-[1440px] mx-auto px-6">
@@ -21,7 +31,7 @@ export default function Work({ setSelectedProject }: WorkProps) {
               </h2>
             </div>
             <p className="font-narrow text-xs font-bold text-[#5E5E5E] tracking-widest max-w-xs md:text-right">
-              A precise collision of brutalist layouts, raw textures, and user emotion.
+              A precise collision of volunteer leadership, brand identity, and creative event production.
             </p>
           </div>
         </ScrollReveal>
@@ -31,7 +41,7 @@ export default function Work({ setSelectedProject }: WorkProps) {
           {projects.map((project, idx) => (
             <ScrollReveal key={project.id} direction="up" delay={idx * 0.1}>
               <div
-                onClick={() => setSelectedProject(project)}
+                onClick={() => handleProjectClick(project)}
                 className="group relative aspect-square overflow-hidden cursor-pointer bg-[#111111] border-b border-r border-[#CCCCCC]/60 last:border-b-0"
               >
                 {/* Grayscale overlay & zoom image */}

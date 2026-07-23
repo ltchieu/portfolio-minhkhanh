@@ -4,6 +4,7 @@ import FreelanceJobDetail from '../components/FreelanceJobDetail';
 import MarketingExecutiveJobDetail from '../components/MarketingExecutiveJobDetail';
 import MarComAssociateJobDetail from '../components/MarComAssociateJobDetail';
 import PRInternJobDetail from '../components/PRInternJobDetail';
+import XuanTinhNguyen2021Detail from '../components/XuanTinhNguyen2021Detail';
 import ScrollManager from './ScrollManager';
 
 export default function AppRouter() {
@@ -31,6 +32,14 @@ export default function AppRouter() {
         <Route
           path="/experience/pr-practitioner-intern"
           element={<PRInternJobDetail />}
+        />
+        <Route
+          path="/project/xuan-tinh-nguyen-2021"
+          element={<XuanTinhNguyen2021Detail />}
+        />
+        <Route
+          path="/project/:projectId"
+          element={<XuanTinhNguyen2021Detail />}
         />
         {/* Fallback route to home page */}
         <Route path="*" element={<MainPortfolio />} />
