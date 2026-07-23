@@ -8,6 +8,7 @@ const MarketingExecutiveJobDetail = lazy(() => import('../components/MarketingEx
 const MarComAssociateJobDetail = lazy(() => import('../components/MarComAssociateJobDetail'));
 const PRInternJobDetail = lazy(() => import('../components/PRInternJobDetail'));
 const XuanTinhNguyen2021Detail = lazy(() => import('../components/XuanTinhNguyen2021Detail'));
+const XuanTinhNguyen2022Detail = lazy(() => import('../components/XuanTinhNguyen2022Detail'));
 
 export default function AppRouter() {
   return (
@@ -39,6 +40,10 @@ export default function AppRouter() {
           <Route
             path="/project/xuan-tinh-nguyen-2021"
             element={<XuanTinhNguyen2021Detail />}
+          />
+          <Route
+            path="/project/xuan-tinh-nguyen-2022"
+            element={<XuanTinhNguyen2022Detail />}
           />
           <Route
             path="/project/:projectId"

@@ -182,7 +182,7 @@ export default function XuanTinhNguyen2021Detail() {
           </ScrollReveal>
 
           <Suspense fallback={<GallerySkeleton height="320px" title="Loading Campaign Identity Marquee..." />}>
-            <div className="py-4 bg-[#111111] rounded-2xl border border-[#111111] overflow-hidden shadow-lg">
+            <div className="py-2">
               <InfiniteMarquee
                 items={marqueeItems}
                 speed={30}
@@ -237,7 +237,7 @@ export default function XuanTinhNguyen2021Detail() {
                     description: 'Volunteer artists painting colorful wall murals for local primary school children.'
                   });
                 }}
-                className="group relative aspect-[4/3] rounded-xl overflow-hidden bg-[#111111] border border-[#CCCCCC]/60 shadow-sm cursor-pointer"
+                className="group relative aspect-[4/3] rounded-xl overflow-hidden border border-[#CCCCCC]/60 shadow-sm cursor-pointer"
               >
                 <img
                   src={src}
@@ -334,9 +334,9 @@ export default function XuanTinhNguyen2021Detail() {
             </div>
           </ScrollReveal>
 
-          <div className="flex justify-center py-10 bg-white border border-[#CCCCCC]/50 rounded-2xl shadow-sm">
-            <Suspense fallback={<GallerySkeleton height="380px" title="Loading Card Stack..." />}>
-              <div className="w-[360px] h-[400px] relative flex items-center justify-center">
+          <div className="flex justify-center py-6">
+            <Suspense fallback={<GallerySkeleton height="360px" title="Loading Card Stack..." />}>
+              <div className="w-[360px] h-[360px] relative flex items-center justify-center">
                 <Stack
                   cards={nightPorridgeImages.map((src, i) => (
                     <div
@@ -349,7 +349,7 @@ export default function XuanTinhNguyen2021Detail() {
                           description: 'Volunteers distributing midnight porridge to hard-working night laborers.'
                         });
                       }}
-                      className="w-full h-full rounded-xl overflow-hidden border border-white/20 shadow-2xl cursor-pointer bg-[#111111]"
+                      className="w-full h-full rounded-xl overflow-hidden border border-[#CCCCCC]/60 shadow-xl cursor-pointer bg-white"
                     >
                       <img src={src} alt={`Night Porridge ${i + 1}`} className="w-full h-full object-cover" />
                     </div>

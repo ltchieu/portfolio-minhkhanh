@@ -22,7 +22,7 @@ function InfiniteMarquee({
             className="infinite-marquee-item cursor-pointer group"
             onClick={() => onItemClick?.(item)}
           >
-            <div className="relative overflow-hidden rounded-xl bg-[#111111] border border-white/10 shadow-lg transition-transform duration-300 group-hover:scale-105 group-hover:border-white/30">
+            <div className="relative overflow-hidden rounded-xl bg-white border border-[#CCCCCC]/60 shadow-md transition-transform duration-300 group-hover:scale-105 group-hover:border-[#111111]">
               <img
                 src={item.img}
                 alt={item.title || 'Campaign Visual'}
