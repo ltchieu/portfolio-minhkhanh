@@ -12,12 +12,12 @@ export default function ScrollManager() {
   }, []);
 
   useEffect(() => {
-    if (pathname.startsWith('/experience/')) {
+    if (pathname.startsWith('/experience/') || pathname.startsWith('/project/')) {
       // Navigated to a detail page -> always scroll to top (0, 0)
       window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
     } else if (pathname === '/') {
       // Navigated back to main portfolio home page
-      const savedPos = sessionStorage.getItem('portfolio_home_scroll_y');
+      const savedPos = sessionStorage.getItem('portfolio_home_scroll_pos') || sessionStorage.getItem('portfolio_home_scroll_y');
       const fromDetail = sessionStorage.getItem('portfolio_from_detail');
 
       if (savedPos !== null || fromDetail === 'true') {
@@ -28,12 +28,7 @@ export default function ScrollManager() {
           if (targetY !== null && !isNaN(targetY)) {
             window.scrollTo({ top: targetY, behavior: 'instant' });
           } else {
-            const expElement = document.getElementById('experience');
-            if (expElement) {
-              expElement.scrollIntoView({ behavior: 'instant' });
-            } else {
-              window.scrollTo({ top: 0, behavior: 'instant' });
-            }
+            window.scrollTo({ top: 0, behavior: 'instant' });
           }
         };
 
@@ -45,6 +40,7 @@ export default function ScrollManager() {
           restoreScroll();
           // Clean up storage after restoration completes
           sessionStorage.removeItem('portfolio_from_detail');
+          sessionStorage.removeItem('portfolio_home_scroll_pos');
           sessionStorage.removeItem('portfolio_home_scroll_y');
         }, 150);
 

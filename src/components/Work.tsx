@@ -14,6 +14,8 @@ export default function Work({ setSelectedProject }: WorkProps) {
     if (setSelectedProject) {
       setSelectedProject(project);
     }
+    sessionStorage.setItem("portfolio_home_scroll_pos", window.scrollY.toString());
+    sessionStorage.setItem("portfolio_from_detail", "true");
     navigate(`/project/${project.id}`);
   };
 

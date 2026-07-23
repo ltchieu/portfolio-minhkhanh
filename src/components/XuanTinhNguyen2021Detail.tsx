@@ -9,13 +9,10 @@ import type { HeroMetricCard } from '../models/jobHeroSection';
 import type { LightboxImageData } from '../models/imageLightboxModal';
 import type { MasonryItem } from '../models/masonry';
 import type { MarqueeItem } from '../models/infiniteMarquee';
-import type { DomeImage } from '../models/domeGallery';
 import ScrollReveal from './common/ScrollReveal';
 
-import DomeGallery from './common/DomeGallery';
-import InfiniteMarquee from './common/InfiniteMarquee';
-
 // Dynamic lazy imports for below-the-fold component suites
+const InfiniteMarquee = lazy(() => import('./common/InfiniteMarquee'));
 const Masonry = lazy(() => import('./common/Masonry'));
 const Stack = lazy(() => import('./common/Stack'));
 
@@ -82,13 +79,13 @@ export default function XuanTinhNguyen2021Detail() {
   // 2. Folder: Hoạt động vẽ tường (expanded to 9 images for DomeGallery)
   const wallActivityImages = useMemo(() => {
     const raw = getImagesMatching('Hoạt động vẽ tường');
-    return expandImagesToTarget(raw, 9);
+    return expandImagesToTarget(raw, 6);
   }, []);
 
   // 3. Folder: 20210125 Vẽ tường XTN21 (Edited) (expanded to 8 images for Masonry)
   const wallEditedImages = useMemo(() => {
     const raw = getImagesMatching('20210125 Vẽ tường XTN21');
-    return expandImagesToTarget(raw, 8);
+    return expandImagesToTarget(raw, 11);
   }, []);
 
   // 4. Folder: 20210123 Hoạt động phát cháo đêm (edited) (expanded to 8 images for Stack)
@@ -110,11 +107,6 @@ export default function XuanTinhNguyen2021Detail() {
     { label: 'Wall Murals', value: '2 Schools', note: 'Primary school art', icon: 'fa-solid fa-paint-roller' },
     { label: 'Campaign Year', value: '2021', note: 'Spring Outreach', icon: 'fa-solid fa-calendar' }
   ], []);
-
-  // DomeGallery images format
-  const domeGalleryImages: (string | DomeImage)[] = useMemo(() => {
-    return wallActivityImages.map((src) => ({ src, alt: 'Hoạt động vẽ tường XTN 2021' }));
-  }, [wallActivityImages]);
 
   // Marquee items format
   const marqueeItems: MarqueeItem[] = useMemo(() => {
@@ -176,7 +168,7 @@ export default function XuanTinhNguyen2021Detail() {
                   </span>
                   <span className="text-[#CCCCCC]">•</span>
                   <span className="font-narrow text-xs font-bold text-[#111111] tracking-widest uppercase">
-                    FOLDER: XUÂN TÌNH NGUYỆN 2021 (ROOT GRAPHICS)
+                    FOLDER: XUÂN TÌNH NGUYỆN 2021
                   </span>
                 </div>
                 <h2 className="font-display text-3xl sm:text-4xl md:text-5xl uppercase tracking-tighter text-[#111111]">
@@ -208,9 +200,9 @@ export default function XuanTinhNguyen2021Detail() {
         </section>
 
         {/* ========================================================================= */}
-        {/* SHOWCASE 02: HOẠT ĐỘNG VẼ TƯỜNG — DOME GALLERY                            */}
+        {/* SHOWCASE 02: HOẠT ĐỘNG VẼ TƯỜNG — PRIMARY SCHOOL WALL MURAL ART            */}
         {/* ========================================================================= */}
-        <section id="wall-painting-dome">
+        <section id="wall-painting-activity">
           <ScrollReveal direction="up" distance={30}>
             <div className="border-b border-[#CCCCCC]/40 pb-6 mb-8 flex flex-col md:flex-row md:items-end justify-between gap-4">
               <div>
@@ -220,31 +212,51 @@ export default function XuanTinhNguyen2021Detail() {
                   </span>
                   <span className="text-[#CCCCCC]">•</span>
                   <span className="font-narrow text-xs font-bold text-[#111111] tracking-widest uppercase">
-                    SUBFOLDER: HOẠT ĐỘNG VẼ TƯỜNG (9 IMAGES)
+                    SUBFOLDER: HOẠT ĐỘNG VẼ TƯỜNG
                   </span>
                 </div>
                 <h2 className="font-display text-3xl sm:text-4xl md:text-5xl uppercase tracking-tighter text-[#111111]">
                   Primary School Wall Mural Painting
                 </h2>
                 <p className="font-sans text-base text-[#5E5E5E] max-w-3xl leading-relaxed mt-2">
-                  Interactive 3D dome sphere showcase exhibiting volunteer artists painting colorful wall murals for local primary school children. Click and drag to rotate the dome; click tiles to view in full resolution.
+                  Photo coverage documenting volunteer artists painting colorful wall murals for local primary school children. Click any photo thumbnail to inspect in full resolution.
                 </p>
               </div>
             </div>
           </ScrollReveal>
 
-          <Suspense fallback={<GallerySkeleton height="600px" title="Loading Interactive Dome Gallery..." />}>
-            <div className="w-full h-[600px] sm:h-[700px] overflow-hidden rounded-xl bg-[#0A0A0A]">
-              <DomeGallery
-                images={domeGalleryImages}
-                fit={0.8}
-                minRadius={320}
-                maxRadius={800}
-                segments={30}
-                grayscale={false}
-              />
-            </div>
-          </Suspense>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {wallActivityImages.map((src, idx) => (
+              <div
+                key={idx}
+                onClick={() => {
+                  setSelectedImage({
+                    src,
+                    title: `Primary School Wall Mural — Photo 0${idx + 1}`,
+                    category: 'Xuân Tình Nguyện 2021 Wall Painting',
+                    description: 'Volunteer artists painting colorful wall murals for local primary school children.'
+                  });
+                }}
+                className="group relative aspect-[4/3] rounded-xl overflow-hidden bg-[#111111] border border-[#CCCCCC]/60 shadow-sm cursor-pointer"
+              >
+                <img
+                  src={src}
+                  alt={`Hoạt động vẽ tường ${idx + 1}`}
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-105 group-hover:opacity-90"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                  <span className="font-narrow text-xs font-black text-white/80 tracking-widest uppercase mb-1">
+                    WALL MURAL PHOTO 0{idx + 1}
+                  </span>
+                  <p className="font-sans text-xs text-white/90 font-medium flex items-center gap-2">
+                    <i className="fa-solid fa-magnifying-glass-plus text-xs"></i> View Full Photo
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
         </section>
 
         {/* ========================================================================= */}
@@ -260,7 +272,7 @@ export default function XuanTinhNguyen2021Detail() {
                   </span>
                   <span className="text-[#CCCCCC]">•</span>
                   <span className="font-narrow text-xs font-bold text-[#111111] tracking-widest uppercase">
-                    SUBFOLDER: 20210125 VẼ TƯỜNG XTN21 (EDITED) (8 IMAGES)
+                    SUBFOLDER: 20210125 VẼ TƯỜNG XTN21
                   </span>
                 </div>
                 <h2 className="font-display text-3xl sm:text-4xl md:text-5xl uppercase tracking-tighter text-[#111111]">
@@ -309,7 +321,7 @@ export default function XuanTinhNguyen2021Detail() {
                   </span>
                   <span className="text-[#CCCCCC]">•</span>
                   <span className="font-narrow text-xs font-bold text-[#111111] tracking-widest uppercase">
-                    SUBFOLDER: 20210123 HOẠT ĐỘNG PHÁT CHÁO ĐÊM (EDITED) (8 IMAGES)
+                    SUBFOLDER: 20210123 HOẠT ĐỘNG PHÁT CHÁO ĐÊM
                   </span>
                 </div>
                 <h2 className="font-display text-3xl sm:text-4xl md:text-5xl uppercase tracking-tighter text-[#111111]">
@@ -363,7 +375,7 @@ export default function XuanTinhNguyen2021Detail() {
                   </span>
                   <span className="text-[#CCCCCC]">•</span>
                   <span className="font-narrow text-xs font-bold text-[#111111] tracking-widest uppercase">
-                    SUBFOLDER: 20210123 HOẠT ĐỘNG NẤU CHÁO (EDITED) (9 IMAGES)
+                    SUBFOLDER: 20210123 HOẠT ĐỘNG NẤU CHÁO
                   </span>
                 </div>
                 <h2 className="font-display text-3xl sm:text-4xl uppercase tracking-tighter text-[#111111]">
