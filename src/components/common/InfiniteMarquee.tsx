@@ -1,19 +1,6 @@
 import { useMemo, memo } from 'react';
 import './InfiniteMarquee.css';
-
-export interface MarqueeItem {
-  id: string;
-  img: string;
-  title?: string;
-  subtitle?: string;
-}
-
-interface InfiniteMarqueeProps {
-  items: MarqueeItem[];
-  speed?: number;
-  onItemClick?: (item: MarqueeItem) => void;
-  className?: string;
-}
+import type { MarqueeItem, InfiniteMarqueeProps } from '../../models/infiniteMarquee';
 
 function InfiniteMarquee({
   items,

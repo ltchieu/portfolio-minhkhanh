@@ -1,28 +1,7 @@
 import { useEffect, useLayoutEffect, useMemo, useRef, useState, RefObject, memo, CSSProperties } from 'react';
 import { gsap } from 'gsap';
 import './Masonry.css';
-
-export interface MasonryItem {
-  id: string;
-  img: string;
-  url?: string;
-  height: number;
-  title?: string;
-  subtitle?: string;
-}
-
-interface MasonryProps {
-  items: MasonryItem[];
-  ease?: string;
-  duration?: number;
-  stagger?: number;
-  animateFrom?: 'top' | 'bottom' | 'left' | 'right' | 'center' | 'random';
-  scaleOnHover?: boolean;
-  hoverScale?: number;
-  blurToFocus?: boolean;
-  colorShiftOnHover?: boolean;
-  onItemClick?: (item: MasonryItem) => void;
-}
+import type { MasonryItem, MasonryProps } from '../../models/masonry';
 
 const useMedia = (queries: string[], values: number[], defaultValue: number) => {
   const get = () => values[queries.findIndex(q => matchMedia(q).matches)] ?? defaultValue;

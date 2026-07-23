@@ -6,6 +6,9 @@ import type { MarketingExecutiveBrand, VideoItem } from '../models/marketingExec
 import ScrollReveal from './common/ScrollReveal';
 import TikTokEmbed from './common/TikTokEmbed';
 import FacebookEmbed from './common/FacebookEmbed';
+import HeaderNav from './common/HeaderNav';
+import JobHeroSection from './common/JobHeroSection';
+import type { HeroMetricCard } from '../models/jobHeroSection';
 
 // Filter tabs definition
 const BRAND_TABS = [
@@ -221,121 +224,7 @@ const VideoLightboxModal = memo(function VideoLightboxModal({
   );
 });
 
-// 3. Header Navigation Bar
-const HeaderNav = memo(function HeaderNav({ onNavigateHome }: { onNavigateHome: () => void }) {
-  return (
-    <header className="sticky top-0 z-40 bg-[#FAF9F6]/90 backdrop-blur-md border-b border-[#CCCCCC]/40 px-6 py-4">
-      <div className="max-w-[1440px] mx-auto flex items-center justify-between">
-        <button
-          onClick={onNavigateHome}
-          className="group flex items-center gap-3 text-xs font-narrow font-bold uppercase tracking-[0.2em] text-[#111111] hover:text-[#5E5E5E] transition-colors"
-        >
-          <span className="w-8 h-8 rounded-full border border-[#111111] group-hover:bg-[#111111] group-hover:text-white flex items-center justify-center transition-all duration-300">
-            <i className="fa-solid fa-arrow-left text-xs"></i>
-          </span>
-          <span>Return to Portfolio</span>
-        </button>
 
-        <div className="flex items-center gap-3 text-xs font-narrow tracking-widest text-[#5E5E5E] uppercase">
-          <span className="hidden sm:inline">Mia Nguyen — Portfolio</span>
-          <span className="hidden sm:inline text-[#CCCCCC]">•</span>
-          <span className="font-bold text-[#111111]">Marketing Executive (Probation)</span>
-        </div>
-      </div>
-    </header>
-  );
-});
-
-// 4. Hero Section
-const HeroSection = memo(function HeroSection() {
-  return (
-    <section className="relative pt-16 pb-20 border-b border-[#CCCCCC]/40 overflow-hidden bg-gradient-to-b from-[#FAF9F6] via-[#F4F3EF] to-[#FAF9F6]">
-      <div className="absolute right-8 top-12 select-none pointer-events-none opacity-5 font-display text-8xl md:text-9xl text-[#111111] writing-vertical hidden lg:block tracking-widest">
-        マーケティング
-      </div>
-
-      <div className="max-w-[1440px] mx-auto px-6">
-        <ScrollReveal direction="up" distance={30}>
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
-            <div className="lg:col-span-8 space-y-6">
-              <div className="flex flex-wrap items-center gap-3">
-                <span className="font-narrow text-xs font-black text-[#5E5E5E] tracking-[0.25em] uppercase block">
-                  ROLE & CAMPAIGNS
-                </span>
-                <span className="text-[#CCCCCC]">•</span>
-                <span className="font-narrow text-xs font-bold text-[#111111] tracking-widest uppercase">
-                  Q1/2025 — PRESENT
-                </span>
-              </div>
-
-              <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl uppercase tracking-tighter text-[#111111] leading-[1.05]">
-                Marketing Executive (Probation) & Video Production
-              </h1>
-
-              <p className="font-sans text-lg sm:text-xl text-[#5E5E5E] max-w-3xl leading-relaxed">
-                Directing short-form social video campaigns, brand storytelling series, and short film productions across 5 major brands: Protea Garden, Dream Club, HCMCOU, Amor Resort, and Aqua Jardin. Click any video card to open the interactive player modal.
-              </p>
-            </div>
-
-            <div className="lg:col-span-4 grid grid-cols-2 gap-4">
-              <div className="bg-white border border-[#CCCCCC]/50 p-5 rounded shadow-sm hover:border-[#111111] transition-all">
-                <div className="flex items-center justify-between mb-2">
-                  <span className="font-narrow text-xs font-bold text-[#5E5E5E] uppercase tracking-wider">
-                    Total Videos
-                  </span>
-                  <i className="fa-solid fa-video text-[#111111] text-sm"></i>
-                </div>
-                <span className="font-display text-2xl sm:text-3xl text-[#111111]">
-                  24+
-                </span>
-                <p className="font-sans text-xs text-[#5E5E5E] mt-1">Campaign Videos</p>
-              </div>
-
-              <div className="bg-white border border-[#CCCCCC]/50 p-5 rounded shadow-sm hover:border-[#111111] transition-all">
-                <div className="flex items-center justify-between mb-2">
-                  <span className="font-narrow text-xs font-bold text-[#5E5E5E] uppercase tracking-wider">
-                    Brands
-                  </span>
-                  <i className="fa-solid fa-bullhorn text-[#111111] text-sm"></i>
-                </div>
-                <span className="font-display text-2xl sm:text-3xl text-[#111111]">
-                  5 Brands
-                </span>
-                <p className="font-sans text-xs text-[#5E5E5E] mt-1">Content ecosystem</p>
-              </div>
-
-              <div className="bg-white border border-[#CCCCCC]/50 p-5 rounded shadow-sm hover:border-[#111111] transition-all">
-                <div className="flex items-center justify-between mb-2">
-                  <span className="font-narrow text-xs font-bold text-[#5E5E5E] uppercase tracking-wider">
-                    Platforms
-                  </span>
-                  <i className="fa-solid fa-share-nodes text-[#111111] text-sm"></i>
-                </div>
-                <span className="font-display text-2xl sm:text-3xl text-[#111111]">
-                  TikTok / FB
-                </span>
-                <p className="font-sans text-xs text-[#5E5E5E] mt-1">Multi-channel reach</p>
-              </div>
-
-              <div className="bg-[#111111] text-white p-5 rounded shadow-sm transition-all">
-                <div className="flex items-center justify-between mb-2">
-                  <span className="font-narrow text-xs font-bold text-white/70 uppercase tracking-wider">
-                    Lightbox
-                  </span>
-                  <i className="fa-solid fa-expand text-white text-sm"></i>
-                </div>
-                <span className="font-display text-2xl sm:text-xl text-white">
-                  Interactive
-                </span>
-                <p className="font-sans text-xs text-white/60 mt-1">Click to play video</p>
-              </div>
-            </div>
-          </div>
-        </ScrollReveal>
-      </div>
-    </section>
-  );
-});
 
 // 5. Filter Tabs Component
 const FilterTabs = memo(function FilterTabs({
@@ -452,6 +341,34 @@ export default function MarketingExecutiveJobDetail() {
     setSelectedVideo(null);
   }, []);
 
+  const heroMetrics: HeroMetricCard[] = useMemo(() => [
+    {
+      label: 'Total Videos',
+      value: '24+',
+      note: 'Campaign Videos',
+      icon: 'fa-solid fa-video'
+    },
+    {
+      label: 'Brands',
+      value: '5 Brands',
+      note: 'Content ecosystem',
+      icon: 'fa-solid fa-bullhorn'
+    },
+    {
+      label: 'Platforms',
+      value: 'TikTok / FB',
+      note: 'Multi-channel reach',
+      icon: 'fa-solid fa-share-nodes'
+    },
+    {
+      label: 'Lightbox',
+      value: 'Interactive',
+      note: 'Click to play video',
+      icon: 'fa-solid fa-expand',
+      darkBg: true
+    }
+  ], []);
+
   const filteredBrands = useMemo(() => {
     if (activeTab === 'all') return marketingExecutiveBrands;
     return marketingExecutiveBrands.filter((b) => b.id === activeTab);
@@ -460,10 +377,25 @@ export default function MarketingExecutiveJobDetail() {
   return (
     <div className="bg-[#FAF9F6] text-[#111111] font-sans antialiased min-h-screen selection:bg-[#111111] selection:text-white pb-24">
       {/* 1. Header Navigation Bar */}
-      <HeaderNav onNavigateHome={handleNavigateHome} />
+      <HeaderNav
+        onNavigateHome={handleNavigateHome}
+        caseStudyText="Mia Nguyen — Portfolio"
+        badgeText="Marketing Executive (Probation)"
+      />
 
       {/* 2. Hero Section */}
-      <HeroSection />
+      <JobHeroSection
+        japaneseBackgroundText="マーケティング"
+        categoryText="ROLE & CAMPAIGNS"
+        timeframe="Q1/2025 — PRESENT"
+        title="Marketing Executive (Probation) & Video Production"
+        description={
+          <p>
+            Directing short-form social video campaigns, brand storytelling series, and short film productions across 5 major brands: Protea Garden, Dream Club, HCMCOU, Amor Resort, and Aqua Jardin. Click any video card to open the interactive player modal.
+          </p>
+        }
+        metrics={heroMetrics}
+      />
 
       {/* 3. Filter Tabs */}
       <FilterTabs activeTab={activeTab} onTabChange={handleTabChange} />

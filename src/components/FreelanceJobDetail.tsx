@@ -5,6 +5,12 @@ import { freelanceProjects } from '../data/freelanceProjectsData';
 import type { FreelanceProject } from '../models/freelanceProjects';
 import ScrollReveal from './common/ScrollReveal';
 import TikTokEmbed from './common/TikTokEmbed';
+import HeaderNav from './common/HeaderNav';
+import JobHeroSection from './common/JobHeroSection';
+import GallerySkeleton from './common/GallerySkeleton';
+import ImageLightboxModal from './common/ImageLightboxModal';
+import type { HeroMetricCard } from '../models/jobHeroSection';
+import type { LightboxImageData } from '../models/imageLightboxModal';
 
 // 1. Dynamic / Lazy Imports for Heavy 3D Components (Bundle Size & LCP Optimization)
 const Stack = lazy(() => import('./common/Stack'));
@@ -17,141 +23,7 @@ const FILTER_TABS = [
   { id: 'stack', label: 'Card Stack' },
 ] as const;
 
-// Component Skeleton for Suspense boundaries
-function GallerySkeleton({ height = '450px' }: { height?: string }) {
-  return (
-    <div
-      style={{ height }}
-      className="w-full bg-[#1A1A1A] animate-pulse rounded-lg flex items-center justify-center border border-white/10"
-    >
-      <div className="flex items-center gap-3 text-white/50 text-xs font-mono">
-        <i className="fa-solid fa-spinner fa-spin text-sm"></i>
-        <span>Loading Interactive Gallery...</span>
-      </div>
-    </div>
-  );
-}
 
-// 3. Memoized Header Component
-const HeaderNav = memo(function HeaderNav({ onNavigateHome }: { onNavigateHome: () => void }) {
-  return (
-    <header className="sticky top-0 z-40 bg-[#FAF9F6]/90 backdrop-blur-md border-b border-[#CCCCCC]/40">
-      <div className="max-w-[1440px] mx-auto px-6 h-20 flex items-center justify-between">
-        <button
-          onClick={onNavigateHome}
-          className="group flex items-center gap-3 font-narrow text-xs uppercase tracking-[0.2em] font-bold text-[#111111] hover:text-[#5E5E5E] transition-colors"
-          aria-label="Back to portfolio main page"
-        >
-          <span className="w-8 h-8 rounded-full border border-[#CCCCCC] group-hover:border-[#111111] group-hover:bg-[#111111] group-hover:text-white flex items-center justify-center transition-all duration-300">
-            <i className="fa-solid fa-arrow-left text-xs"></i>
-          </span>
-          <span>Return to Portfolio</span>
-        </button>
-
-        <div className="flex items-center gap-4">
-          <span className="font-narrow text-xs font-bold text-[#5E5E5E] tracking-[0.25em] uppercase hidden sm:inline-block">
-            CASE STUDY 01 / 04
-          </span>
-          <span className="h-4 w-[1px] bg-[#CCCCCC] hidden sm:block"></span>
-          <span className="font-mono text-xs font-bold px-3 py-1 bg-[#111111] text-white rounded">
-            FREELANCE
-          </span>
-        </div>
-      </div>
-    </header>
-  );
-});
-
-// 4. Memoized Hero Component
-const HeroSection = memo(function HeroSection() {
-  return (
-    <section className="relative pt-16 pb-20 border-b border-[#CCCCCC]/40 overflow-hidden bg-gradient-to-b from-[#FAF9F6] via-[#F4F3EF] to-[#FAF9F6]">
-      <div className="absolute right-8 top-12 select-none pointer-events-none opacity-5 font-display text-8xl md:text-9xl text-[#111111] writing-vertical hidden lg:block tracking-widest">
-        独立広報活動
-      </div>
-
-      <div className="max-w-[1440px] mx-auto px-6">
-        <ScrollReveal direction="up" distance={30}>
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
-            <div className="lg:col-span-8 space-y-6">
-              <div className="flex flex-wrap items-center gap-3">
-                <span className="font-narrow text-xs font-black text-[#5E5E5E] tracking-[0.25em] uppercase block">
-                  ROLE & EXPERTISE
-                </span>
-                <span className="text-[#CCCCCC]">•</span>
-                <span className="font-narrow text-xs font-bold text-[#111111] tracking-widest uppercase">
-                  Q2/2025 — PRESENT
-                </span>
-              </div>
-
-              <h2 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl uppercase tracking-tighter text-[#111111] leading-[1.05]">
-                Independent Communications Associate & Event Coordinator
-              </h2>
-
-              <p className="font-sans text-lg sm:text-xl text-[#5E5E5E] max-w-3xl leading-relaxed">
-                Coordinating end-to-end communication, brand activations, and event projects for HCMC Open University and independent clients. Overseeing creative production, vendor logistics, micro-timelines, and attendee experience for events scaling up to 350+ guests.
-              </p>
-            </div>
-
-            <div className="lg:col-span-4 grid grid-cols-2 gap-4">
-              <div className="bg-white border border-[#CCCCCC]/50 p-5 rounded shadow-sm hover:border-[#111111] transition-all">
-                <div className="flex items-center justify-between mb-2">
-                  <span className="font-narrow text-xs font-bold text-[#5E5E5E] uppercase tracking-wider">
-                    Max Attendance
-                  </span>
-                  <i className="fa-solid fa-users text-[#111111] text-sm"></i>
-                </div>
-                <span className="font-display text-2xl sm:text-3xl text-[#111111]">
-                  350+
-                </span>
-                <p className="font-sans text-xs text-[#5E5E5E] mt-1">Live guests managed</p>
-              </div>
-
-              <div className="bg-white border border-[#CCCCCC]/50 p-5 rounded shadow-sm hover:border-[#111111] transition-all">
-                <div className="flex items-center justify-between mb-2">
-                  <span className="font-narrow text-xs font-bold text-[#5E5E5E] uppercase tracking-wider">
-                    Vendors
-                  </span>
-                  <i className="fa-solid fa-handshake text-[#111111] text-sm"></i>
-                </div>
-                <span className="font-display text-2xl sm:text-3xl text-[#111111]">
-                  5 Partners
-                </span>
-                <p className="font-sans text-xs text-[#5E5E5E] mt-1">SOP & timeline sync</p>
-              </div>
-
-              <div className="bg-white border border-[#CCCCCC]/50 p-5 rounded shadow-sm hover:border-[#111111] transition-all">
-                <div className="flex items-center justify-between mb-2">
-                  <span className="font-narrow text-xs font-bold text-[#5E5E5E] uppercase tracking-wider">
-                    Assets
-                  </span>
-                  <i className="fa-solid fa-photo-film text-[#111111] text-sm"></i>
-                </div>
-                <span className="font-display text-2xl sm:text-3xl text-[#111111]">
-                  100+
-                </span>
-                <p className="font-sans text-xs text-[#5E5E5E] mt-1">Creative media files</p>
-              </div>
-
-              <div className="bg-white border border-[#CCCCCC]/50 p-5 rounded shadow-sm hover:border-[#111111] transition-all">
-                <div className="flex items-center justify-between mb-2">
-                  <span className="font-narrow text-xs font-bold text-[#5E5E5E] uppercase tracking-wider">
-                    Projects
-                  </span>
-                  <i className="fa-solid fa-cubes text-[#111111] text-sm"></i>
-                </div>
-                <span className="font-display text-2xl sm:text-xl text-[#111111]">
-                  6 Delivered
-                </span>
-                <p className="font-sans text-xs text-[#5E5E5E] mt-1">Full case portfolio</p>
-              </div>
-            </div>
-          </div>
-        </ScrollReveal>
-      </div>
-    </section>
-  );
-});
 
 // 5. Memoized Filter Tabs Component
 const FilterTabs = memo(function FilterTabs({
@@ -502,49 +374,10 @@ const ProjectCard = memo(function ProjectCard({
   );
 });
 
-// 7. Memoized Lightbox Modal Component
-const LightboxModal = memo(function LightboxModal({
-  selectedImage,
-  onClose,
-}: {
-  selectedImage: string | null;
-  onClose: () => void;
-}) {
-  return (
-    <AnimatePresence>
-      {selectedImage && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          onClick={onClose}
-          className="fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4 sm:p-8"
-        >
-          <div className="relative max-w-5xl w-full max-h-[90vh] flex flex-col items-center">
-            <button
-              onClick={onClose}
-              className="absolute -top-12 right-0 text-white hover:text-gray-300 font-narrow text-sm uppercase tracking-wider flex items-center gap-2"
-            >
-              <span>Close</span>
-              <i className="fa-solid fa-xmark text-lg"></i>
-            </button>
-
-            <img
-              src={selectedImage}
-              alt="Enlarged case asset"
-              className="max-w-full max-h-[80vh] object-contain rounded border border-white/20 shadow-2xl"
-            />
-          </div>
-        </motion.div>
-      )}
-    </AnimatePresence>
-  );
-});
-
-// 8. Main JobDetail Page Component
+// 7. Main JobDetail Page Component
 export default function JobDetail() {
   const navigate = useNavigate();
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [selectedImage, setSelectedImage] = useState<LightboxImageData | null>(null);
   const [activeTab, setActiveTab] = useState<string>('all');
 
   // Scroll to top on page mount
@@ -563,7 +396,12 @@ export default function JobDetail() {
   }, []);
 
   const handleSelectImage = useCallback((src: string) => {
-    setSelectedImage(src);
+    setSelectedImage({
+      src,
+      title: 'Freelance Project Asset',
+      category: 'Freelance Event & Communication',
+      description: 'High-resolution project photograph.'
+    });
   }, []);
 
   const handleCloseLightbox = useCallback(() => {
@@ -574,6 +412,33 @@ export default function JobDetail() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
 
+  const heroMetrics: HeroMetricCard[] = useMemo(() => [
+    {
+      label: 'Max Attendance',
+      value: '350+',
+      note: 'Live guests managed',
+      icon: 'fa-solid fa-users'
+    },
+    {
+      label: 'Vendors',
+      value: '5 Partners',
+      note: 'SOP & timeline sync',
+      icon: 'fa-solid fa-handshake'
+    },
+    {
+      label: 'Assets',
+      value: '100+',
+      note: 'Creative media files',
+      icon: 'fa-solid fa-photo-film'
+    },
+    {
+      label: 'Projects',
+      value: '6 Delivered',
+      note: 'Full case portfolio',
+      icon: 'fa-solid fa-cubes'
+    }
+  ], []);
+
   // Memoized filter results
   const filteredProjects = useMemo(() => {
     if (activeTab === 'all') return freelanceProjects;
@@ -582,11 +447,26 @@ export default function JobDetail() {
 
   return (
     <div className="bg-[#FAF9F6] text-[#111111] font-sans antialiased min-h-screen selection:bg-[#111111] selection:text-white pb-24">
-      {/* 1. Header Navigation Bar */}
-      <HeaderNav onNavigateHome={handleNavigateHome} />
+      {/* 1. Reusable Header Navigation Bar */}
+      <HeaderNav
+        onNavigateHome={handleNavigateHome}
+        caseStudyText="CASE STUDY 01 / 04"
+        badgeText="FREELANCE"
+      />
 
-      {/* 2. Hero Header */}
-      <HeroSection />
+      {/* 2. Reusable Hero Header */}
+      <JobHeroSection
+        japaneseBackgroundText="独立広報活動"
+        categoryText="ROLE & EXPERTISE"
+        timeframe="Q2/2025 — PRESENT"
+        title="Independent Communications Associate & Event Coordinator"
+        description={
+          <p>
+            Coordinating end-to-end communication, brand activations, and event projects for HCMC Open University and independent clients. Overseeing creative production, vendor logistics, micro-timelines, and attendee experience for events scaling up to 350+ guests.
+          </p>
+        }
+        metrics={heroMetrics}
+      />
 
       {/* 3. Project Filter Tabs */}
       <FilterTabs activeTab={activeTab} onTabChange={handleTabChange} />
@@ -607,7 +487,7 @@ export default function JobDetail() {
         <section className="max-w-[1440px] mx-auto px-6 pt-16 flex flex-col sm:flex-row justify-between items-center gap-6 border-t border-[#CCCCCC]/40 mt-20">
           <button
             onClick={handleNavigateHome}
-            className="group flex items-center gap-3 font-narrow text-xs uppercase tracking-[0.2em] font-bold text-[#111111] hover:text-[#5E5E5E] transition-colors"
+            className="group flex items-center gap-3 font-narrow text-xs uppercase tracking-[0.2em] font-bold text-[#111111] hover:text-[#5E5E5E] transition-colors cursor-pointer"
           >
             <span className="w-10 h-10 rounded-full border border-[#111111] group-hover:bg-[#111111] group-hover:text-white flex items-center justify-center transition-all duration-300">
               <i className="fa-solid fa-arrow-left text-sm"></i>
@@ -617,7 +497,7 @@ export default function JobDetail() {
 
           <button
             onClick={handleScrollTop}
-            className="font-narrow text-xs font-bold text-[#5E5E5E] hover:text-[#111111] uppercase tracking-widest flex items-center gap-2"
+            className="font-narrow text-xs font-bold text-[#5E5E5E] hover:text-[#111111] uppercase tracking-widest flex items-center gap-2 cursor-pointer"
           >
             <span>Top of Page</span>
             <i className="fa-solid fa-arrow-up text-xs"></i>
@@ -625,8 +505,8 @@ export default function JobDetail() {
         </section>
       </ScrollReveal>
 
-      {/* 6. Image Lightbox Modal */}
-      <LightboxModal selectedImage={selectedImage} onClose={handleCloseLightbox} />
+      {/* 6. Reusable Image Lightbox Modal */}
+      <ImageLightboxModal selectedImage={selectedImage} onClose={handleCloseLightbox} />
     </div>
   );
 }
