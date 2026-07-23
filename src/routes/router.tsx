@@ -9,6 +9,8 @@ const MarComAssociateJobDetail = lazy(() => import('../components/MarComAssociat
 const PRInternJobDetail = lazy(() => import('../components/PRInternJobDetail'));
 const XuanTinhNguyen2021Detail = lazy(() => import('../components/XuanTinhNguyen2021Detail'));
 const XuanTinhNguyen2022Detail = lazy(() => import('../components/XuanTinhNguyen2022Detail'));
+const PhoenixMusicFestivalDetail = lazy(() => import('../components/PhoenixMusicFestivalDetail'));
+const YouthUnionCongressDetail = lazy(() => import('../components/YouthUnionCongressDetail'));
 
 export default function AppRouter() {
   return (
@@ -44,6 +46,14 @@ export default function AppRouter() {
           <Route
             path="/project/xuan-tinh-nguyen-2022"
             element={<XuanTinhNguyen2022Detail />}
+          />
+          <Route
+            path="/project/phoenix-music-festival-2022"
+            element={<PhoenixMusicFestivalDetail />}
+          />
+          <Route
+            path="/project/dai-hoi-doan-2022"
+            element={<YouthUnionCongressDetail />}
           />
           <Route
             path="/project/:projectId"
