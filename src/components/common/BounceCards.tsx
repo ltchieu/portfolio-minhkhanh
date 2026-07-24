@@ -176,7 +176,7 @@ export default function BounceCards({
             onMouseEnter={() => pushSiblings(idx)}
             onClick={() => onCardClick?.(idx)}
           >
-            <img className="image" src={src} alt={`card-${idx}`} loading="lazy" />
+            <img className="image" src={src} alt={`card-${idx}`} decoding="async" />
           </div>
         );
       })}

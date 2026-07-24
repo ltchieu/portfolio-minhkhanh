@@ -263,8 +263,8 @@ export default function PRInternJobDetail() {
               <Masonry
                 items={mouMasonryItems}
                 ease="power3.out"
-                duration={0.6}
-                stagger={0.03}
+                duration={0.3}
+                stagger={0}
                 animateFrom="bottom"
                 scaleOnHover={true}
                 hoverScale={0.96}
@@ -328,14 +328,11 @@ export default function PRInternJobDetail() {
                   Credit-Transfer Program LED & Key Visual Designs
                 </h2>
               </div>
-              <span className="font-mono text-xs font-bold text-[#5E5E5E] uppercase tracking-widest bg-white border border-[#CCCCCC]/60 px-3 py-1.5 rounded">
-                INFINITE SCROLLING MARQUEE
-              </span>
             </div>
           </ScrollReveal>
 
           <Suspense fallback={<GallerySkeleton height="320px" title="Loading Infinite Marquee..." />}>
-            <div className="py-4 bg-[#111111] rounded-2xl border border-[#111111] overflow-hidden shadow-lg">
+            <div className="py-4 rounded-2xl overflow-hidden shadow-lg">
               <InfiniteMarquee
                 items={creditDesignMarqueeItems}
                 speed={30}
@@ -377,8 +374,8 @@ export default function PRInternJobDetail() {
               <Masonry
                 items={creditHighlightMasonryItems}
                 ease="power3.out"
-                duration={0.6}
-                stagger={0.03}
+                duration={0.3}
+                stagger={0}
                 animateFrom="bottom"
                 scaleOnHover={true}
                 hoverScale={0.96}
@@ -417,7 +414,7 @@ export default function PRInternJobDetail() {
               <BounceCards
                 images={flindersImages.slice(0, 5)}
                 containerWidth={340}
-                containerHeight={340}
+                containerHeight={240}
                 animationStagger={0.08}
                 onCardClick={(idx) => {
                   setSelectedImage({

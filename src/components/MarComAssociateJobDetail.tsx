@@ -67,13 +67,13 @@ export default function MarComAssociateJobDetail() {
   // Filtered Image Sets
   const missMisterImages = useMemo(() => {
     return Object.keys(rawImages)
-      .filter(path => path.includes('Miss & Mister OU 2025') && path.includes('DSC0'))
+      .filter(path => path.includes('Miss & Mister OU') && path.includes('DSC0'))
       .map(path => rawImages[path]);
   }, []);
 
   const missMisterOrganizers = useMemo(() => {
     return Object.keys(rawImages)
-      .filter(path => path.includes('Miss & Mister OU 2025') && path.includes('Organizer'))
+      .filter(path => path.includes('Miss & Mister OU') && path.includes('Organizer'))
       .map((path, idx) => ({
         id: `organizer-${idx}`,
         img: rawImages[path],
@@ -107,7 +107,7 @@ export default function MarComAssociateJobDetail() {
 
   const circularGalleryImages = useMemo(() => {
     return Object.keys(rawImages)
-      .filter(path => path.includes('International Admission Campaign 2026'))
+      .filter(path => path.includes('International Admission Campaign 2026') && !path.includes('.txt'))
       .map((path, idx) => ({
         image: rawImages[path],
         text: `Admission Visual ${idx + 1}`
@@ -116,7 +116,7 @@ export default function MarComAssociateJobDetail() {
 
   const admissionBrochures = useMemo(() => {
     return Object.keys(rawImages)
-      .filter(path => path.includes('Brochure Admission 2026'))
+      .filter(path => path.includes('Brochure of International Admission'))
       .map((path, idx) => ({
         id: `brochure-${idx}`,
         img: rawImages[path],
@@ -243,8 +243,8 @@ export default function MarComAssociateJobDetail() {
             <Suspense fallback={<GallerySkeleton height="450px" title="Loading Interactive Bounce Cards..." />}>
               <BounceCards
                 images={missMisterImages.slice(0, 7)}
-                containerWidth={500}
-                containerHeight={420}
+                containerWidth={600}
+                containerHeight={550}
                 transformStyles={bounceTransformStyles}
                 enableHover={true}
                 onCardClick={(index) => {
@@ -327,8 +327,8 @@ export default function MarComAssociateJobDetail() {
               <Masonry
                 items={openRunPhotos}
                 ease="power3.out"
-                duration={0.7}
-                stagger={0.04}
+                duration={0.4}
+                stagger={0.01}
                 animateFrom="bottom"
                 scaleOnHover={true}
                 hoverScale={0.97}
@@ -438,9 +438,9 @@ export default function MarComAssociateJobDetail() {
           <div className="space-y-16 pt-8 border-t border-[#CCCCCC]/40">
             <div>
               <h3 className="font-narrow text-xs font-bold uppercase tracking-[0.2em] text-[#5E5E5E] mb-6">
-                OFFICIAL ADMISSION BROCHURES (3 MOCKUPS)
+                OFFICIAL ADMISSION BROCHURES
               </h3>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {admissionBrochures.map((item) => (
                   <div
                     key={item.id}
@@ -452,7 +452,7 @@ export default function MarComAssociateJobDetail() {
                       description: 'Official International Admission 2026 Brochure layout and print proof.'
                     })}
                   >
-                    <div className="aspect-[3/4] overflow-hidden bg-white">
+                    <div className="aspect-[16/10] overflow-hidden bg-white">
                       <img
                         src={item.img}
                         alt={item.title}
@@ -475,7 +475,7 @@ export default function MarComAssociateJobDetail() {
               <h3 className="font-narrow text-xs font-bold uppercase tracking-[0.2em] text-[#5E5E5E] mb-6">
                 DIGITAL MEDIA & PROMOTIONAL POSTERS
               </h3>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
                 {admissionPosters.map((item) => (
                   <div
                     key={item.id}
@@ -511,7 +511,7 @@ export default function MarComAssociateJobDetail() {
                 <h3 className="font-narrow text-xs font-bold uppercase tracking-[0.2em] text-[#5E5E5E] mb-6">
                   PROGRAM LEAFLET MOCKUPS
                 </h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   {admissionLeaflets.map((item) => (
                     <div
                       key={item.id}

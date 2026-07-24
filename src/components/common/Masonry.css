@@ -2,7 +2,6 @@
   position: relative;
   width: 100%;
   transition: height 0.3s ease;
-  contain: layout paint;
 }
 
 .item-wrapper {
@@ -14,6 +13,18 @@
   left: 0;
 }
 
+@keyframes skeleton-pulse {
+  0% {
+    background-color: #f2f1ed;
+  }
+  50% {
+    background-color: #e4e3df;
+  }
+  100% {
+    background-color: #f2f1ed;
+  }
+}
+
 .item-wrapper>.item-img {
   position: relative;
   width: 100%;
@@ -23,7 +34,9 @@
   line-height: 10px;
   border-radius: 10px;
   overflow: hidden;
-  box-shadow: 0px 10px 50px -10px rgba(0, 0, 0, 0.2);
+  background-color: #f2f1ed;
+  animation: skeleton-pulse 2s infinite ease-in-out;
+  box-shadow: 0px 10px 50px -10px rgba(0, 0, 0, 0.12);
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: transform;
 }

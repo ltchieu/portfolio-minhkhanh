@@ -38,7 +38,14 @@ const CardRotate = memo(function CardRotate({ children, onSendToBack, sensitivit
   return (
     <motion.div
       className="card-rotate"
-      style={{ x, y, rotateX, rotateY }}
+      style={{
+        x,
+        y,
+        rotateX,
+        rotateY,
+        transformTemplate: ({ x, y, rotateX, rotateY }) =>
+          `translate3d(${x}, ${y}, 0px) rotateX(${rotateX}) rotateY(${rotateY})`
+      }}
       drag
       dragConstraints={{ top: 0, right: 0, bottom: 0, left: 0 }}
       dragElastic={0.6}
@@ -182,13 +189,20 @@ function Stack({
     }
   }, [autoplay, autoplayDelay, stack, isPaused, sendToBack]);
 
+  const maxVisibleCards = 4;
+  const visibleCards = useMemo(() => {
+    const minIndex = Math.max(0, stack.length - maxVisibleCards);
+    return stack.slice(minIndex);
+  }, [stack]);
+
   return (
     <div
       className="stack-container"
       onMouseEnter={() => pauseOnHover && setIsPaused(true)}
       onMouseLeave={() => pauseOnHover && setIsPaused(false)}
     >
-      {stack.map((card, index) => {
+      {visibleCards.map((card) => {
+        const index = stack.indexOf(card);
         const randomRotate = cardRotationsMap.get(card.id) ?? 0;
         return (
           <CardRotate

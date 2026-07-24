@@ -17,10 +17,10 @@ const Stack = lazy(() => import('./common/Stack'));
 const Masonry = lazy(() => import('./common/Masonry'));
 const BounceCards = lazy(() => import('./common/BounceCards'));
 
-// Vite eager glob for authentic image assets under /assets/image/Activities/Xuân tình nguyện 2022
+// 1. Only retrieve the String URL array (Super lightweight ~2KB, runs 0ms)
 const xtn22Glob = import.meta.glob<string>(
   '../../assets/image/Activities/Xuân tình nguyện 2022/**/*.{webp,png,jpg,jpeg,PNG,JPG,JPEG}',
-  { eager: true, import: 'default' }
+  { query: '?url', eager: true, import: 'default' }
 );
 
 function getImagesMatching(pathSubstring: string): string[] {
@@ -379,7 +379,7 @@ export default function XuanTinhNguyen2022Detail() {
               <BounceCards
                 images={reportageImages}
                 containerWidth={400}
-                containerHeight={400}
+                containerHeight={200}
                 animationDelay={0.2}
                 animationStagger={0.08}
                 enableHover={true}

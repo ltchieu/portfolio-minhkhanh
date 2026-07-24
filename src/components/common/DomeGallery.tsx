@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useCallback, CSSProperties, MouseEvent as ReactMouseEvent, PointerEvent as ReactPointerEvent } from 'react';
+import { useState, useEffect, useMemo, useRef, useCallback, CSSProperties, MouseEvent as ReactMouseEvent, PointerEvent as ReactPointerEvent } from 'react';
 import { useGesture } from '@use-gesture/react';
 import './DomeGallery.css';
 import { DomeImage, DomeGalleryProps } from '../../models/domeGallery';
@@ -31,8 +31,52 @@ const DEFAULTS = {
   maxVerticalRotationDeg: 5,
   dragSensitivity: 20,
   enlargeTransitionMs: 300,
-  segments: 35
+  segments: 22
 };
+
+const thumbnailCache = new Map<string, string>();
+
+function getCanvasThumbnail(src: string, targetSize = 250): Promise<string> {
+  if (!src) return Promise.resolve('');
+  if (thumbnailCache.has(src)) return Promise.resolve(thumbnailCache.get(src)!);
+
+  return new Promise((resolve) => {
+    const img = new Image();
+    img.crossOrigin = 'anonymous';
+    img.onload = () => {
+      try {
+        const canvas = document.createElement('canvas');
+        const aspect = img.width / img.height;
+        let w = targetSize;
+        let h = targetSize;
+        if (aspect > 1) {
+          h = Math.round(targetSize / aspect);
+        } else {
+          w = Math.round(targetSize * aspect);
+        }
+        canvas.width = w;
+        canvas.height = h;
+        const ctx = canvas.getContext('2d');
+        if (ctx) {
+          ctx.drawImage(img, 0, 0, w, h);
+          const thumbUrl = canvas.toDataURL('image/webp', 0.7);
+          thumbnailCache.set(src, thumbUrl);
+          resolve(thumbUrl);
+          return;
+        }
+      } catch {
+        // Fallback to original src if canvas fails (CORS or export)
+      }
+      thumbnailCache.set(src, src);
+      resolve(src);
+    };
+    img.onerror = () => {
+      thumbnailCache.set(src, src);
+      resolve(src);
+    };
+    img.src = src;
+  });
+}
 
 const clamp = (v: number, min: number, max: number) => Math.min(Math.max(v, min), max);
 const normalizeAngle = (d: number) => ((d % 360) + 360) % 360;
@@ -159,6 +203,25 @@ export default function DomeGallery({
   }, []);
 
   const items = useMemo(() => buildItems(images, segments), [images, segments]);
+
+  const [thumbnails, setThumbnails] = useState<Record<string, string>>({});
+
+  useEffect(() => {
+    const uniqueSrcs: string[] = Array.from(new Set(items.map(it => it.src).filter((s): s is string => Boolean(s))));
+    let isMounted = true;
+    Promise.all(
+      uniqueSrcs.map(async (src: string) => {
+        const thumb = await getCanvasThumbnail(src, 250);
+        return { src, thumb };
+      })
+    ).then(results => {
+      if (!isMounted) return;
+      const map: Record<string, string> = {};
+      results.forEach(r => { map[r.src] = r.thumb; });
+      setThumbnails(map);
+    });
+    return () => { isMounted = false; };
+  }, [items]);
 
   const applyTransform = (xDeg: number, yDeg: number) => {
     const el = sphereRef.current;
@@ -648,7 +711,7 @@ export default function DomeGallery({
                   onClick={onTileClick}
                   onPointerUp={onTilePointerUp}
                 >
-                  <img src={it.src} draggable={false} alt={it.alt} loading="lazy" decoding="async" />
+                  <img src={thumbnails[it.src] || it.src} draggable={false} alt={it.alt} loading="lazy" decoding="async" />
                 </div>
               </div>
             ))}

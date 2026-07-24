@@ -79,10 +79,10 @@ export default function Awards() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {featuredAwards.map((award, idx) => (
-              <ScrollReveal key={award.id} direction="up" delay={idx * 0.1}>
+              <ScrollReveal key={award.id} direction="up" delay={idx * 0.1} className="h-full">
                 <div
                   onClick={() => handleAwardClick(award)}
-                  className="group relative bg-white border border-[#CCCCCC]/60 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:border-[#111111] transition-all duration-500 flex flex-col justify-between cursor-pointer min-h-[380px]"
+                  className="group relative bg-white border border-[#CCCCCC]/60 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:border-[#111111] transition-all duration-500 flex flex-col justify-between cursor-pointer h-full"
                 >
                   {/* Top Badge & Category Bar */}
                   <div className="p-6 pb-4 flex items-center justify-between border-b border-[#CCCCCC]/30 bg-[#FAF9F6]">

@@ -105,7 +105,7 @@ const Masonry = ({
       case 'top':
         return { x: item.x, y: -100 };
       case 'bottom':
-        return { x: item.x, y: item.y + 100 };
+        return { x: item.x, y: item.y + 15 };
       case 'left':
         return { x: -100, y: item.y };
       case 'right':
@@ -174,7 +174,8 @@ const Masonry = ({
 
   return (
     <div ref={containerRef} className="list" style={{ minHeight: `${maxContainerHeight}px` }}>
-      {grid.map(item => {
+      {grid.map((item, index) => {
+        const isFirstViewport = index < 6;
         return (
           <div
             key={item.id}
@@ -192,8 +193,9 @@ const Masonry = ({
                 src={item.img}
                 alt={item.title || item.subtitle || 'Masonry item'}
                 className="w-full h-full object-cover rounded-[10px]"
-                loading="lazy"
                 decoding="async"
+                loading={isFirstViewport ? 'eager' : 'lazy'}
+                {...(isFirstViewport ? { fetchPriority: 'high' } : { fetchPriority: 'low' })}
               />
               {colorShiftOnHover && (
                 <div

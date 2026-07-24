@@ -39,7 +39,7 @@ export default function Work({ setSelectedProject }: WorkProps) {
         </ScrollReveal>
 
         {/* Grid Layout for Projects */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-0 border border-[#CCCCCC]/60 bg-[#EBEBEB] rounded-sm overflow-hidden">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-2 bg-[#EBEBEB] rounded-sm overflow-hidden">
           {projects.map((project, idx) => (
             <ScrollReveal key={project.id} direction="up" delay={idx * 0.1}>
               <div
@@ -48,7 +48,7 @@ export default function Work({ setSelectedProject }: WorkProps) {
               >
                 {/* Grayscale overlay & zoom image */}
                 <div
-                  className="absolute inset-0 bg-cover bg-center grayscale group-hover:grayscale-0 group-hover:scale-[1.03] transition-all duration-1000 ease-out"
+                  className="absolute inset-0 bg-cover bg-center group-hover:grayscale-0 group-hover:scale-[1.03] transition-all duration-1000 ease-out"
                   style={{ backgroundImage: `url(${project.image})` }}
                 ></div>
 
