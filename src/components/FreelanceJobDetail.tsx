@@ -187,7 +187,7 @@ const ProjectCard = memo(function ProjectCard({
                   <div>
                     <h4 className="font-narrow text-sm font-black text-[#111111] uppercase tracking-wider flex items-center gap-2">
                       <i className="fa-solid fa-layer-group"></i>
-                      Interactive Ceramic Card Stack ({project.images.length} Photos)
+                      Interactive Ceramic Card Stack
                     </h4>
                     <p className="font-sans text-xs text-[#5E5E5E]">
                       Drag cards or click to cycle through product editorial shots.
@@ -226,7 +226,7 @@ const ProjectCard = memo(function ProjectCard({
                       alt={`thumb-${thumbIdx}`}
                       loading="lazy"
                       decoding="async"
-                      className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all"
+                      className="w-full h-full object-cover group-hover:grayscale-0 transition-all"
                     />
                   </button>
                 ))}
@@ -278,7 +278,7 @@ const ProjectCard = memo(function ProjectCard({
           <div className="space-y-10">
             <div>
               <h4 className="font-narrow text-xs font-black text-[#5E5E5E] tracking-[0.2em] uppercase mb-4 flex items-center justify-between">
-                <span>FEATURED EVENT HIGHLIGHTS (6 KEY SHOTS)</span>
+                <span>FEATURED EVENT HIGHLIGHTS</span>
                 <span className="font-mono text-xs text-[#111111]">
                   Total 87 Campaign Photos
                 </span>
@@ -312,7 +312,7 @@ const ProjectCard = memo(function ProjectCard({
                 <div>
                   <h4 className="font-narrow text-sm font-black uppercase tracking-wider flex items-center gap-2 text-white">
                     <i className="fa-solid fa-globe text-white/80"></i>
-                    3D Sphere Dome Gallery ({remainingImages.length} Photos)
+                    3D Sphere Dome Gallery
                   </h4>
                   <p className="font-sans text-xs text-white/60">
                     Drag left/right to rotate the 3D sphere dome. Click any tile to expand.
@@ -342,7 +342,7 @@ const ProjectCard = memo(function ProjectCard({
           /* === STANDARD GRID DISPLAY FOR PROJECTS WITH <= 6 IMAGES === */
           <div className="space-y-4">
             <h4 className="font-narrow text-xs font-black text-[#5E5E5E] tracking-[0.2em] uppercase flex items-center justify-between">
-              <span>PROJECT GALLERY ({project.images.length} ASSETS)</span>
+              <span>PROJECT GALLERY</span>
             </h4>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">

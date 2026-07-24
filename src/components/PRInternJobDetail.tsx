@@ -18,7 +18,7 @@ const InfiniteMarquee = lazy(() => import('./common/InfiniteMarquee'));
 
 // Vite eager glob for all assets under /assets/image/PRIntern
 const prRawImages = import.meta.glob<string>(
-  '/assets/image/PRIntern/**/*.{jpg,jpeg,png,JPG,PNG}',
+  '/assets/image/PRIntern/**/*.{webp,jpg,jpeg,png,JPG,PNG}',
   { eager: true, import: 'default' }
 );
 

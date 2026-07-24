@@ -17,7 +17,7 @@ const InfiniteMarquee = lazy(() => import('./common/InfiniteMarquee'));
 
 // Vite eager glob for all drive download asset images
 const rawImages = import.meta.glob<string>(
-  '/assets/image/drive-download-20260722T121611Z-1-001/**/*.{jpg,jpeg,png,JPG,PNG}',
+  '/assets/image/drive-download-20260722T121611Z-1-001/**/*.{webp,jpg,jpeg,png,JPG,PNG}',
   { eager: true, import: 'default' }
 );
 

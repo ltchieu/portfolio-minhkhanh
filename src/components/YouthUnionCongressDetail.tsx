@@ -15,7 +15,7 @@ const Masonry = lazy(() => import('./common/Masonry'));
 
 // Vite eager glob for assets under /assets/image/Activities/Đại hội Đoàn 2022
 const doanGlob = import.meta.glob<string>(
-  '../../assets/image/Activities/Đại hội Đoàn 2022/**/*.{png,jpg,jpeg,PNG,JPG,JPEG}',
+  '../../assets/image/Activities/Đại hội Đoàn 2022/**/*.{webp,png,jpg,jpeg,PNG,JPG,JPEG}',
   { eager: true, import: 'default' }
 );
 

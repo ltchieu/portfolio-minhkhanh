@@ -19,7 +19,7 @@ const BounceCards = lazy(() => import('./common/BounceCards'));
 
 // Vite eager glob for authentic image assets under /assets/image/Activities/Xuân tình nguyện 2022
 const xtn22Glob = import.meta.glob<string>(
-  '../../assets/image/Activities/Xuân tình nguyện 2022/**/*.{png,jpg,jpeg,PNG,JPG,JPEG}',
+  '../../assets/image/Activities/Xuân tình nguyện 2022/**/*.{webp,png,jpg,jpeg,PNG,JPG,JPEG}',
   { eager: true, import: 'default' }
 );
 

@@ -2,7 +2,7 @@ import type { FreelanceProject } from '../models/freelanceProjects';
 
 // Dynamically import all images under assets/image/Freelance Project using Vite import.meta.glob
 const imageModules = import.meta.glob<string>(
-  '/assets/image/Freelance Project/**/*.{jpg,jpeg,png,JPG,PNG}',
+  '/assets/image/Freelance Project/**/*.{webp,jpg,jpeg,png,JPG,PNG}',
   { eager: true, import: 'default' }
 );
 

@@ -10,7 +10,7 @@ import ScrollReveal from './common/ScrollReveal';
 
 // Vite eager glob for assets under /assets/image/Activities/Đêm nhạc hội The Phoenix 2022
 const phoenixGlob = import.meta.glob<string>(
-  '../../assets/image/Activities/Đêm nhạc hội The Phoenix 2022/**/*.{png,jpg,jpeg,PNG,JPG,JPEG}',
+  '../../assets/image/Activities/Đêm nhạc hội The Phoenix 2022/**/*.{webp,png,jpg,jpeg,PNG,JPG,JPEG}',
   { eager: true, import: 'default' }
 );
 

@@ -18,7 +18,7 @@ const Stack = lazy(() => import('./common/Stack'));
 
 // Vite eager glob for assets under /assets/image/Activities/Xuân tình nguyện 2021
 const xtn21Glob = import.meta.glob<string>(
-  '../../assets/image/Activities/Xuân tình nguyện 2021/**/*.{png,jpg,jpeg,PNG,JPG,JPEG}',
+  '../../assets/image/Activities/Xuân tình nguyện 2021/**/*.{webp,png,jpg,jpeg,PNG,JPG,JPEG}',
   { eager: true, import: 'default' }
 );
 

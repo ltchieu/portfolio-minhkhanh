@@ -2,7 +2,7 @@ import { Award } from "../models/Award";
 
 // Vite eager glob for image assets in /assets/image/Award & Certification/
 const awardImageMap = import.meta.glob<string>(
-  '../../assets/image/Award & Certification/**/*.{png,jpg,jpeg,PNG,JPG,JPEG}',
+  '../../assets/image/Award & Certification/**/*.{webp,png,jpg,jpeg,PNG,JPG,JPEG}',
   { eager: true, import: 'default' }
 );
 

@@ -3,7 +3,7 @@ import { Project } from "../models/Project";
 // Vite glob to import authentic image assets from /assets/image/Activities/
 // Note: Relative path from src/data/ to root assets/ is ../../assets/
 const activityImages = import.meta.glob<string>(
-  '../../assets/image/Activities/**/*.{png,jpg,jpeg,PNG,JPG,JPEG}',
+  '../../assets/image/Activities/**/*.{webp,png,jpg,jpeg,PNG,JPG,JPEG}',
   { eager: true, import: 'default' }
 );
 
