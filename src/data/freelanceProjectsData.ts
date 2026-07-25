@@ -17,16 +17,16 @@ const getImagesForFolder = (folderName: string): string[] => {
 const cocoroseImages = getImagesForFolder('2023.08.21 Cocorose x CheeseCoffee');
 
 // 2. Com Gung Ceramic images (10 images)
-const comGungImages = getImagesForFolder('Cốm Gừng Ceramic _ Side project');
+export const comGungImages = getImagesForFolder('Cốm Gừng Ceramic _ Side project');
 
 // 3. Private Wedding Planner images (6 images)
-const weddingPlannerImages = getImagesForFolder('Private wedding planner');
+export const weddingPlannerImages = getImagesForFolder('Private wedding planner');
 
 // 4. Brochure of Ballet Exhibition images (6 images)
 const brochureImages = getImagesForFolder('Brochure of Ballet Exhibition (practice)');
 
 // 5. Typography Wedding LED images (6 images)
-const weddingLedImages = getImagesForFolder('Typography Wedding LED');
+export const weddingLedImages = getImagesForFolder('Typography Wedding LED');
 
 // 6. FWD Standee images (1 image)
 const fwdImages = getImagesForFolder('FWD Standee');

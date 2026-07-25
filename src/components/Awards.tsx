@@ -1,5 +1,5 @@
 import { useState, useCallback, useMemo } from 'react';
-import { awards, ieltsPdfUrl } from '../data/awards';
+import { awards } from '../data/awards';
 import { Award } from '../models/Award';
 import ScrollReveal from './common/ScrollReveal';
 import ImageLightboxModal from './common/ImageLightboxModal';
@@ -19,7 +19,7 @@ export default function Awards() {
   }, []);
 
   const displayedNormalAwards = useMemo(() => {
-    return showAllNormal ? normalAwards : normalAwards.slice(0, 3);
+    return showAllNormal ? normalAwards : normalAwards.slice(0, 2);
   }, [normalAwards, showAllNormal]);
 
   const handleAwardClick = useCallback((award: Award) => {
@@ -49,16 +49,13 @@ export default function Awards() {
       <div className="max-w-[1440px] mx-auto px-6">
         {/* Section Title Header */}
         <ScrollReveal direction="up">
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-4">
+          <div className="flex flex-col md:flex-row justify-spa items-start md:items-end mb-16 gap-4">
             <div>
-              <span className="font-narrow text-xs font-black text-[#5E5E5E] tracking-[0.2em] block uppercase mb-1">
-                CREATIVE MERITS & ACCREDITATION
-              </span>
               <h2 className="font-display text-5xl sm:text-6xl md:text-7xl uppercase tracking-tighter text-[#111111]">
                 AWARDS & CERTIFICATIONS
               </h2>
             </div>
-            <p className="font-narrow text-xs font-bold text-[#5E5E5E] tracking-widest uppercase max-w-xs md:text-right">
+            <p className="font-narrow text-xs font-bold text-[#5E5E5E] tracking-widest uppercase max-w-xs md:text-right text-balance">
               Curated record of academic distinctions, professional certifications, and leadership honors.
             </p>
           </div>

@@ -37,24 +37,24 @@ export default function ManifestoModal({ isOpen, onClose }: ManifestoModalProps)
               </span>
 
               <h3 className="font-display text-4xl uppercase leading-none tracking-tight">
-                THE MARKETING &amp; STORYTELLING MANIFESTO
+                See deeper. Grow wiser. Live brighter.
               </h3>
 
               <div className="h-0.5 bg-[#111111] w-20"></div>
 
               <div className="font-sans text-sm text-[#5E5E5E] space-y-4 leading-relaxed">
                 <p className="font-bold text-[#111111] italic">
-                  &ldquo;In a world of constant noise and fragmented channels, cohesion is the ultimate power.&rdquo;
+                  &ldquo;I believe meaningful brands begin with understanding.&rdquo;
                 </p>
                 <p>
-                  Integrated marketing is not just about placing logos on different platforms; it is the art of weaving a unified narrative across every touchpoint—digital, physical, and experiential. From large-scale event coordination to micro-content production, every channel must echo the same core message.
+                  As a lifelong learner, I explore ideas, create with intention, and continuously grow through every experience. Working in Brand & Marketing Communications, I have built experience across PR, Event Marketing, and Multimedia Production – bringing strategy and creativity together to deliver communications that support business objectives.
                 </p>
                 <p>
-                  We believe in storytelling that engages and converts. When data meets design and structure meets emotion, we build memorable brand experiences that resonate deeply and stand out in fast-paced environments.
+                  Currently pursuing an MBA, I am expanding my perspective on Brand Strategy, Marketing Management, and Customer Experience, with the belief that learning fuels better decisions, stronger brands, and more meaningful experiences.
                 </p>
-                <p>
-                  True communication is built on clarity, collaboration, and consistency. By managing stakeholders effectively and executing with precision, we transform strategic marketing visions into lived realities.
-                </p>
+                <strong>
+                  Creating compassionate value, always moving forward.
+                </strong>
               </div>
 
               <div className="pt-6 border-t border-[#CCCCCC]/40 flex justify-between items-center">

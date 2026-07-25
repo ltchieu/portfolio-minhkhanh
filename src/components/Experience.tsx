@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence, useScroll, useSpring, useTransform } from "motion/react";
 import { experiences } from "../data/experiences";
 import ScrollReveal from "./common/ScrollReveal";
+import FreelanceExperienceShowcase from "./common/FreelanceExperienceShowcase";
 
 interface ExperienceSectionProps {
   activeExperience: string | null;
@@ -31,6 +32,36 @@ export default function ExperienceSection({
   // Calculate position of the glowing runner node
   const lightTopPosition = useTransform(smoothProgress, [0, 1], ["0%", "100%"]);
 
+  const itemRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
+  const contentRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
+
+  const handleToggleExperience = (id: string) => {
+    const isOpening = activeExperience !== id;
+
+    if (isOpening) {
+      const clickedIdx = experiences.findIndex((e) => e.id === id);
+      const prevOpenId = activeExperience;
+
+      let collapseDelta = 0;
+      if (prevOpenId) {
+        const prevIdx = experiences.findIndex((e) => e.id === prevOpenId);
+        if (prevIdx < clickedIdx) {
+          collapseDelta = contentRefs.current[prevOpenId]?.getBoundingClientRect().height ?? 0;
+        }
+      }
+
+      const el = itemRefs.current[id];
+      if (el) {
+        const yOffset = -90;
+        const currentTop = el.getBoundingClientRect().top;
+        const targetY = currentTop - collapseDelta + window.scrollY + yOffset;
+        window.scrollTo({ top: Math.max(0, targetY), behavior: "smooth" });
+      }
+    }
+
+    setActiveExperience(isOpening ? id : null);
+  };
+
   return (
     <section
       ref={sectionRef}
@@ -48,9 +79,6 @@ export default function ExperienceSection({
                 EXPERIENCE
               </h2>
             </div>
-            <span className="font-narrow text-xs font-black text-[#5E5E5E] tracking-[0.25em] pb-1 uppercase border-b-2 hologram-metal-border">
-              2021 — PRESENT
-            </span>
           </div>
         </ScrollReveal>
 
@@ -82,6 +110,7 @@ export default function ExperienceSection({
           {experiences.map((exp, idx) => {
             const isEven = idx % 2 === 1;
             const isOpen = activeExperience === exp.id;
+            const isFullWidth = isOpen && exp.id === "freelance-event-coordinator";
 
             return (
               <ScrollReveal
@@ -91,23 +120,25 @@ export default function ExperienceSection({
                 className="py-4"
               >
                 <div
-                  className={`flex flex-col lg:flex-row ${isEven ? "lg:justify-end" : "lg:justify-start"
+                  className={`flex flex-col lg:flex-row ${isEven && !isFullWidth ? "lg:justify-end" : "lg:justify-start"
                     } relative w-full`}
                 >
                   {/* Point node on timeline axis */}
                   <div className="hidden lg:block absolute left-1/2 top-8 w-3.5 h-3.5 rounded-full bg-[#111111] border-2 border-white -translate-x-1/2 z-20 transition-all duration-300 shadow-sm group-hover:scale-125"></div>
 
                   <div
-                    className={`w-full lg:w-[46%] bg-white/45 backdrop-blur-sm border border-[#CCCCCC]/40 p-6 md:p-8 rounded transition-all duration-300 hover:bg-white hover:shadow-lg ${isOpen
-                      ? "bg-white shadow-md border-l-4 border-l-[#111111]"
-                      : ""
+                    ref={(el) => {
+                      itemRefs.current[exp.id] = el;
+                    }}
+                    className={`w-full ${isFullWidth ? "lg:w-full z-30" : "lg:w-[46%]"
+                      } bg-white/45 backdrop-blur-sm border border-[#CCCCCC]/40 p-6 md:p-8 rounded transition-all duration-300 hover:bg-white hover:shadow-lg scroll-mt-24 ${isOpen
+                        ? "bg-white shadow-md border-l-4 border-l-[#111111]"
+                        : ""
                       }`}
                   >
                     {/* Header trigger */}
                     <div
-                      onClick={() =>
-                        setActiveExperience(isOpen ? null : exp.id)
-                      }
+                      onClick={() => handleToggleExperience(exp.id)}
                       className="cursor-pointer flex items-center justify-between gap-4 select-none"
                     >
                       <div className="space-y-1">
@@ -144,53 +175,74 @@ export default function ExperienceSection({
                           exit={{ height: 0, opacity: 0 }}
                           transition={{ duration: 0.4, ease: "easeInOut" }}
                           className="overflow-hidden"
+                          ref={(el) => {
+                            contentRefs.current[exp.id] = el;
+                          }}
                         >
                           <div className="pt-6 space-y-4 border-t border-[#CCCCCC]/40 mt-6">
-                            <p className="font-narrow text-base sm:text-lg font-bold text-[#111111] italic leading-snug">
-                              &ldquo;{exp.summary}&rdquo;
-                            </p>
-                            <p className="font-sans text-sm sm:text-base text-[#5E5E5E] leading-relaxed">
-                              {exp.description}
-                            </p>
-
-                            {/* Tech pills */}
-                            <div className="flex flex-wrap gap-2 pt-2">
-                              {exp.tech.map((t, i) => (
-                                <span
-                                  key={i}
-                                  className="font-mono text-xs bg-[#EBEBEB] text-[#111111] px-3 py-1.5 rounded font-medium"
-                                >
-                                  {t}
-                                </span>
-                              ))}
-                            </div>
-
-                            {/* Experience Work Image */}
-                            <div className="aspect-video w-full overflow-hidden rounded bg-[#EBEBEB] mt-4 relative group">
-                              <img
-                                src={exp.image}
-                                alt={`${exp.company} campaign`}
-                                referrerPolicy="no-referrer"
-                                className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700 ease-in-out scale-100 group-hover:scale-105"
-                              />
-                            </div>
-
-                            {/* Direct to Detail Page Button */}
-                            {exp.id === "freelance-event-coordinator" && (
-                              <div className="pt-2">
-                                <button
-                                  onClick={(e) => {
-                                    e.stopPropagation();
-                                    sessionStorage.setItem("portfolio_home_scroll_pos", window.scrollY.toString());
-                                    sessionStorage.setItem("portfolio_from_detail", "true");
-                                    navigate("/experience/freelance-event-coordinator");
-                                  }}
-                                  className="w-full sm:w-auto px-5 py-3 bg-[#111111] text-white hover:bg-[#333333] transition-all font-narrow text-xs uppercase tracking-[0.2em] font-bold rounded flex items-center justify-center gap-2 group shadow-sm"
-                                >
-                                  <span>View Case Study</span>
-                                  <i className="fa-solid fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
-                                </button>
+                            {exp.sections ? (
+                              <div className="space-y-4 pt-1">
+                                {exp.sections.map((sec, sIdx) => (
+                                  <div key={sIdx} className="space-y-2">
+                                    <h6 className="font-narrow text-xs font-black text-[#111111] uppercase tracking-wider flex items-center gap-1.5">
+                                      <i className="fa-solid fa-chevron-right text-[10px] text-[#111111]"></i>
+                                      {sec.title}
+                                    </h6>
+                                    <ul className="space-y-1.5 pl-2 font-sans text-xs sm:text-sm text-[#444444] leading-relaxed">
+                                      {sec.items.map((item, iIdx) => {
+                                        if (typeof item === "string") {
+                                          return (
+                                            <li key={iIdx} className="flex items-start gap-2">
+                                              <span className="text-[#111111] font-bold text-xs mt-0.5">•</span>
+                                              <span>{item}</span>
+                                            </li>
+                                          );
+                                        } else {
+                                          return (
+                                            <li key={iIdx} className="space-y-2 pt-1">
+                                              <div className="flex items-start gap-2">
+                                                <span className="text-[#111111] font-bold text-xs mt-0.5">•</span>
+                                                <span className="font-medium text-[#111111]">{item.subtitle}</span>
+                                              </div>
+                                              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 pl-4 pt-1">
+                                                {item.subitems.map((sub, subIdx) => (
+                                                  <div
+                                                    key={subIdx}
+                                                    className="px-3 py-1.5 bg-[#FAF9F6] border border-[#111111]/30 rounded-md flex items-center gap-1.5 font-narrow font-black text-xs text-[#111111] shadow-2xs hover:bg-[#111111] hover:text-white transition-all group/sub"
+                                                  >
+                                                    <i className="fa-solid fa-chart-line text-[#111111] group-hover/sub:text-[#00f2fe] text-[10px] transition-colors"></i>
+                                                    <span>{sub}</span>
+                                                  </div>
+                                                ))}
+                                              </div>
+                                            </li>
+                                          );
+                                        }
+                                      })}
+                                    </ul>
+                                  </div>
+                                ))}
                               </div>
+                            ) : (
+                              <p className="font-sans text-sm sm:text-base text-[#5E5E5E] leading-relaxed">
+                                {exp.description}
+                              </p>
+                            )}
+
+                            {exp.id === "freelance-event-coordinator" ? (
+                              <FreelanceExperienceShowcase />
+                            ) : (
+                              <>
+                                {/* Experience Work Image */}
+                                <div className="aspect-video w-full overflow-hidden rounded bg-[#EBEBEB] mt-4 relative group">
+                                  <img
+                                    src={exp.image}
+                                    alt={`${exp.company} campaign`}
+                                    referrerPolicy="no-referrer"
+                                    className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700 ease-in-out scale-100 group-hover:scale-105"
+                                  />
+                                </div>
+                              </>
                             )}
 
                             {exp.id === "amor-resort-marketing-executive" && (

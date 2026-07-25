@@ -1,5 +1,6 @@
 import avatarImg from "../../assets/image/avatar.JPG";
 import ScrollReveal from "./common/ScrollReveal";
+import { coreCompetencies } from "../data/about";
 
 interface AboutProps {
   setShowManifesto: (show: boolean) => void;
@@ -22,7 +23,7 @@ export default function About({ setShowManifesto }: AboutProps) {
               <img
                 src={avatarImg}
                 alt="Portrait of Nguyen Ha Minh Khanh"
-                className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 ease-in-out scale-100 group-hover:scale-105"
+                className="w-full h-full object-cover group-hover:grayscale-0 transition-all duration-1000 ease-in-out scale-100 group-hover:scale-105"
               />
               <div className="absolute inset-0 bg-black/5 mix-blend-multiply opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
             </div>
@@ -39,13 +40,13 @@ export default function About({ setShowManifesto }: AboutProps) {
                 </p>
                 <div className="font-sans text-sm text-[#5E5E5E] leading-relaxed max-w-xl space-y-3">
                   <p>
-                    Marketing Communications Executive with 5+ years of experience in integrated marketing communications, event coordination, content production, and multimedia storytelling across higher education and hospitality industries.
+                    Working in Brand & Marketing Communications, with experience in delivering integrated communication, public relations, event marketing and multimedia productions across higher education and service industries.
                   </p>
                   <p>
-                    Experienced in managing cross-functional projects, coordinating external vendors, developing multi-channel marketing campaigns, and producing digital content for websites and social media platforms. Strong ability to manage stakeholders, execute marketing initiatives, and deliver engaging brand experiences in fast-paced environments.
+                    Skilled in translating business objectives into communication strategies, aligning cross-functional stakeholders, and executing campaigns that enhance brand reputation, engagement and long-term value.
                   </p>
                   <p>
-                    Currently pursuing an MBA at Western Sydney University to strengthen expertise in strategic marketing and business management.
+                    Currently pursuing an MBA to strengthen business acumen and deepen expertise in brand strategy, marketing management and customer experience.
                   </p>
                 </div>
               </div>
@@ -56,25 +57,15 @@ export default function About({ setShowManifesto }: AboutProps) {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 pt-4 border-t border-[#CCCCCC]/40">
                 <div className="space-y-4">
                   <p className="font-narrow text-xs font-black text-[#5E5E5E] uppercase tracking-[0.25em] font-bold">
-                    Skills &amp; Expertise
+                    CORE COMPETENCIES
                   </p>
                   <ul className="font-sans text-sm text-[#111111] space-y-2">
-                    <li className="flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full hologram-metal-bg"></span>
-                      <span>Integrated Marketing Communications</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full hologram-metal-bg"></span>
-                      <span>Event Coordination &amp; Management</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full hologram-metal-bg"></span>
-                      <span>Multimedia Storytelling &amp; Production</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 rounded-full hologram-metal-bg"></span>
-                      <span>Stakeholder &amp; Vendor Relations</span>
-                    </li>
+                    {coreCompetencies.map((item, index) => (
+                      <li key={index} className="flex items-center gap-2">
+                        <span className="w-1.5 h-1.5 rounded-full hologram-metal-bg flex-shrink-0"></span>
+                        <span>{item}</span>
+                      </li>
+                    ))}
                   </ul>
                 </div>
 

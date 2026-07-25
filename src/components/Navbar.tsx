@@ -14,9 +14,9 @@ export default function Navbar({
       <nav id="navbar" className="fixed top-0 left-0 w-full z-40 bg-white/70 backdrop-blur-md border-b border-[#CCCCCC] py-4 px-6 transition-all duration-300">
         <div className="max-w-[1440px] mx-auto flex justify-between items-center">
           <a href="#" className="font-display text-sm tracking-[0.2em] font-black uppercase hover:opacity-60 transition-all duration-300">
-            MINH KHANH
+            MIA NGUYEN
           </a>
-          
+
           {/* Desktop Nav */}
           <div className="hidden md:flex gap-8 items-center">
             <a href="#about" className="font-narrow text-xs font-bold tracking-[0.15em] hover:opacity-60 hover:scale-105 transition-all duration-300 uppercase">
@@ -31,16 +31,16 @@ export default function Navbar({
             <a href="#awards" className="font-narrow text-xs font-bold tracking-[0.15em] hover:opacity-60 hover:scale-105 transition-all duration-300 uppercase">
               AWARDS
             </a>
-            <a 
-              href="#contact" 
+            <a
+              href="#contact"
               className="font-narrow text-xs font-black tracking-[0.2em] hologram-metal-bg text-black px-4 py-1.5 rounded-full hover:opacity-85 hover:scale-105 transition-all duration-300 uppercase flex items-center gap-1.5 cursor-pointer shadow-sm"
             >
               CONTACT <i className="fa-solid fa-arrow-right text-xs"></i>
             </a>
           </div>
-          
+
           {/* Mobile hamburger menu */}
-          <button 
+          <button
             id="mobile-menu-btn"
             onClick={() => setIsMobileMenuOpen(true)}
             className="md:hidden p-1 hover:opacity-60 transition-all"
@@ -54,7 +54,7 @@ export default function Navbar({
       {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {isMobileMenuOpen && (
-          <motion.div 
+          <motion.div
             id="mobile-drawer"
             initial={{ opacity: 0, y: "-100%" }}
             animate={{ opacity: 1, y: 0 }}
@@ -66,7 +66,7 @@ export default function Navbar({
               <span className="font-display text-sm tracking-[0.2em] font-black uppercase text-[#111111]">
                 MENU
               </span>
-              <button 
+              <button
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="p-1 hover:opacity-60 transition-all text-[#111111] flex items-center justify-center"
               >
@@ -75,35 +75,35 @@ export default function Navbar({
             </div>
 
             <div className="flex flex-col gap-8 my-auto">
-              <a 
-                href="#about" 
+              <a
+                href="#about"
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="font-narrow text-4xl font-extrabold tracking-[0.05em] hover:opacity-60 transition-opacity"
               >
                 01 / INTRODUCE
               </a>
-              <a 
-                href="#experience" 
+              <a
+                href="#experience"
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="font-narrow text-4xl font-extrabold tracking-[0.05em] hover:opacity-60 transition-opacity"
               >
                 02 / EXPERIENCE
               </a>
-              <a 
-                href="#work" 
+              <a
+                href="#work"
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="font-narrow text-4xl font-extrabold tracking-[0.05em] hover:opacity-60 transition-opacity"
               >
                 03 / SELECTED WORKS
               </a>
-              <a 
-                href="#awards" 
+              <a
+                href="#awards"
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="font-narrow text-4xl font-extrabold tracking-[0.05em] hover:opacity-60 transition-opacity"
               >
                 04 / AWARDS
               </a>
-              <a 
+              <a
                 href="#contact"
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="font-narrow text-4xl font-extrabold tracking-[0.05em] text-left hologram-metal-text hover:opacity-80 transition-opacity cursor-pointer"

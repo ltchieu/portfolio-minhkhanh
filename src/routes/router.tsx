@@ -3,7 +3,6 @@ import { Routes, Route } from 'react-router-dom';
 import MainPortfolio from './MainPortfolio';
 import ScrollManager from './ScrollManager';
 
-const FreelanceJobDetail = lazy(() => import('../components/FreelanceJobDetail'));
 const MarketingExecutiveJobDetail = lazy(() => import('../components/MarketingExecutiveJobDetail'));
 const MarComAssociateJobDetail = lazy(() => import('../components/MarComAssociateJobDetail'));
 const PRInternJobDetail = lazy(() => import('../components/PRInternJobDetail'));
@@ -19,10 +18,6 @@ export default function AppRouter() {
       <Suspense fallback={<div className="min-h-screen bg-[#FAF9F6]" />}>
         <Routes>
           <Route path="/" element={<MainPortfolio />} />
-          <Route
-            path="/experience/freelance-event-coordinator"
-            element={<FreelanceJobDetail />}
-          />
           <Route
             path="/experience/marketing-executive-probation"
             element={<MarketingExecutiveJobDetail />}

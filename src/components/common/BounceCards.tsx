@@ -59,9 +59,12 @@ export default function BounceCards({
     });
   }, [images, transformStyles]);
 
-  // Initial entry animation
+  const isAnimatedRef = useRef(false);
+
+  // Initial entry animation - run once on mount
   useEffect(() => {
-    if (!containerRef.current) return;
+    if (!containerRef.current || isAnimatedRef.current) return;
+    isAnimatedRef.current = true;
 
     const ctx = gsap.context(() => {
       images.forEach((_, i) => {
@@ -85,7 +88,7 @@ export default function BounceCards({
     }, containerRef);
 
     return () => ctx.revert();
-  }, [images, parsedBaseTransforms, animationStagger, easeType, animationDelay]);
+  }, [animationDelay, animationStagger, easeType, images, parsedBaseTransforms]);
 
   const pushSiblings = useCallback(
     (hoveredIdx: number) => {

@@ -149,7 +149,7 @@ export const marketingExecutiveBrands: MarketingExecutiveBrand[] = [
       {
         stt: 1,
         title: 'Giới thiệu cơ sở học tập Nhà Bè HCMCOU',
-        url: 'https://www.facebook.com/reel/1250500933055358/',
+        url: 'https://www.facebook.com/reel/1250500933055358',
         platform: 'Facebook',
         embedUrl: 'https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fshare%2Fv%2F198mW74dku%2F&show_text=false',
         thumbnail: 'https://images.unsplash.com/photo-1562774053-701939374585?q=80&w=800&auto=format'

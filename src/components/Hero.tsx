@@ -16,7 +16,7 @@ export default function Hero({ currentDateString, currentTime }: HeroProps) {
       {/* Top Header Row - White, Black, and Grey theme */}
       <div className="relative flex justify-between items-start w-full z-10 max-w-[1440px] mx-auto">
         <div className="font-narrow text-xs font-black tracking-[0.2em] text-[#111111] uppercase max-w-xs md:max-w-none">
-          Marketing Excutive &amp; Event
+          BRAND &amp; MARKETING COMMUNICATIONS
         </div>
 
         <div className="flex items-center gap-3 font-narrow text-xs font-bold tracking-[0.1em] text-[#5E5E5E]">
@@ -38,8 +38,8 @@ export default function Hero({ currentDateString, currentTime }: HeroProps) {
           className="w-fit flex flex-col text-left"
         >
           {/* Pre-headline */}
-          <span className="font-sans text-sm sm:text-base md:text-lg text-[#5E5E5E] font-medium tracking-wide block mb-1">
-            Marketing Excutive &amp; Event
+          <span className="font-sans text-base sm:text-lg md:text-xl text-[#5E5E5E] font-medium tracking-wide block mb-1 ml-2">
+            Nguyễn Hà Minh Khánh (Mia Nguyen)
           </span>
 
           {/* Headline */}
@@ -47,20 +47,15 @@ export default function Hero({ currentDateString, currentTime }: HeroProps) {
             Portfolio.
           </h1>
 
-          {/* Post-headline row (aligned with left and right edges of Portfolio) */}
-          <div className="flex justify-between items-center w-full mt-2 font-sans text-sm sm:text-base md:text-lg text-[#5E5E5E] font-medium tracking-wide">
-            <span>Nguyen Ha Minh Khanh</span>
-            <span className="font-bold text-black">2026</span>
-          </div>
         </motion.div>
       </div>
 
       {/* Bottom Metadata Info Grid - White, Black, and Grey theme */}
-      <div className="relative grid grid-cols-1 md:grid-cols-3 gap-4 w-full z-10 font-mono text-[11px] tracking-widest text-[#5E5E5E] max-w-[1440px] mx-auto pt-4 border-t border-[#CCCCCC]/60">
+      <div className="relative grid grid-cols-1 md:grid-cols-3 gap-4 w-full z-10 font-mono text-[15px] tracking-widest text-[#2c2b2b] max-w-[1440px] mx-auto pt-4 border-t border-[#CCCCCC]/60">
         <div className="text-left flex items-center gap-2">
           <span className="w-1.5 h-1.5 rounded-full bg-black/60"></span>
-          <a href="https://instagram.com/mnisliz" target="_blank" rel="noopener noreferrer" className="hover:text-black hover:opacity-60 transition-colors">
-            @mnisliz — UGC SPECIALIST
+          <a href="https://www.linkedin.com/in/mknh13/" target="_blank" rel="noopener noreferrer" className="hover:text-black hover:opacity-60 transition-colors">
+            @mknh13
           </a>
         </div>
         <div className="text-center sm:text-left md:text-center">
