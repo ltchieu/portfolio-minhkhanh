@@ -33,20 +33,6 @@ const fwdImages = getImagesForFolder('FWD Standee');
 
 export const freelanceProjects: FreelanceProject[] = [
   {
-    id: 'cocorose-cheese-coffee',
-    index: '01',
-    title: 'Cocorose x Cheese Coffee Brand Activation',
-    category: 'Brand Collaboration & Event Execution',
-    timeframe: 'August 2023',
-    client: 'Cocorose & Cheese Coffee',
-    summary: 'Coordinated an exclusive brand crossover launch event featuring venue styling, photography direction, and 350+ live attendees.',
-    description: 'Led end-to-end communication, creative direction, and venue operations for the high-profile Cocorose x Cheese Coffee collaboration in HCMC. Managed multimedia content creation, social media promotion, and visual assets while coordinating with 5 key vendor partners across decoration, printing, catering, and photography.',
-    result: '350+ guests attended the launch event, producing over 87+ high-resolution creative visual assets, expanding brand engagement by +25% on launch day, and achieving seamless coordination with zero operational delays.',
-    highlights: ['350+ Event Attendees', '87 High-Res Campaign Assets', '5 External Vendors Synchronized', '100% On-time Timeline Execution'],
-    images: cocoroseImages,
-    displayType: 'dome'
-  },
-  {
     id: 'com-gung-ceramic',
     index: '02',
     title: 'Cốm Gừng Ceramic — Brand & Product Photography',
@@ -101,20 +87,6 @@ export const freelanceProjects: FreelanceProject[] = [
     result: 'Enhanced stage atmosphere and stage photography lighting through synchronized 4K visual assets.',
     highlights: ['6 Key Milestone Sequences', 'Synchronized Stage Visuals', 'Custom Motion Typography', 'High-Impact Backdrop Ambience'],
     images: weddingLedImages,
-    displayType: 'grid'
-  },
-  {
-    id: 'fwd-standee',
-    index: '06',
-    title: 'FWD Insurance Corporate Event Standee',
-    category: 'Key Visual & Large-Format Graphic Design',
-    timeframe: 'Corporate Project',
-    client: 'FWD Insurance Campaign',
-    summary: 'Designed high-visibility event standees aligned with corporate brand guidelines for venue activations.',
-    description: 'Created large-format vector layouts balancing clear value propositions, sponsor logos, and brand color palette compliance.',
-    result: 'Approved for full-scale physical print and deployed across conference venue entry gates.',
-    highlights: ['Vector Print Asset', 'Corporate Guideline Alignment', 'High Visual Contrast', 'Event Floor Deployment'],
-    images: fwdImages,
     displayType: 'grid'
   }
 ];

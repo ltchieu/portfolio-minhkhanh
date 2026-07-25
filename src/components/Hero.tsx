@@ -51,20 +51,21 @@ export default function Hero({ currentDateString, currentTime }: HeroProps) {
       </div>
 
       {/* Bottom Metadata Info Grid - White, Black, and Grey theme */}
-      <div className="relative grid grid-cols-1 md:grid-cols-3 gap-4 w-full z-10 font-mono text-[15px] tracking-widest text-[#2c2b2b] max-w-[1440px] mx-auto pt-4 border-t border-[#CCCCCC]/60">
-        <div className="text-left flex items-center gap-2">
-          <span className="w-1.5 h-1.5 rounded-full bg-black/60"></span>
+      <div className="relative flex flex-col md:grid md:grid-cols-3 gap-3 md:gap-4 w-full z-10 font-mono text-xs sm:text-sm md:text-[15px] tracking-widest text-[#2c2b2b] max-w-[1440px] mx-auto pt-4 border-t border-[#CCCCCC]/60">
+        <div className="flex items-center justify-start gap-2 text-left">
+          <span className="w-1.5 h-1.5 rounded-full bg-black/60 flex-shrink-0"></span>
           <a href="https://www.linkedin.com/in/mknh13/" target="_blank" rel="noopener noreferrer" className="hover:text-black hover:opacity-60 transition-colors">
             @mknh13
           </a>
         </div>
-        <div className="text-center sm:text-left md:text-center">
-          <a href="mailto:n.khanhwork@gmail.com" className="hover:text-black hover:opacity-60 transition-colors">
+        <div className="flex items-center justify-start md:justify-center gap-2 text-left md:text-center">
+          <span className="w-1.5 h-1.5 rounded-full bg-black/60 flex-shrink-0 md:hidden"></span>
+          <a href="mailto:n.khanhwork@gmail.com" className="hover:text-black hover:opacity-60 transition-colors break-all">
             n.khanhwork@gmail.com
           </a>
         </div>
-        <div className="text-right sm:text-left md:text-right flex items-center justify-end gap-1.5">
-          <i className="fa-solid fa-location-dot text-xs text-black/60"></i>
+        <div className="flex items-center justify-start md:justify-end gap-1.5 text-left md:text-right">
+          <i className="fa-solid fa-location-dot text-xs text-black/60 flex-shrink-0"></i>
           <span>Ho Chi Minh, Viet Nam — Global Remote</span>
         </div>
       </div>

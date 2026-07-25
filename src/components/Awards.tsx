@@ -49,14 +49,16 @@ export default function Awards() {
       <div className="max-w-[1440px] mx-auto px-6">
         {/* Section Title Header */}
         <ScrollReveal direction="up">
-          <div className="flex flex-col md:flex-row justify-spa items-start md:items-end mb-16 gap-4">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-6 md:gap-10">
             <div>
-              <h2 className="font-display text-5xl sm:text-6xl md:text-7xl uppercase tracking-tighter text-[#111111]">
+              <h2 className="font-display text-4xl sm:text-6xl md:text-7xl uppercase tracking-tighter text-[#111111]">
                 AWARDS & CERTIFICATIONS
               </h2>
             </div>
             <p className="font-narrow text-xs font-bold text-[#5E5E5E] tracking-widest uppercase max-w-xs md:text-right text-balance">
-              Curated record of academic distinctions, professional certifications, and leadership honors.
+              Curated record of academic distinctions,
+              professional certifications,
+              and leadership honors.
             </p>
           </div>
         </ScrollReveal>
@@ -82,7 +84,7 @@ export default function Awards() {
                   className="group relative bg-white border border-[#CCCCCC]/60 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl hover:border-[#111111] transition-all duration-500 flex flex-col justify-between cursor-pointer h-full"
                 >
                   {/* Top Badge & Category Bar */}
-                  <div className="p-6 pb-4 flex items-center justify-between border-b border-[#CCCCCC]/30 bg-[#FAF9F6]">
+                  <div className="p-6 pb-4 flex flex-wrap items-center justify-between gap-2 border-b border-[#CCCCCC]/30 bg-[#FAF9F6]">
                     <span className="font-narrow text-[10px] font-black hologram-metal-text tracking-[0.25em] uppercase">
                       {award.category}
                     </span>
@@ -108,7 +110,7 @@ export default function Awards() {
 
                     {/* Image / PDF Thumbnail Preview */}
                     {award.image ? (
-                      <div className="w-full sm:w-36 h-36 rounded-xl overflow-hidden bg-[#EBEBEB] border border-[#CCCCCC]/60 flex-shrink-0 relative group-hover:scale-105 transition-transform duration-500">
+                      <div className="w-full sm:w-36 h-48 sm:h-36 rounded-xl overflow-hidden bg-[#EBEBEB] border border-[#CCCCCC]/60 flex-shrink-0 relative group-hover:scale-105 transition-transform duration-500">
                         <img
                           src={award.image}
                           alt={award.title}
@@ -121,7 +123,7 @@ export default function Awards() {
                         </div>
                       </div>
                     ) : award.pdfUrl ? (
-                      <div className="w-full sm:w-36 h-36 rounded-xl overflow-hidden bg-[#111111] text-white border border-[#CCCCCC]/60 flex-shrink-0 flex flex-col items-center justify-center p-4 text-center group-hover:scale-105 transition-transform duration-500 shadow-inner">
+                      <div className="w-full sm:w-36 h-48 sm:h-36 rounded-xl overflow-hidden bg-[#111111] text-white border border-[#CCCCCC]/60 flex-shrink-0 flex flex-col items-center justify-center p-4 text-center group-hover:scale-105 transition-transform duration-500 shadow-inner">
                         <i className="fa-solid fa-file-pdf text-3xl text-red-400 mb-2"></i>
                         <span className="font-narrow text-[10px] font-black uppercase tracking-widest text-white/90">
                           OFFICIAL ETRF PDF

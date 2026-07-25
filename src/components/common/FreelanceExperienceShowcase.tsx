@@ -7,8 +7,9 @@ import ImageLightboxModal from './ImageLightboxModal';
 import { weddingPlannerImages, weddingLedImages, comGungImages } from '../../data/freelanceProjectsData';
 import type { LightboxImageData } from '../../models/imageLightboxModal';
 
-// Lazy import BounceCards
+// Lazy import BounceCards & Stack
 const BounceCards = lazy(() => import('./BounceCards'));
+const Stack = lazy(() => import('./Stack'));
 
 interface WeddingGalleryState {
   isOpen: boolean;
@@ -31,6 +32,19 @@ export default function FreelanceExperienceShowcase() {
 
   // Memoized top 5 images and transform styles for BounceCards to avoid re-renders & blinking
   const comGungImagesTop5 = useMemo(() => comGungImages.slice(0, 5), []);
+  const stackCards = useMemo(
+    () =>
+      comGungImagesTop5.map((src, idx) => (
+        <img
+          key={idx}
+          src={src}
+          alt={`Cốm Gừng Ceramic Shot ${idx + 1}`}
+          className="w-full h-full object-cover rounded-xl border border-[#CCCCCC]/60 shadow-md select-none"
+        />
+      )),
+    [comGungImagesTop5]
+  );
+
   const bounceTransformStyles = useMemo(
     () => [
       'rotate(-12deg) translate(-90px, 10px)',
@@ -144,13 +158,52 @@ export default function FreelanceExperienceShowcase() {
               <i className="fa-solid fa-images text-[#111111]"></i>
               WEDDING GALLERIES
             </span>
-            <span className="font-narrow text-[10px] font-bold text-[#5E5E5E] italic">
-              Click to open pop-up gallery
-            </span>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {/* Left Collage: Private Wedding Planner (Profile Picture) */}
+            {/* Left Collage: Typography Wedding LED (Profile Picture) */}
+            <div
+              onClick={() =>
+                openWeddingGallery(weddingLedImages, 'Typography-Led LED Motion Visuals')
+              }
+              className="group relative rounded-lg overflow-hidden bg-white border border-[#CCCCCC]/60 cursor-pointer shadow-sm hover:shadow-lg transition-all duration-300"
+            >
+              <div className="aspect-[4/3] w-full overflow-hidden relative">
+                <img
+                  src={weddingLedImages[0]}
+                  alt="Typography Wedding LED Profile Cover"
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
+
+                <div className="absolute top-2.5 left-2.5 z-10">
+                  <span className="px-2 py-0.5 bg-white/90 backdrop-blur-md text-[#111111] font-narrow text-[9px] font-black uppercase tracking-wider rounded border border-white/40 shadow-sm flex items-center gap-1">
+                    <i className="fa-solid fa-film"></i>
+                    LED Motion Visuals
+                  </span>
+                </div>
+
+                <div className="absolute inset-0 z-20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
+                  <span className="px-3.5 py-1.5 bg-white text-[#111111] font-narrow text-xs font-bold uppercase tracking-wider rounded-full shadow-lg flex items-center gap-1.5 transform translate-y-1 group-hover:translate-y-0 transition-transform">
+                    <i className="fa-solid fa-expand text-xs"></i>
+                    Open Gallery ({weddingLedImages.length})
+                  </span>
+                </div>
+
+                <div className="absolute bottom-0 left-0 right-0 p-3 z-10 text-white space-y-0.5">
+                  <p className="font-narrow text-[9px] font-bold text-white/70 uppercase tracking-widest">
+                    GALLERY 02 • TYPOGRAPHY WEDDING LED
+                  </p>
+                  <h4 className="font-display text-sm sm:text-base uppercase tracking-tight line-clamp-1">
+                    Typography Stage Visuals
+                  </h4>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Collage: Private Wedding Planner (Profile Picture) */}
             <div
               onClick={() =>
                 openWeddingGallery(weddingPlannerImages, 'Private Wedding Planner & On-Site Execution')
@@ -192,47 +245,7 @@ export default function FreelanceExperienceShowcase() {
               </div>
             </div>
 
-            {/* Right Collage: Typography Wedding LED (Profile Picture) */}
-            <div
-              onClick={() =>
-                openWeddingGallery(weddingLedImages, 'Typography-Led LED Motion Visuals')
-              }
-              className="group relative rounded-lg overflow-hidden bg-white border border-[#CCCCCC]/60 cursor-pointer shadow-sm hover:shadow-lg transition-all duration-300"
-            >
-              <div className="aspect-[4/3] w-full overflow-hidden relative">
-                <img
-                  src={weddingLedImages[0]}
-                  alt="Typography Wedding LED Profile Cover"
-                  loading="lazy"
-                  decoding="async"
-                  className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity"></div>
 
-                <div className="absolute top-2.5 left-2.5 z-10">
-                  <span className="px-2 py-0.5 bg-white/90 backdrop-blur-md text-[#111111] font-narrow text-[9px] font-black uppercase tracking-wider rounded border border-white/40 shadow-sm flex items-center gap-1">
-                    <i className="fa-solid fa-film"></i>
-                    LED Motion Visuals
-                  </span>
-                </div>
-
-                <div className="absolute inset-0 z-20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
-                  <span className="px-3.5 py-1.5 bg-white text-[#111111] font-narrow text-xs font-bold uppercase tracking-wider rounded-full shadow-lg flex items-center gap-1.5 transform translate-y-1 group-hover:translate-y-0 transition-transform">
-                    <i className="fa-solid fa-expand text-xs"></i>
-                    Open Gallery ({weddingLedImages.length})
-                  </span>
-                </div>
-
-                <div className="absolute bottom-0 left-0 right-0 p-3 z-10 text-white space-y-0.5">
-                  <p className="font-narrow text-[9px] font-bold text-white/70 uppercase tracking-widest">
-                    GALLERY 02 • TYPOGRAPHY WEDDING LED
-                  </p>
-                  <h4 className="font-display text-sm sm:text-base uppercase tracking-tight line-clamp-1">
-                    Typography Stage Visuals
-                  </h4>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
@@ -293,15 +306,28 @@ export default function FreelanceExperienceShowcase() {
 
               <div className="flex justify-center items-center py-2 overflow-hidden">
                 <Suspense fallback={<GallerySkeleton height="240px" />}>
-                  <BounceCards
-                    images={comGungImagesTop5}
-                    containerWidth={260}
-                    containerHeight={240}
-                    animationDelay={0.15}
-                    animationStagger={0.06}
-                    transformStyles={bounceTransformStyles}
-                    onCardClick={(idx) => handleSelectImage(comGungImages[idx])}
-                  />
+                  {/* Desktop & Tablet view: BounceCards */}
+                  <div className="hidden sm:flex justify-center items-center">
+                    <BounceCards
+                      images={comGungImagesTop5}
+                      containerWidth={260}
+                      containerHeight={240}
+                      animationDelay={0.15}
+                      animationStagger={0.06}
+                      transformStyles={bounceTransformStyles}
+                      onCardClick={(idx) => handleSelectImage(comGungImages[idx])}
+                    />
+                  </div>
+
+                  {/* Mobile view: Stack component */}
+                  <div className="flex sm:hidden justify-center items-center h-[230px] w-[200px] relative my-2">
+                    <Stack
+                      cards={stackCards}
+                      randomRotation={true}
+                      sendToBackOnClick={true}
+                      sensitivity={120}
+                    />
+                  </div>
                 </Suspense>
               </div>
             </div>
@@ -379,7 +405,7 @@ export default function FreelanceExperienceShowcase() {
       </div>
 
       {/* ========================================================================= */}
-      {/* HARMONIOUS POP-UP GALLERY MODAL: "The groom Minh Tam and the bride Anh Thu" */}
+      {/* HARMONIOUS POP-UP GALLERY MODAL: "The groom Cao Cuong and the bride Ai Vi" */}
       {/* ========================================================================= */}
       {createPortal(
         <AnimatePresence>
@@ -405,7 +431,7 @@ export default function FreelanceExperienceShowcase() {
                       {weddingGallery.subtitle}
                     </span>
                     <h3 className="font-display text-lg sm:text-xl md:text-2xl uppercase tracking-wide text-white">
-                      The groom Minh Tam and the bride Anh Thu
+                      The groom Cao Cuong and the bride Ai Vi
                     </h3>
                   </div>
 

@@ -32,7 +32,7 @@ export const awards: Award[] = [
   {
     id: 'usw-sea-scholarship',
     isFeatured: true,
-    year: '2024',
+    year: '2025',
     category: 'POSTGRADUATE SCHOLARSHIP DISTINCTION',
     title: 'Southeast Asian Postgraduate Excellence Scholarship (£6,000)',
     issuer: 'University of South Wales – UK',
@@ -44,19 +44,19 @@ export const awards: Award[] = [
   {
     id: 'nckh-cap-truong',
     isFeatured: true,
-    year: '2021 - 2022',
+    year: '2022-2023',
     category: 'ACADEMIC RESEARCH & INNOVATION',
-    title: 'Recorded the University-Level Student Scientific Research Competition (2021-2022)',
+    title: 'Recorded the University-Level Student Scientific Research Competition (2022-2023)',
     issuer: 'HCMC Open University Research Board',
     role: 'Principal Researcher & Author',
     project: 'NCKH Cấp Trường Competition',
-    description: 'Officially recorded in the University-Level Student Scientific Research Competition (2021-2022) for academic research excellence.',
+    description: 'Officially recorded in the University-Level Student Scientific Research Competition (2022-2023) for academic research competition.',
     image: getAwardImg('NCKH Cấp Trường')
   },
   {
     id: 'ielts-etrf',
     isFeatured: true,
-    year: '2024 - 2026',
+    year: '2026',
     category: 'INTERNATIONAL LANGUAGE PROFICIENCY',
     title: 'IELTS Academic Official Test Report (ETRF)',
     issuer: 'IDP Education / Cambridge English',
@@ -88,7 +88,7 @@ export const awards: Award[] = [
     year: '2026',
     category: 'MARKETING MANAGEMENT & STRATEGY',
     title: 'Fullstack Marketing Management',
-    issuer: 'Linh Marketing Academy',
+    issuer: 'Run By Linh - Academy & Transformation Firm',
     role: 'Marketing Management Graduate',
     project: 'Integrated Marketing Strategy',
     description: 'An intensive marketing program covering integrated marketing, digital marketing, branding, campaign planning, content strategy, customer journey, AI applications, and business-oriented marketing thinking.',
@@ -103,7 +103,7 @@ export const awards: Award[] = [
     issuer: 'Search Inside Yourself Leadership Institute (SIYLI)',
     role: 'Certified Boot Camp Graduate',
     project: 'Mindful Leadership',
-    description: 'Search Inside Yourself Leadership Institute (SIYLI) certified completion of Search Inside Yourself mindfulness and emotional intelligence bootcamp for empathetic team leadership and stress resilience.',
+    description: 'Certified completion of Search Inside Yourself mindfulness and emotional intelligence bootcamp for empathetic team leadership and stress resilience.',
     image: getAwardImg('Mindfulness Bootcamp')
   },
   {
@@ -112,10 +112,10 @@ export const awards: Award[] = [
     year: '2025',
     category: 'PUBLIC SPEAKING & EVENT HOSTING',
     title: 'Professional Event Host & MC Certification',
-    issuer: 'Phoenix Academy of Public Speaking',
+    issuer: 'Phoenix MC Academy',
     role: 'Certified Event Host & MC',
     project: 'Public Speaking & Hosting',
-    description: 'Phoenix Academy of Public Speaking – Professional certification in live stage hosting, voice modulation, crisis management, and event anchor operations.',
+    description: 'Professional certification in live stage hosting, voice modulation, crisis management, and event anchor operations.',
     image: getAwardImg('MC Phoenix Academy')
   },
   {

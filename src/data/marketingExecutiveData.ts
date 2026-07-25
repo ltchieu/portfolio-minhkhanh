@@ -146,17 +146,17 @@ export const marketingExecutiveBrands: MarketingExecutiveBrand[] = [
     description: 'Short social video campaigns covering campus introductions, graduation ceremony guidelines, and university announcements.',
     displayType: 'grid',
     videos: [
-      {
-        stt: 1,
-        title: 'Giới thiệu cơ sở học tập Nhà Bè HCMCOU',
-        url: 'https://www.facebook.com/reel/1250500933055358',
-        platform: 'Facebook',
-        embedUrl: 'https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fshare%2Fv%2F198mW74dku%2F&show_text=false',
-        thumbnail: 'https://images.unsplash.com/photo-1562774053-701939374585?q=80&w=800&auto=format'
-      },
+      // {
+      //   stt: 1,
+      //   title: 'Introduction to the Nha Be Campus of HCMCOU',
+      //   url: 'https://www.facebook.com/reel/1250500933055358',
+      //   platform: 'Facebook',
+      //   embedUrl: 'https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fshare%2Fv%2F198mW74dku%2F&show_text=false',
+      //   thumbnail: 'https://images.unsplash.com/photo-1562774053-701939374585?q=80&w=800&auto=format'
+      // },
       {
         stt: 2,
-        title: 'Hướng dẫn tham dự Lễ Tốt nghiệp 2025',
+        title: 'Guidelines for Attending the Graduation Ceremony 2025',
         url: 'https://www.facebook.com/reel/771547712589113/',
         platform: 'Facebook',
         embedUrl: 'https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fshare%2Fv%2F1CeFNNts5D%2F&show_text=false',
@@ -164,7 +164,7 @@ export const marketingExecutiveBrands: MarketingExecutiveBrand[] = [
       },
       {
         stt: 3,
-        title: 'Nhắc tham gia ngày Lễ Tốt nghiệp 2025 đợt 2',
+        title: 'Reminder: Participation in Graduation Ceremony 2025 (Phase 2)',
         url: 'https://www.facebook.com/reel/1564981501351959/',
         platform: 'Facebook',
         embedUrl: 'https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fshare%2Fr%2F197E78ZKhV%2F&show_text=false',
@@ -172,7 +172,7 @@ export const marketingExecutiveBrands: MarketingExecutiveBrand[] = [
       },
       {
         stt: 4,
-        title: 'Nhắc tham gia ngày Lễ Tốt nghiệp 2025 đợt 1',
+        title: 'Reminder: Participation in Graduation Ceremony 2025 (Phase 1)',
         url: 'https://www.facebook.com/watch/?v=817987207792353&rdid=yER87oN3JWIjf30E',
         platform: 'Facebook',
         embedUrl: 'https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fshare%2Fv%2F1VBMwaVmqx%2F&show_text=false',

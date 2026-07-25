@@ -68,11 +68,10 @@ export default function Work() {
 
               {/* Videos Grid */}
               <div
-                className={`grid grid-cols-1 ${
-                  brandSection.videos.length === 2
-                    ? "md:grid-cols-2 gap-6"
-                    : "sm:grid-cols-2 lg:grid-cols-4 gap-5"
-                }`}
+                className={`grid grid-cols-1 ${brandSection.videos.length === 2
+                  ? "md:grid-cols-2 gap-6"
+                  : "sm:grid-cols-2 lg:grid-cols-3 gap-5"
+                  }`}
               >
                 {brandSection.videos.map((video, vIdx) => (
                   <ScrollReveal key={video.stt} direction="up" delay={vIdx * 0.08}>
@@ -80,33 +79,9 @@ export default function Work() {
                       onClick={() => handleOpenVideoModal(video)}
                       className="group relative bg-[#111111] rounded-xl overflow-hidden shadow-md hover:shadow-xl border border-white/10 transition-all duration-300 cursor-pointer flex flex-col justify-between h-full"
                     >
-                      {/* Video Thumbnail with Play Button Overlay */}
-                      <div className="relative aspect-[16/10] w-full overflow-hidden bg-black">
-                        <img
-                          src={video.thumbnail}
-                          alt={video.title}
-                          loading="lazy"
-                          className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-out opacity-85 group-hover:opacity-100"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent"></div>
-
-                        {/* Centered Glowing Play Button Icon */}
-                        <div className="absolute inset-0 flex items-center justify-center">
-                          <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-md border border-white/40 flex items-center justify-center text-white group-hover:scale-110 group-hover:bg-[#00f2fe] group-hover:text-[#111111] transition-all duration-300 shadow-lg">
-                            <i className="fa-solid fa-play text-sm ml-0.5"></i>
-                          </div>
-                        </div>
-
-                        {/* Top Badges */}
-                        <div className="absolute top-3 left-3 right-3 flex items-center justify-between pointer-events-none">
-                          <span className="font-mono text-[10px] font-bold bg-black/80 text-white px-2.5 py-1 rounded border border-white/20">
-                            #{video.stt}
-                          </span>
-                          <span className="font-mono text-[10px] font-bold bg-[#1877F2] text-white px-2.5 py-1 rounded shadow-sm flex items-center gap-1">
-                            <i className="fa-brands fa-facebook-f text-[9px]"></i>
-                            REEL
-                          </span>
-                        </div>
+                      {/* Live Facebook Video Player & Native Thumbnail */}
+                      <div className="relative aspect-video w-full overflow-hidden bg-black flex items-center justify-center">
+                        <FacebookEmbed url={video.url} />
                       </div>
 
                       {/* Card Content & Action Trigger */}

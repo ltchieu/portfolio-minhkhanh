@@ -12,14 +12,14 @@ export default function About({ setShowManifesto }: AboutProps) {
       <div className="max-w-[1440px] mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
 
         {/* Left Column: Image and Huge Title */}
-        <div className="lg:col-span-5 space-y-8">
+        <div className="lg:col-span-5 space-y-8 lg:ml-4">
           <ScrollReveal direction="up" delay={0.1}>
-            <h3 className="font-display text-5xl sm:text-6xl md:text-7xl leading-none uppercase text-[#111111] tracking-tighter">
+            <h3 className="font-display text-4xl sm:text-6xl md:text-7xl leading-none uppercase text-[#111111] tracking-tighter">
               INTRODUCE
             </h3>
           </ScrollReveal>
           <ScrollReveal direction="up" delay={0.25}>
-            <div className="w-4/5 aspect-[4/5] overflow-hidden bg-[#EBEBEB] group relative rounded-sm shadow-sm">
+            <div className="w-full sm:w-4/5 lg:w-full aspect-[4/5] overflow-hidden bg-[#EBEBEB] group relative rounded-sm shadow-sm">
               <img
                 src={avatarImg}
                 alt="Portrait of Nguyen Ha Minh Khanh"
@@ -31,7 +31,7 @@ export default function About({ setShowManifesto }: AboutProps) {
         </div>
 
         {/* Right Column: Statement, Summary, Skills, and manifesto button */}
-        <div className="lg:col-span-7 space-y-8 lg:pl-6">
+        <div className="lg:col-span-7 space-y-8">
           <div className="space-y-10">
             <ScrollReveal direction="left" delay={0.2}>
               <div className="space-y-4 mt-[20px]">
