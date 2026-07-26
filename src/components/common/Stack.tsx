@@ -1,5 +1,5 @@
-import { motion, useMotionValue, useTransform } from 'motion/react';
-import { useState, useEffect, useMemo, useCallback, memo, ReactNode, PanInfo } from 'react';
+import { motion, useMotionValue, useTransform, type PanInfo } from 'motion/react';
+import { useState, useEffect, useMemo, useCallback, memo, ReactNode } from 'react';
 import './Stack.css';
 
 interface CardRotateProps {
@@ -42,10 +42,11 @@ const CardRotate = memo(function CardRotate({ children, onSendToBack, sensitivit
         x,
         y,
         rotateX,
-        rotateY,
-        transformTemplate: ({ x, y, rotateX, rotateY }) =>
-          `translate3d(${x}, ${y}, 0px) rotateX(${rotateX}) rotateY(${rotateY})`
+        rotateY
       }}
+      transformTemplate={({ x, y, rotateX, rotateY }) =>
+        `translate3d(${x}, ${y}, 0px) rotateX(${rotateX}) rotateY(${rotateY})`
+      }
       drag
       dragConstraints={{ top: 0, right: 0, bottom: 0, left: 0 }}
       dragElastic={0.6}

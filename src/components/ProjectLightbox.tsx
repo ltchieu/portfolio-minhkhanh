@@ -1,6 +1,6 @@
+import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "motion/react";
 import { Project } from "../models/Project";
-import { ContactFormData } from "../models/Contact";
 
 interface ProjectLightboxProps {
   project: Project | null;
@@ -15,14 +15,15 @@ export default function ProjectLightbox({
 }: ProjectLightboxProps) {
   return (
     <AnimatePresence>
-      {project && (
-        <motion.div 
-          id="project-lightbox"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          className="fixed inset-0 z-50 bg-[#111111]/95 backdrop-blur-md flex items-center justify-center p-4 sm:p-6"
-        >
+      {project &&
+        createPortal(
+          <motion.div
+            id="project-lightbox"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 bg-[#111111]/95 backdrop-blur-md flex items-center justify-center p-4 sm:p-6"
+          >
           <motion.div 
             initial={{ scale: 0.92, y: 15 }}
             animate={{ scale: 1, y: 0 }}
@@ -115,7 +116,8 @@ export default function ProjectLightbox({
               </div>
             </div>
           </motion.div>
-        </motion.div>
+        </motion.div>,
+        document.body
       )}
     </AnimatePresence>
   );

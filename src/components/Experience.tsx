@@ -4,6 +4,10 @@ import { motion, AnimatePresence, useScroll, useSpring, useTransform } from "mot
 import { experiences } from "../data/experiences";
 import ScrollReveal from "./common/ScrollReveal";
 import FreelanceExperienceShowcase from "./common/FreelanceExperienceShowcase";
+import MarComExperienceShowcase from "./common/MarComExperienceShowcase";
+import MarketingExecutiveExperienceShowcase from "./common/MarketingExecutiveExperienceShowcase";
+import PRInternExperienceShowcase from "./common/PRInternExperienceShowcase";
+import ViceChairmanExperienceShowcase from "./common/ViceChairmanExperienceShowcase";
 
 interface ExperienceSectionProps {
   activeExperience: string | null;
@@ -110,7 +114,13 @@ export default function ExperienceSection({
           {experiences.map((exp, idx) => {
             const isEven = idx % 2 === 1;
             const isOpen = activeExperience === exp.id;
-            const isFullWidth = isOpen && exp.id === "freelance-event-coordinator";
+            const isFullWidth =
+              isOpen &&
+              (exp.id === "freelance-event-coordinator" ||
+                exp.id === "ou-news-marcom-associate" ||
+                exp.id === "amor-resort-marketing-executive" ||
+                exp.id === "school-advanced-study-pr" ||
+                exp.id === "vsa-vice-chairman");
 
             return (
               <ScrollReveal
@@ -231,6 +241,14 @@ export default function ExperienceSection({
 
                             {exp.id === "freelance-event-coordinator" ? (
                               <FreelanceExperienceShowcase />
+                            ) : exp.id === "ou-news-marcom-associate" ? (
+                              <MarComExperienceShowcase />
+                            ) : exp.id === "amor-resort-marketing-executive" ? (
+                              <MarketingExecutiveExperienceShowcase />
+                            ) : exp.id === "school-advanced-study-pr" ? (
+                              <PRInternExperienceShowcase />
+                            ) : exp.id === "vsa-vice-chairman" ? (
+                              <ViceChairmanExperienceShowcase />
                             ) : (
                               <>
                                 {/* Experience Work Image */}
@@ -243,57 +261,6 @@ export default function ExperienceSection({
                                   />
                                 </div>
                               </>
-                            )}
-
-                            {exp.id === "amor-resort-marketing-executive" && (
-                              <div className="pt-2">
-                                <button
-                                  onClick={(e) => {
-                                    e.stopPropagation();
-                                    sessionStorage.setItem("portfolio_home_scroll_pos", window.scrollY.toString());
-                                    sessionStorage.setItem("portfolio_from_detail", "true");
-                                    navigate("/experience/marketing-executive-probation");
-                                  }}
-                                  className="w-full sm:w-auto px-5 py-3 bg-[#111111] text-white hover:bg-[#333333] transition-all font-narrow text-xs uppercase tracking-[0.2em] font-bold rounded flex items-center justify-center gap-2 group shadow-sm"
-                                >
-                                  <span>View Case Study & Videos</span>
-                                  <i className="fa-solid fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
-                                </button>
-                              </div>
-                            )}
-
-                            {exp.id === "ou-news-marcom-associate" && (
-                              <div className="pt-2">
-                                <button
-                                  onClick={(e) => {
-                                    e.stopPropagation();
-                                    sessionStorage.setItem("portfolio_home_scroll_pos", window.scrollY.toString());
-                                    sessionStorage.setItem("portfolio_from_detail", "true");
-                                    navigate("/experience/ou-news-marcom-associate");
-                                  }}
-                                  className="w-full sm:w-auto px-5 py-3 bg-[#111111] text-white hover:bg-[#333333] transition-all font-narrow text-xs uppercase tracking-[0.2em] font-bold rounded flex items-center justify-center gap-2 group shadow-sm"
-                                >
-                                  <span>View Case Study & Visuals</span>
-                                  <i className="fa-solid fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
-                                </button>
-                              </div>
-                            )}
-
-                            {exp.id === "school-advanced-study-pr" && (
-                              <div className="pt-2">
-                                <button
-                                  onClick={(e) => {
-                                    e.stopPropagation();
-                                    sessionStorage.setItem("portfolio_home_scroll_pos", window.scrollY.toString());
-                                    sessionStorage.setItem("portfolio_from_detail", "true");
-                                    navigate("/experience/school-advanced-study-pr");
-                                  }}
-                                  className="w-full sm:w-auto px-5 py-3 bg-[#111111] text-white hover:bg-[#333333] transition-all font-narrow text-xs uppercase tracking-[0.2em] font-bold rounded flex items-center justify-center gap-2 group shadow-sm"
-                                >
-                                  <span>View Case Study & Visuals</span>
-                                  <i className="fa-solid fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
-                                </button>
-                              </div>
                             )}
                           </div>
                         </motion.div>

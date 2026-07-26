@@ -11,8 +11,7 @@ import ProjectLightbox from "../components/ProjectLightbox";
 import { Project } from "../models/Project";
 
 export default function MainPortfolio() {
-  const [activeExperience, setActiveExperience] = useState<string | null>("axon-studio");
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [activeExperience, setActiveExperience] = useState<string | null>(null);
   const [showManifesto, setShowManifesto] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
@@ -74,9 +73,7 @@ export default function MainPortfolio() {
       />
 
       {/* 5. Selected Works Portfolio */}
-      <Work
-        setSelectedProject={setSelectedProject}
-      />
+      <Work />
 
       {/* 6. Awards Curation */}
       <Awards />

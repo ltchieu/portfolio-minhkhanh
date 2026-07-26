@@ -287,3 +287,77 @@ export const marketingExecutiveBrands: MarketingExecutiveBrand[] = [
     ]
   }
 ];
+
+import type { MarketingExecutiveCampaignData } from '../models/marketingExecutive';
+
+export const marketingExecutiveCampaignData: MarketingExecutiveCampaignData = {
+  canvaUrl: 'https://canva.link/79rpoko7he72ndg',
+  iwdCampaign: {
+    title: 'International Women\'s Day (8/3) Campaign Content',
+    kols: [
+      {
+        id: 1,
+        kol: 'Đi Đâu Nào',
+        url: 'https://www.tiktok.com/@didaunao2022/video/7477939316103204104?is_from_webapp=1&sender_device=pc&web_id=7532402553843549703',
+        videoId: '7477939316103204104',
+        author: '@didaunao2022',
+        embedUrl: 'https://www.tiktok.com/embed/v2/7477939316103204104',
+        platform: 'TikTok'
+      },
+      {
+        id: 2,
+        kol: 'Nhi Đi Đâu',
+        url: 'https://www.tiktok.com/@vuongnhididau/video/7477950724400368903?is_from_webapp=1&sender_device=pc&web_id=7532402553843549703',
+        videoId: '7477950724400368903',
+        author: '@vuongnhididau',
+        embedUrl: 'https://www.tiktok.com/embed/v2/7477950724400368903',
+        platform: 'TikTok'
+      },
+      {
+        id: 3,
+        kol: 'Góc nhỏ của Chii',
+        url: 'https://www.tiktok.com/@hachireview74/video/7477954691955952904?is_from_webapp=1&sender_device=pc&web_id=7532402553843549703',
+        videoId: '7477954691955952904',
+        author: '@hachireview74',
+        embedUrl: 'https://www.tiktok.com/embed/v2/7477954691955952904',
+        platform: 'TikTok'
+      },
+      {
+        id: 4,
+        kol: 'Tính Tung Tăng',
+        url: 'https://www.tiktok.com/@tinhtungtangvn/video/7477947015985433873?is_from_webapp=1&sender_device=pc&web_id=7532402553843549703',
+        videoId: '7477947015985433873',
+        author: '@tinhtungtangvn',
+        embedUrl: 'https://www.tiktok.com/embed/v2/7477947015985433873',
+        platform: 'TikTok'
+      }
+    ],
+    proteaPosts: [
+      {
+        id: 6,
+        title: 'Cùng lắng nghe Khách hàng nói gì về Combo Lãng mạn tại Protea Garden nhé!',
+        url: 'https://www.facebook.com/share/p/198vFUu1df/',
+        platform: 'Facebook'
+      },
+      {
+        id: 7,
+        title: '“Uống nhầm một ánh mắt, cơn say theo nửa đời.”\nChỉ một cái nhìn thôi, cả thế giới như thay đổi. Hãy để tình yêu nở rộ trong không gian sân vườn lãng mạn của Protea Garden, nơi các cặp đôi đắm chìm trong từng khoảnh khắc ngọt ngào. 🌺',
+        url: 'https://www.facebook.com/share/p/1ENGJ9772c/',
+        platform: 'Facebook'
+      },
+      {
+        id: 8,
+        title: 'Dating Night – Cùng Protea để tình yêu thăng hoa! 💕\nCombo lãng mạn 899K chỉ còn 699K với những món ăn vô cùng hấp dẫn:\n🥗 Salad hải sản sốt giấm đen\n🍲 Súp cà chua thịt cua\n🥩 Thăn bò nướng mềm mọng\n🍝 Mỳ Ý sốt kem nấm truffle\n🍰 Bánh tiramisu ngọt ngào\n🍷 Vang đỏ & Fujiwa\nKhông gian ấm cúng, ánh nến lung linh – hoàn hảo cho một buổi tối đáng nhớ!\n(*) Combo phục vụ vào buổi tối 17:00 - 22:00.\n📌 Đặt bàn trước 1 ngày để được giá siêu hời.\n#ProteaGarden #LucTraQueHoa #Quoctephunu0803 #WomenDay0803',
+        url: 'https://www.facebook.com/share/p/18rve1aL1F/',
+        platform: 'Facebook'
+      },
+      {
+        id: 9,
+        title: 'Chút xanh cho tình yêu thêm dịu dàng🌿🌿\nCùng người thương tận hưởng không gian trong lành tại Protea nhé!!',
+        url: 'https://www.facebook.com/share/p/1HAuYcbyy6/',
+        platform: 'Facebook'
+      }
+    ]
+  }
+};
+

@@ -1,3 +1,4 @@
+import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "motion/react";
 
 interface ManifestoModalProps {
@@ -8,14 +9,15 @@ interface ManifestoModalProps {
 export default function ManifestoModal({ isOpen, onClose }: ManifestoModalProps) {
   return (
     <AnimatePresence>
-      {isOpen && (
-        <motion.div
-          id="manifesto-modal"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          className="fixed inset-0 z-50 bg-[#111111]/90 backdrop-blur-md flex items-center justify-center p-6"
-        >
+      {isOpen &&
+        createPortal(
+          <motion.div
+            id="manifesto-modal"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 bg-[#111111]/90 backdrop-blur-md flex items-center justify-center p-6"
+          >
           <motion.div
             initial={{ scale: 0.9, y: 20 }}
             animate={{ scale: 1, y: 0 }}
@@ -70,7 +72,8 @@ export default function ManifestoModal({ isOpen, onClose }: ManifestoModalProps)
               </div>
             </div>
           </motion.div>
-        </motion.div>
+        </motion.div>,
+        document.body
       )}
     </AnimatePresence>
   );

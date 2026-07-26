@@ -16,18 +16,20 @@ interface WeddingGalleryState {
   images: string[];
   currentIndex: number;
   subtitle: string;
+  title: string;
 }
 
 export default function FreelanceExperienceShowcase() {
   // Single image lightbox state for BounceCards / thumbnails
   const [selectedImage, setSelectedImage] = useState<LightboxImageData | null>(null);
 
-  // Pop-up Gallery state for "The groom Minh Tam and the bride Anh Thu"
+  // Pop-up Gallery state for Wedding Collages
   const [weddingGallery, setWeddingGallery] = useState<WeddingGalleryState>({
     isOpen: false,
     images: [],
     currentIndex: 0,
     subtitle: '',
+    title: '',
   });
 
   // Memoized top 5 images and transform styles for BounceCards to avoid re-renders & blinking
@@ -74,14 +76,18 @@ export default function FreelanceExperienceShowcase() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [weddingGallery.isOpen, weddingGallery.images.length]);
 
-  const openWeddingGallery = useCallback((images: string[], subtitle: string) => {
-    setWeddingGallery({
-      isOpen: true,
-      images,
-      currentIndex: 0,
-      subtitle,
-    });
-  }, []);
+  const openWeddingGallery = useCallback(
+    (images: string[], subtitle: string, title = 'The groom Minh Tam and the Bride Anh Thu') => {
+      setWeddingGallery({
+        isOpen: true,
+        images,
+        currentIndex: 0,
+        subtitle,
+        title,
+      });
+    },
+    []
+  );
 
   const closeWeddingGallery = useCallback(() => {
     setWeddingGallery((prev) => ({ ...prev, isOpen: false }));
@@ -164,7 +170,11 @@ export default function FreelanceExperienceShowcase() {
             {/* Left Collage: Typography Wedding LED (Profile Picture) */}
             <div
               onClick={() =>
-                openWeddingGallery(weddingLedImages, 'Typography-Led LED Motion Visuals')
+                openWeddingGallery(
+                  weddingLedImages,
+                  'Typography-Led LED Motion Visuals',
+                  'The groom Minh Tam and the Bride Anh Thu'
+                )
               }
               className="group relative rounded-lg overflow-hidden bg-white border border-[#CCCCCC]/60 cursor-pointer shadow-sm hover:shadow-lg transition-all duration-300"
             >
@@ -194,7 +204,7 @@ export default function FreelanceExperienceShowcase() {
 
                 <div className="absolute bottom-0 left-0 right-0 p-3 z-10 text-white space-y-0.5">
                   <p className="font-narrow text-[9px] font-bold text-white/70 uppercase tracking-widest">
-                    GALLERY 02 • TYPOGRAPHY WEDDING LED
+                    GALLERY 01 • TYPOGRAPHY WEDDING LED
                   </p>
                   <h4 className="font-display text-sm sm:text-base uppercase tracking-tight line-clamp-1">
                     Typography Stage Visuals
@@ -206,7 +216,11 @@ export default function FreelanceExperienceShowcase() {
             {/* Right Collage: Private Wedding Planner (Profile Picture) */}
             <div
               onClick={() =>
-                openWeddingGallery(weddingPlannerImages, 'Private Wedding Planner & On-Site Execution')
+                openWeddingGallery(
+                  weddingPlannerImages,
+                  'Private Wedding Planner & On-Site Execution',
+                  'The groom Cao Cuong and the bride Ai Vi'
+                )
               }
               className="group relative rounded-lg overflow-hidden bg-white border border-[#CCCCCC]/60 cursor-pointer shadow-sm hover:shadow-lg transition-all duration-300"
             >
@@ -236,7 +250,7 @@ export default function FreelanceExperienceShowcase() {
 
                 <div className="absolute bottom-0 left-0 right-0 p-3 z-10 text-white space-y-0.5">
                   <p className="font-narrow text-[9px] font-bold text-white/70 uppercase tracking-widest">
-                    GALLERY 01 • PRIVATE WEDDING PLANNER
+                    GALLERY 02 • PRIVATE WEDDING PLANNER
                   </p>
                   <h4 className="font-display text-sm sm:text-base uppercase tracking-tight line-clamp-1">
                     Intimate Wedding Planning
@@ -431,7 +445,7 @@ export default function FreelanceExperienceShowcase() {
                       {weddingGallery.subtitle}
                     </span>
                     <h3 className="font-display text-lg sm:text-xl md:text-2xl uppercase tracking-wide text-white">
-                      The groom Cao Cuong and the bride Ai Vi
+                      {weddingGallery.title}
                     </h3>
                   </div>
 

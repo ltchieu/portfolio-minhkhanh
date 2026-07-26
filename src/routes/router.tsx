@@ -3,9 +3,6 @@ import { Routes, Route } from 'react-router-dom';
 import MainPortfolio from './MainPortfolio';
 import ScrollManager from './ScrollManager';
 
-const MarketingExecutiveJobDetail = lazy(() => import('../components/MarketingExecutiveJobDetail'));
-const MarComAssociateJobDetail = lazy(() => import('../components/MarComAssociateJobDetail'));
-const PRInternJobDetail = lazy(() => import('../components/PRInternJobDetail'));
 const XuanTinhNguyen2021Detail = lazy(() => import('../components/XuanTinhNguyen2021Detail'));
 const XuanTinhNguyen2022Detail = lazy(() => import('../components/XuanTinhNguyen2022Detail'));
 const PhoenixMusicFestivalDetail = lazy(() => import('../components/PhoenixMusicFestivalDetail'));
@@ -18,22 +15,6 @@ export default function AppRouter() {
       <Suspense fallback={<div className="min-h-screen bg-[#FAF9F6]" />}>
         <Routes>
           <Route path="/" element={<MainPortfolio />} />
-          <Route
-            path="/experience/marketing-executive-probation"
-            element={<MarketingExecutiveJobDetail />}
-          />
-          <Route
-            path="/experience/ou-news-marcom-associate"
-            element={<MarComAssociateJobDetail />}
-          />
-          <Route
-            path="/experience/school-advanced-study-pr"
-            element={<PRInternJobDetail />}
-          />
-          <Route
-            path="/experience/pr-practitioner-intern"
-            element={<PRInternJobDetail />}
-          />
           <Route
             path="/project/xuan-tinh-nguyen-2021"
             element={<XuanTinhNguyen2021Detail />}
