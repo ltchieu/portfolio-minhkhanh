@@ -1,25 +1,10 @@
-import { useState, useEffect } from 'react';
-import { createPortal } from 'react-dom';
-import { motion } from 'motion/react';
 import TikTokEmbed from './TikTokEmbed';
 import { marketingExecutiveCampaignData } from '../../data/marketingExecutiveData';
 
 export default function MarketingExecutiveExperienceShowcase() {
-  const [isCanvaModalOpen, setIsCanvaModalOpen] = useState(false);
-
-  // Close Canva modal on Escape key press
-  useEffect(() => {
-    if (!isCanvaModalOpen) return;
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') setIsCanvaModalOpen(false);
-    };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [isCanvaModalOpen]);
-
   return (
     <div className="space-y-8 pt-6 border-t border-[#CCCCCC]/40">
-      {/* 1. CANVA PRESENTATION POPUP BANNER */}
+      {/* 1. CANVA PRESENTATION DIRECT LINK BANNER */}
       <div className="bg-gradient-to-r from-[#111111] via-[#222222] to-[#111111] text-white p-6 sm:p-8 rounded-xl shadow-lg border border-[#333333] relative overflow-hidden group">
         <div className="absolute right-0 top-0 translate-x-6 -translate-y-6 w-48 h-48 bg-purple-500/10 rounded-full blur-3xl pointer-events-none"></div>
         <div className="relative z-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
@@ -36,14 +21,16 @@ export default function MarketingExecutiveExperienceShowcase() {
             </p>
           </div>
 
-          <button
-            onClick={() => setIsCanvaModalOpen(true)}
+          <a
+            href={marketingExecutiveCampaignData.canvaUrl}
+            target="_blank"
+            rel="noopener noreferrer"
             className="w-full sm:w-auto px-6 py-3.5 bg-white text-[#111111] hover:bg-[#00f2fe] hover:text-[#111111] transition-all font-narrow text-xs font-black uppercase tracking-[0.2em] rounded-lg flex items-center justify-center gap-2.5 shadow-md group/btn shrink-0"
           >
             <i className="fa-solid fa-file-powerpoint text-sm"></i>
             <span>View Canva Presentation</span>
             <i className="fa-solid fa-arrow-up-right-from-square text-xs group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform"></i>
-          </button>
+          </a>
         </div>
       </div>
 
@@ -166,105 +153,6 @@ export default function MarketingExecutiveExperienceShowcase() {
           </div>
         </div>
       </div>
-
-      {/* 3. CANVA EMBED MODAL POPUP */}
-      {isCanvaModalOpen &&
-        createPortal(
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-10">
-            {/* Backdrop */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              onClick={() => setIsCanvaModalOpen(false)}
-              className="fixed inset-0 bg-black/80 backdrop-blur-md"
-            />
-
-            {/* Modal Box */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-              className="relative w-full max-w-5xl h-[85vh] bg-[#FAF9F6] border border-[#CCCCCC] rounded-2xl shadow-2xl overflow-hidden flex flex-col z-10"
-            >
-              {/* Modal Header */}
-              <div className="px-6 py-4 bg-[#111111] text-white flex items-center justify-between border-b border-[#333333]">
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center text-[#00f2fe]">
-                    <i className="fa-solid fa-palette text-sm"></i>
-                  </div>
-                  <div>
-                    <h3 className="font-display text-lg sm:text-xl uppercase tracking-tight text-white leading-none">
-                      Amor Resort & Protea Garden Canva Showcase
-                    </h3>
-                    <span className="font-narrow text-xs text-[#AAAAAA] tracking-wider uppercase block mt-0.5">
-                      Interactive Canva Design Presentation
-                    </span>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-3">
-                  <a
-                    href={marketingExecutiveCampaignData.canvaUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hidden sm:inline-flex items-center gap-2 px-4 py-1.5 bg-white/15 hover:bg-white hover:text-[#111111] transition-all rounded text-xs font-narrow font-black uppercase tracking-wider text-white"
-                  >
-                    <span>Open in Canva</span>
-                    <i className="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-                  </a>
-
-                  <button
-                    onClick={() => setIsCanvaModalOpen(false)}
-                    className="w-8 h-8 rounded-full bg-white/10 hover:bg-white hover:text-[#111111] transition-colors flex items-center justify-center text-white"
-                    aria-label="Close modal"
-                  >
-                    <i className="fa-solid fa-xmark text-sm"></i>
-                  </button>
-                </div>
-              </div>
-
-              {/* Modal Body / Canva Frame */}
-              <div className="flex-1 bg-[#EBEBEB] relative overflow-hidden flex flex-col items-center justify-center p-4">
-                <iframe
-                  src={marketingExecutiveCampaignData.canvaUrl}
-                  title="Amor Resort & Protea Garden Canva Showcase"
-                  className="w-full h-full border-0 rounded-xl shadow-lg bg-white"
-                  allowFullScreen
-                />
-              </div>
-
-              {/* Modal Footer */}
-              <div className="px-6 py-3.5 bg-white border-t border-[#CCCCCC]/60 flex flex-col sm:flex-row items-center justify-between gap-3">
-                <div className="font-sans text-xs text-[#5E5E5E] flex items-center gap-2">
-                  <i className="fa-solid fa-circle-info text-[#111111]"></i>
-                  <span>If preview is blocked by browser policies, click "Open Direct Canva Link" below.</span>
-                </div>
-
-                <div className="flex items-center gap-3 w-full sm:w-auto">
-                  <a
-                    href={marketingExecutiveCampaignData.canvaUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex-1 sm:flex-none px-5 py-2 bg-[#111111] text-white hover:bg-[#333333] transition-colors rounded text-xs font-narrow font-black uppercase tracking-wider flex items-center justify-center gap-2"
-                  >
-                    <span>Open Direct Canva Link</span>
-                    <i className="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
-                  </a>
-
-                  <button
-                    onClick={() => setIsCanvaModalOpen(false)}
-                    className="px-5 py-2 bg-[#EBEBEB] text-[#111111] hover:bg-[#CCCCCC] transition-colors rounded text-xs font-narrow font-black uppercase tracking-wider"
-                  >
-                    Close
-                  </button>
-                </div>
-              </div>
-            </motion.div>
-          </div>,
-          document.body
-        )}
     </div>
   );
 }
