@@ -6,7 +6,6 @@ import type { LightboxImageData } from '../../models/imageLightboxModal';
 import { pressArticles } from '../../data/pressArticlesData';
 
 // Lazy import interactive GSAP / Motion sub-components
-const BounceCards = lazy(() => import('./BounceCards'));
 const Stack = lazy(() => import('./Stack'));
 
 // Vite eager glob for all drive download asset images
@@ -35,23 +34,40 @@ export default function MarComExperienceShowcase() {
     currentIndex: 0,
   });
 
-  // 1. Collage 1: The Open Run 2025
-  const openRunImages = useMemo(() => {
+  // 1. Collage 1 & 2: The Open Run 2025 (Design & Photography)
+  const openRunDesignImages = useMemo(() => {
     return Object.keys(rawImages)
-      .filter(path => path.includes('The Open Run 2025'))
+      .filter(path => path.includes('The Open Run 2025/Design'))
       .map(path => rawImages[path]);
   }, []);
 
-  const openRunCards = useMemo(() => {
-    return openRunImages.slice(0, 5).map((src, idx) => (
+  const openRunDesignCards = useMemo(() => {
+    return openRunDesignImages.slice(0, 5).map((src, idx) => (
       <img
         key={idx}
         src={src}
-        alt={`The Open Run 2025 ${idx + 1}`}
+        alt={`The Open Run 2025 Design ${idx + 1}`}
         className="w-full h-full object-cover rounded-xl border border-[#CCCCCC]/60 shadow-md select-none"
       />
     ));
-  }, [openRunImages]);
+  }, [openRunDesignImages]);
+
+  const openRunPhotoImages = useMemo(() => {
+    return Object.keys(rawImages)
+      .filter(path => path.includes('The Open Run 2025/Photography'))
+      .map(path => rawImages[path]);
+  }, []);
+
+  const openRunPhotoCards = useMemo(() => {
+    return openRunPhotoImages.slice(0, 5).map((src, idx) => (
+      <img
+        key={idx}
+        src={src}
+        alt={`The Open Run 2025 Photography ${idx + 1}`}
+        className="w-full h-full object-cover rounded-xl border border-[#CCCCCC]/60 shadow-md select-none"
+      />
+    ));
+  }, [openRunPhotoImages]);
 
   // 2. Collage 2: Miss & Mister OU 2025
   const missMisterImages = useMemo(() => {
@@ -107,17 +123,6 @@ export default function MarComExperienceShowcase() {
     [eventPhotoImages]
   );
 
-  const bounceStyles5 = useMemo(
-    () => [
-      'rotate(-10deg) translate(-80px, 10px)',
-      'rotate(-4deg) translate(-40px, -5px)',
-      'rotate(0deg) translate(0px, 0px)',
-      'rotate(5deg) translate(40px, -5px)',
-      'rotate(10deg) translate(80px, 10px)',
-    ],
-    []
-  );
-
   const openGalleryModal = useCallback((title: string, category: string, images: string[], startIndex = 0) => {
     setGalleryModal({
       isOpen: true,
@@ -168,77 +173,146 @@ export default function MarComExperienceShowcase() {
     <div className="pt-6 space-y-10 border-t border-[#CCCCCC]/40 mt-6" onClick={(e) => e.stopPropagation()}>
       
       {/* ========================================================================= */}
-      {/* COLLAGE 1: ORGANIZER & MAIN DESIGNER OF THE OPEN RUN 2025 */}
+      {/* COLLAGE: ORGANIZER, DESIGNER & PHOTOGRAPHER OF THE OPEN RUN 2025 */}
       {/* ========================================================================= */}
-      <div className="bg-[#FAF9F6] border border-[#CCCCCC]/60 rounded-xl p-5 sm:p-6 space-y-5">
+      <div className="bg-[#FAF9F6] border border-[#CCCCCC]/60 rounded-xl p-5 sm:p-6 space-y-6">
+        {/* Main Section Header */}
         <div className="border-b border-[#CCCCCC]/30 pb-4 space-y-2">
           <div className="flex flex-wrap items-center justify-between gap-2">
             <h3 className="font-display text-xl sm:text-2xl uppercase tracking-tight text-[#111111] flex items-center gap-2.5">
               <i className="fa-solid fa-person-running text-base text-[#111111]"></i>
-              Organizer & Main Designer of The Open Run 2025
+              Organizer, Main Designer & Photographer of The Open Run 2025
             </h3>
             <span className="px-3 py-1 bg-[#111111] text-white font-narrow text-[11px] font-bold uppercase tracking-wider rounded flex items-center gap-1.5 shadow-sm">
               <i className="fa-solid fa-award text-xs"></i>
-              Event Operations & Visual Branding
+              Event Operations, Design & Photography
             </span>
           </div>
 
           <p className="font-sans text-xs sm:text-sm text-[#444444] leading-relaxed">
-            Main event organizer and identity designer for Ho Chi Minh City Open University’s annual marathon. Coordinated 600+ on-site runners and produced the full collateral suite including elevator LEDs, contestant badges, background banners, and thank-you certificates.
+            Main event organizer, graphic identity designer, and official photographer for Ho Chi Minh City Open University’s annual marathon. Coordinated 600+ on-site runners while producing the complete visual collateral suite and capturing live event moments.
           </p>
         </div>
 
-        {/* Collage Display: BounceCards on Desktop, Stack on Mobile */}
-        <div className="bg-white p-5 rounded-lg border border-[#CCCCCC]/60 flex flex-col items-center justify-center space-y-4">
-          <div className="w-full flex items-center justify-between">
-            <span className="font-narrow text-xs font-black text-[#111111] uppercase tracking-wider flex items-center gap-1.5">
-              <i className="fa-solid fa-images text-[#111111]"></i>
-              Visual Collateral & Event Moments ({openRunImages.length} Shots)
-            </span>
-            <span className="font-mono text-[10px] text-[#5E5E5E]">CLICK TO EXPAND</span>
-          </div>
-
-          <div className="w-full flex justify-center items-center py-4 overflow-hidden min-h-[260px]">
-            <Suspense fallback={<GallerySkeleton height="240px" />}>
-              <div className="hidden sm:flex justify-center items-center">
-                <BounceCards
-                  images={openRunImages.slice(0, 5)}
-                  containerWidth={450}
-                  containerHeight={250}
-                  animationDelay={0.15}
-                  transformStyles={bounceStyles5}
-                  onCardClick={(idx) => openGalleryModal("The Open Run 2025", "Event Operations & Visual Branding", openRunImages, idx)}
-                />
+        {/* 2 Collages Side-by-Side (Grid) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+          
+          {/* COLLAGE 1: DESIGN */}
+          <div className="bg-white p-4 sm:p-5 rounded-lg border border-[#CCCCCC]/60 flex flex-col justify-between space-y-4">
+            <div className="space-y-1 border-b border-[#CCCCCC]/30 pb-3">
+              <div className="flex items-center justify-between">
+                <span className="font-narrow text-xs font-black text-[#111111] uppercase tracking-wider flex items-center gap-1.5">
+                  <i className="fa-solid fa-palette text-[#111111]"></i>
+                  Visual Collateral & Graphic Design ({openRunDesignImages.length} Assets)
+                </span>
+                <span className="font-mono text-[9px] text-[#5E5E5E]">SWIPE / CLICK</span>
               </div>
+              <p className="font-sans text-[11px] text-[#666666] line-clamp-2">
+                Elevator LEDs, contestant badges, background banners, standees, social posts & thank-you certificates.
+              </p>
+            </div>
 
-              <div className="flex sm:hidden justify-center items-center h-[230px] w-[200px] relative my-2">
-                <Stack
-                  cards={openRunCards}
-                  randomRotation={true}
-                  sendToBackOnClick={true}
-                  sensitivity={120}
-                />
-              </div>
-            </Suspense>
-          </div>
+            {/* Stack Display */}
+            <div className="w-full flex justify-center items-center py-4 overflow-hidden min-h-[250px]">
+              <Suspense fallback={<GallerySkeleton height="230px" />}>
+                <div className="flex justify-center items-center h-[230px] w-[210px] sm:w-[240px] relative my-2">
+                  <Stack
+                    cards={openRunDesignCards}
+                    randomRotation={true}
+                    sendToBackOnClick={true}
+                    sensitivity={120}
+                  />
+                </div>
+              </Suspense>
+            </div>
 
-          {/* Thumbnail row */}
-          <div className="w-full pt-3 border-t border-[#CCCCCC]/30 grid grid-cols-4 sm:grid-cols-8 gap-2">
-            {openRunImages.slice(0, 8).map((src, idx) => (
+            {/* Expand / View All button & Thumbnail row */}
+            <div className="space-y-3 pt-3 border-t border-[#CCCCCC]/30">
               <button
-                key={idx}
-                onClick={() => openGalleryModal("The Open Run 2025", "Event Operations & Visual Branding", openRunImages, idx)}
-                className="aspect-square rounded overflow-hidden border border-[#CCCCCC]/60 hover:border-[#111111] hover:scale-105 transition-all group cursor-pointer"
+                onClick={() => openGalleryModal("The Open Run 2025 – Graphic & Brand Design", "Visual Branding & Graphic Design", openRunDesignImages, 0)}
+                className="w-full py-2 bg-[#FAF9F6] border border-[#CCCCCC] hover:bg-[#111111] hover:text-white transition-all rounded font-narrow text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 text-[#111111] cursor-pointer"
               >
-                <img
-                  src={src}
-                  alt={`Open Run Thumb ${idx + 1}`}
-                  loading="lazy"
-                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all pointer-events-none"
-                />
+                <i className="fa-solid fa-expand text-xs"></i>
+                <span>View Full Design Suite ({openRunDesignImages.length})</span>
               </button>
-            ))}
+
+              <div className="grid grid-cols-4 sm:grid-cols-6 gap-1.5">
+                {openRunDesignImages.slice(0, 6).map((src, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => openGalleryModal("The Open Run 2025 – Graphic & Brand Design", "Visual Branding & Graphic Design", openRunDesignImages, idx)}
+                    className="aspect-square rounded overflow-hidden border border-[#CCCCCC]/60 hover:border-[#111111] hover:scale-105 transition-all group cursor-pointer"
+                  >
+                    <img
+                      src={src}
+                      alt={`Open Run Design Thumb ${idx + 1}`}
+                      loading="lazy"
+                      className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all pointer-events-none"
+                    />
+                  </button>
+                ))}
+              </div>
+            </div>
           </div>
+
+          {/* COLLAGE 2: PHOTOGRAPHY */}
+          <div className="bg-white p-4 sm:p-5 rounded-lg border border-[#CCCCCC]/60 flex flex-col justify-between space-y-4">
+            <div className="space-y-1 border-b border-[#CCCCCC]/30 pb-3">
+              <div className="flex items-center justify-between">
+                <span className="font-narrow text-xs font-black text-[#111111] uppercase tracking-wider flex items-center gap-1.5">
+                  <i className="fa-solid fa-camera text-[#111111]"></i>
+                  Event Photography & Race Coverage ({openRunPhotoImages.length} Shots)
+                </span>
+                <span className="font-mono text-[9px] text-[#5E5E5E]">SWIPE / CLICK</span>
+              </div>
+              <p className="font-sans text-[11px] text-[#666666] line-clamp-2">
+                Live track action, finish-line celebrations, award presentations & backstage operations.
+              </p>
+            </div>
+
+            {/* Stack Display */}
+            <div className="w-full flex justify-center items-center py-4 overflow-hidden min-h-[250px]">
+              <Suspense fallback={<GallerySkeleton height="230px" />}>
+                <div className="flex justify-center items-center h-[230px] w-[210px] sm:w-[240px] relative my-2">
+                  <Stack
+                    cards={openRunPhotoCards}
+                    randomRotation={true}
+                    sendToBackOnClick={true}
+                    sensitivity={120}
+                  />
+                </div>
+              </Suspense>
+            </div>
+
+            {/* Expand / View All button & Thumbnail row */}
+            <div className="space-y-3 pt-3 border-t border-[#CCCCCC]/30">
+              <button
+                onClick={() => openGalleryModal("The Open Run 2025 – Event Photography", "Event Operations & Photography", openRunPhotoImages, 0)}
+                className="w-full py-2 bg-[#FAF9F6] border border-[#CCCCCC] hover:bg-[#111111] hover:text-white transition-all rounded font-narrow text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 text-[#111111] cursor-pointer"
+              >
+                <i className="fa-solid fa-expand text-xs"></i>
+                <span>View Full Photo Gallery ({openRunPhotoImages.length})</span>
+              </button>
+
+              <div className="grid grid-cols-4 sm:grid-cols-6 gap-1.5">
+                {openRunPhotoImages.slice(0, 6).map((src, idx) => (
+                  <button
+                    key={idx}
+                    onClick={() => openGalleryModal("The Open Run 2025 – Event Photography", "Event Operations & Photography", openRunPhotoImages, idx)}
+                    className="aspect-square rounded overflow-hidden border border-[#CCCCCC]/60 hover:border-[#111111] hover:scale-105 transition-all group cursor-pointer"
+                  >
+                    <img
+                      src={src}
+                      alt={`Open Run Photo Thumb ${idx + 1}`}
+                      loading="lazy"
+                      className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all pointer-events-none"
+                    />
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
 
