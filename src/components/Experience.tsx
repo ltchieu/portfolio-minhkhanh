@@ -41,25 +41,33 @@ export default function ExperienceSection({
 
   const handleToggleExperience = (id: string) => {
     const isOpening = activeExperience !== id;
+    const prevOpenId = activeExperience;
 
     if (isOpening) {
       const clickedIdx = experiences.findIndex((e) => e.id === id);
-      const prevOpenId = activeExperience;
+      let collapseHeight = 0;
 
-      let collapseDelta = 0;
       if (prevOpenId) {
         const prevIdx = experiences.findIndex((e) => e.id === prevOpenId);
-        if (prevIdx < clickedIdx) {
-          collapseDelta = contentRefs.current[prevOpenId]?.getBoundingClientRect().height ?? 0;
+        // Only subtract collapse height if previously open job was ABOVE the newly clicked job
+        if (prevIdx < clickedIdx && contentRefs.current[prevOpenId]) {
+          collapseHeight = contentRefs.current[prevOpenId]!.getBoundingClientRect().height;
         }
       }
 
       const el = itemRefs.current[id];
       if (el) {
-        const yOffset = -90;
+        const yOffset = 90; // Top header offset
         const currentTop = el.getBoundingClientRect().top;
-        const targetY = currentTop - collapseDelta + window.scrollY + yOffset;
-        window.scrollTo({ top: Math.max(0, targetY), behavior: "smooth" });
+        const targetY = window.scrollY + currentTop - collapseHeight - yOffset;
+
+        setActiveExperience(id);
+
+        // Instantly align scroll position to targetY with zero delayed smooth-scroll bounce
+        requestAnimationFrame(() => {
+          window.scrollTo({ top: Math.max(0, targetY), behavior: "auto" });
+        });
+        return;
       }
     }
 
@@ -183,7 +191,7 @@ export default function ExperienceSection({
                           initial={{ height: 0, opacity: 0 }}
                           animate={{ height: "auto", opacity: 1 }}
                           exit={{ height: 0, opacity: 0 }}
-                          transition={{ duration: 0.4, ease: "easeInOut" }}
+                          transition={{ duration: 0.25, ease: "easeInOut" }}
                           className="overflow-hidden"
                           ref={(el) => {
                             contentRefs.current[exp.id] = el;
