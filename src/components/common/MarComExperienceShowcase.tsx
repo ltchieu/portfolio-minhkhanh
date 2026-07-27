@@ -6,6 +6,7 @@ import type { LightboxImageData } from '../../models/imageLightboxModal';
 import { pressArticles } from '../../data/pressArticlesData';
 
 // Lazy import interactive GSAP / Motion sub-components
+const BounceCards = lazy(() => import('./BounceCards'));
 const Stack = lazy(() => import('./Stack'));
 
 // Vite eager glob for all drive download asset images
@@ -38,7 +39,7 @@ export default function MarComExperienceShowcase() {
   const openRunDesignImages = useMemo(() => {
     const keys = Object.keys(rawImages).filter(path => path.includes('The Open Run 2025/Design'));
     const quaTangKey = keys.find(path => path.includes('Qua tang') || path.includes('Qua%20tang'));
-    
+
     let sortedKeys = keys;
     if (quaTangKey) {
       sortedKeys = [quaTangKey, ...keys.filter(k => k !== quaTangKey)];
@@ -49,7 +50,7 @@ export default function MarComExperienceShowcase() {
   const openRunDesignCards = useMemo(() => {
     const keys = Object.keys(rawImages).filter(path => path.includes('The Open Run 2025/Design'));
     const quaTangKey = keys.find(path => path.includes('Qua tang') || path.includes('Qua%20tang'));
-    
+
     let stackKeys: string[];
     if (quaTangKey) {
       const others = keys.filter(k => k !== quaTangKey).slice(0, 4);
@@ -72,7 +73,7 @@ export default function MarComExperienceShowcase() {
   const openRunPhotoImages = useMemo(() => {
     const keys = Object.keys(rawImages).filter(path => path.includes('The Open Run 2025/Photography'));
     const img9812Key = keys.find(path => path.includes('IMG_9812'));
-    
+
     let sortedKeys = keys;
     if (img9812Key) {
       sortedKeys = [img9812Key, ...keys.filter(k => k !== img9812Key)];
@@ -83,7 +84,7 @@ export default function MarComExperienceShowcase() {
   const openRunPhotoCards = useMemo(() => {
     const keys = Object.keys(rawImages).filter(path => path.includes('The Open Run 2025/Photography'));
     const img9812Key = keys.find(path => path.includes('IMG_9812'));
-    
+
     let stackKeys: string[];
     if (img9812Key) {
       const others = keys.filter(k => k !== img9812Key).slice(0, 4);
@@ -110,12 +111,38 @@ export default function MarComExperienceShowcase() {
       .map(path => rawImages[path]);
   }, []);
 
+  const missMisterImagesTop5 = useMemo(() => missMisterImages.slice(0, 5), [missMisterImages]);
+
+  const missMisterStackCards = useMemo(
+    () =>
+      missMisterImagesTop5.map((src, idx) => (
+        <img
+          key={idx}
+          src={src}
+          alt={`Miss & Mister OU ${idx + 1}`}
+          className="w-full h-full object-cover rounded-xl border border-[#CCCCCC]/60 shadow-md select-none"
+        />
+      )),
+    [missMisterImagesTop5]
+  );
+
+  const bounceTransformStyles = useMemo(
+    () => [
+      'rotate(-12deg) translate(-90px, 10px)',
+      'rotate(-5deg) translate(-45px, -5px)',
+      'rotate(0deg) translate(0px, 0px)',
+      'rotate(6deg) translate(45px, -5px)',
+      'rotate(12deg) translate(90px, 10px)',
+    ],
+    []
+  );
+
   // 3. Collage 3: Short Film Poster, Leaflet & Brochure
   const admissionCampaignImages = useMemo(() => {
     const posters = Object.keys(rawImages)
       .filter(path => path.includes('International Admission Campaign 2026') && !path.includes('.txt'))
       .map(path => ({ src: rawImages[path], title: 'Design Short Film Poster', category: 'Poster & Media' }));
-    
+
     const leaflets = Object.keys(rawImages)
       .filter(path => path.includes('Leaflet Credit-tranfer Program Admission 2026'))
       .map(path => ({ src: rawImages[path], title: 'Design Leaflet', category: 'Credit-Transfer Program' }));
@@ -205,7 +232,7 @@ export default function MarComExperienceShowcase() {
 
   return (
     <div className="pt-6 space-y-10 border-t border-[#CCCCCC]/40 mt-6" onClick={(e) => e.stopPropagation()}>
-      
+
       {/* ========================================================================= */}
       {/* COLLAGE: ORGANIZER, DESIGNER & PHOTOGRAPHER OF THE OPEN RUN 2025 */}
       {/* ========================================================================= */}
@@ -230,7 +257,7 @@ export default function MarComExperienceShowcase() {
 
         {/* 2 Collages Side-by-Side (Grid) */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-          
+
           {/* COLLAGE 1: DESIGN */}
           <div className="bg-white p-4 sm:p-5 rounded-lg border border-[#CCCCCC]/60 flex flex-col justify-between space-y-4">
             <div className="space-y-1 border-b border-[#CCCCCC]/30 pb-3">
@@ -361,7 +388,7 @@ export default function MarComExperienceShowcase() {
               Organizer of Miss & Mister OU 2025
             </h3>
             <span className="px-3 py-1 bg-white border border-[#111111]/20 font-narrow text-[11px] font-bold uppercase tracking-wider rounded text-[#111111] flex items-center gap-1.5 shadow-sm">
-              <i className="fa-solid fa-[#111111] fa-users text-xs"></i>
+              <i className="fa-solid fa-users text-[#111111] text-xs"></i>
               Event Operations & Backstage Team
             </span>
           </div>
@@ -371,30 +398,90 @@ export default function MarComExperienceShowcase() {
           </p>
         </div>
 
-        {/* Collage Grid: 3 Hero Backstage Shots + Committee Photos */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-          {missMisterImages.slice(0, 6).map((src, idx) => (
-            <div
-              key={idx}
-              onClick={() => openGalleryModal("Miss & Mister OU 2025", "Event Operations & Backstage Team", missMisterImages, idx)}
-              className="group relative rounded-lg overflow-hidden bg-white border border-[#CCCCCC]/60 cursor-pointer shadow-sm hover:shadow-md transition-all"
-            >
-              <div className="aspect-[4/3] overflow-hidden bg-[#EBEBEB]">
-                <img
-                  src={src}
-                  alt={`Miss Mister OU ${idx + 1}`}
-                  loading="lazy"
-                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105 pointer-events-none"
-                />
+        {/* Bounce Card above & Gallery below (Cốm Gừng Style) */}
+        <div className="bg-white p-4 sm:p-5 rounded-lg border border-[#CCCCCC]/60 flex flex-col justify-between space-y-4">
+          <div>
+            <div className="flex items-center justify-between gap-2 mb-3">
+              <div>
+                <h4 className="font-narrow text-xs font-black text-[#111111] uppercase tracking-wider flex items-center gap-1.5">
+                  <i className="fa-solid fa-layer-group text-[#111111]"></i>
+                  Backstage Operations & Organizing Team Gallery ({missMisterImages.length} Shots)
+                </h4>
+                <p className="font-sans text-[10px] text-[#5E5E5E]">
+                  Hover over cards to trigger bounce animation; click photo to expand.
+                </p>
               </div>
-              <div className="p-3 bg-white flex items-center justify-between border-t border-[#CCCCCC]/30 pointer-events-none">
-                <span className="font-narrow text-[11px] font-bold text-[#111111] uppercase tracking-wider">
-                  {idx < 3 ? `Backstage Moment 0${idx + 1}` : `Organizing Team 0${idx - 2}`}
-                </span>
-                <i className="fa-solid fa-expand text-[10px] text-[#5E5E5E] group-hover:text-[#111111]"></i>
-              </div>
+              <span className="font-mono text-[9px] text-[#5E5E5E] hidden sm:inline-block">HOVER / CLICK</span>
             </div>
-          ))}
+
+            {/* Bounce Cards Display (Desktop: BounceCards, Mobile: Stack) */}
+            <div className="flex justify-center items-center py-4 overflow-hidden min-h-[250px]">
+              <Suspense fallback={<GallerySkeleton height="240px" />}>
+                {/* Desktop & Tablet view: BounceCards */}
+                <div className="hidden sm:flex justify-center items-center">
+                  <BounceCards
+                    images={missMisterImagesTop5}
+                    containerWidth={280}
+                    containerHeight={240}
+                    animationDelay={0.15}
+                    animationStagger={0.06}
+                    transformStyles={bounceTransformStyles}
+                    onCardClick={(idx) => openGalleryModal("Miss & Mister OU 2025", "Event Operations & Backstage Team", missMisterImages, idx)}
+                  />
+                </div>
+
+                {/* Mobile view: Stack component */}
+                <div className="flex sm:hidden justify-center items-center h-[230px] w-[200px] relative my-2">
+                  <Stack
+                    cards={missMisterStackCards}
+                    randomRotation={true}
+                    sendToBackOnClick={true}
+                    sensitivity={120}
+                  />
+                </div>
+              </Suspense>
+            </div>
+          </div>
+
+          {/* Expand / View All button & Thumbnail row below */}
+          <div className="space-y-3 pt-3 border-t border-[#CCCCCC]/30">
+            <button
+              onClick={() => openGalleryModal("Miss & Mister OU 2025", "Event Operations & Backstage Team", missMisterImages, 0)}
+              className="w-full py-2 bg-[#FAF9F6] border border-[#CCCCCC] hover:bg-[#111111] hover:text-white transition-all rounded font-narrow text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 text-[#111111] cursor-pointer"
+            >
+              <i className="fa-solid fa-expand text-xs"></i>
+              <span>View Full Miss & Mister OU Gallery ({missMisterImages.length})</span>
+            </button>
+
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+              {missMisterImages.slice(5).map((src, idx) => {
+                const actualIndex = idx + 5;
+                const photoNum = actualIndex + 1;
+                return (
+                  <div
+                    key={actualIndex}
+                    onClick={() => openGalleryModal("Miss & Mister OU 2025", "Event Operations & Backstage Team", missMisterImages, actualIndex)}
+                    className="group relative rounded-lg overflow-hidden bg-white border border-[#CCCCCC]/60 cursor-pointer shadow-sm hover:shadow-md hover:border-[#111111] transition-all"
+                  >
+                    <div className="aspect-[4/3] overflow-hidden bg-[#EBEBEB]">
+                      <img
+                        src={src}
+                        alt={`Miss Mister OU ${photoNum}`}
+                        loading="lazy"
+                        className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500 group-hover:scale-105 pointer-events-none"
+                      />
+                    </div>
+                    <div className="p-2.5 bg-white flex items-center justify-between border-t border-[#CCCCCC]/30 pointer-events-none">
+                      <span className="font-narrow text-[11px] font-bold text-[#111111] uppercase tracking-wider truncate">
+                        Photo {photoNum < 10 ? `0${photoNum}` : photoNum}
+                      </span>
+                      <i className="fa-solid fa-expand text-[10px] text-[#5E5E5E] group-hover:text-[#111111]"></i>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
         </div>
       </div>
 
@@ -701,11 +788,10 @@ export default function MarComExperienceShowcase() {
                     <button
                       key={idx}
                       onClick={() => setGalleryModal((prev) => ({ ...prev, currentIndex: idx }))}
-                      className={`w-12 h-12 sm:w-14 sm:h-14 rounded-lg overflow-hidden border-2 transition-all flex-shrink-0 cursor-pointer ${
-                        galleryModal.currentIndex === idx
-                          ? 'border-[#00f2fe] scale-105 shadow-lg opacity-100'
-                          : 'border-white/20 opacity-50 hover:opacity-100 hover:border-white'
-                      }`}
+                      className={`w-12 h-12 sm:w-14 sm:h-14 rounded-lg overflow-hidden border-2 transition-all flex-shrink-0 cursor-pointer ${galleryModal.currentIndex === idx
+                        ? 'border-[#00f2fe] scale-105 shadow-lg opacity-100'
+                        : 'border-white/20 opacity-50 hover:opacity-100 hover:border-white'
+                        }`}
                     >
                       <img src={src} alt={`Thumb ${idx + 1}`} className="w-full h-full object-cover pointer-events-none" />
                     </button>

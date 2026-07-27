@@ -13,17 +13,17 @@ export default function ProjectLightbox({
   onClose,
   onInquire,
 }: ProjectLightboxProps) {
-  return (
+  return createPortal(
     <AnimatePresence>
-      {project &&
-        createPortal(
-          <motion.div
-            id="project-lightbox"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 bg-[#111111]/95 backdrop-blur-md flex items-center justify-center p-4 sm:p-6"
-          >
+      {project && (
+        <motion.div
+          key="project-lightbox-modal"
+          id="project-lightbox"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 z-50 bg-[#111111]/95 backdrop-blur-md flex items-center justify-center p-4 sm:p-6"
+        >
           <motion.div 
             initial={{ scale: 0.92, y: 15 }}
             animate={{ scale: 1, y: 0 }}
@@ -116,9 +116,9 @@ export default function ProjectLightbox({
               </div>
             </div>
           </motion.div>
-        </motion.div>,
-        document.body
+        </motion.div>
       )}
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.body
   );
 }
