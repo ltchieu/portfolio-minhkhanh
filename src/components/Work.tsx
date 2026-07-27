@@ -50,7 +50,7 @@ export default function Work() {
               <ScrollReveal direction="up" delay={bIdx * 0.1}>
                 <div className="bg-white border border-[#CCCCCC]/60 p-6 rounded-xl shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
                   <div className="space-y-1 max-w-2xl">
-                    <span className="font-narrow text-[10px] font-black text-[#008b8b] tracking-[0.2em] uppercase block">
+                    <span className="font-narrow text-[10px] font-black hologram-metal-text tracking-[0.2em] uppercase block">
                       {brandSection.category}
                     </span>
                     <h3 className="font-display text-2xl sm:text-3xl text-[#111111] uppercase tracking-wide">
@@ -92,7 +92,7 @@ export default function Work() {
 
                         <div className="pt-2 border-t border-white/10 flex items-center justify-between text-[11px] font-narrow font-bold text-white/70 uppercase tracking-wider">
                           <span className="flex items-center gap-1.5">
-                            <i className="fa-solid fa-circle-play text-[10px] text-[#00f2fe]"></i>
+                            <i className="fa-solid fa-circle-play text-[10px] hologram-metal-text"></i>
                             Watch Video
                           </span>
                           <i className="fa-solid fa-arrow-up-right-from-square text-xs text-white/50 group-hover:text-white group-hover:translate-x-0.5 transition-all"></i>
@@ -128,7 +128,7 @@ export default function Work() {
                 {/* Modal Header */}
                 <div className="w-full flex items-center justify-between border-b border-white/15 pb-3">
                   <div className="space-y-0.5">
-                    <span className="font-narrow text-[10px] font-black text-[#00f2fe] tracking-[0.2em] uppercase block">
+                    <span className="font-narrow text-[10px] font-black hologram-metal-text tracking-[0.2em] uppercase block">
                       #{selectedVideo.stt} • {selectedVideo.platform} REEL
                     </span>
                     <h3 className="font-display text-base sm:text-lg text-white uppercase tracking-wide line-clamp-1">

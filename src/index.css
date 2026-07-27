@@ -40,46 +40,42 @@ html {
 /* Ultra-Shining Hologram Metal & Iridescent Effects */
 .hologram-metal-text {
   background: linear-gradient(110deg,
-      #8fa8ff 0%,
-      #4f75ff 18%,
-      #d8b4fe 38%,
-      #cce0ff 50%,
-      #60a5fa 62%,
-      #f472b6 82%,
-      #8fa8ff 100%);
-  background-size: 300% auto;
+      #0096c7 0%,
+      #00c4cc 25%,
+      #73e0d7 50%,
+      #ffd199 75%,
+      #f38827 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: hologramShine 3.5s ease-in-out infinite;
   display: inline-block;
-  filter: drop-shadow(0 0 8px rgba(143, 168, 255, 0.55)) drop-shadow(0 0 16px rgba(216, 180, 254, 0.45));
+  filter: drop-shadow(0 0 8px rgba(0, 196, 204, 0.45)) drop-shadow(0 0 16px rgba(243, 136, 39, 0.35));
 }
 
 .hologram-metal-bg {
   background: linear-gradient(110deg,
-      #8fa8ff 0%,
-      #4f75ff 18%,
-      #d8b4fe 38%,
-      #ffffff 50%,
-      #60a5fa 62%,
-      #f472b6 82%,
-      #8fa8ff 100%);
+      #0096c7 0%,
+      #00c4cc 18%,
+      #80e8e0 35%,
+      #fff5db 50%,
+      #ffd199 65%,
+      #f38827 82%,
+      #0096c7 100%);
   background-size: 300% auto;
   animation: hologramShine 3.5s ease-in-out infinite;
-  box-shadow: 0 0 15px rgba(143, 168, 255, 0.45), 0 0 30px rgba(216, 180, 254, 0.35);
+  box-shadow: 0 0 15px rgba(0, 196, 204, 0.45), 0 0 30px rgba(243, 136, 39, 0.35);
 }
 
 .hologram-metal-border {
   border-image: linear-gradient(110deg,
-      #8fa8ff 0%,
-      #d8b4fe 33%,
-      #60a5fa 66%,
-      #f472b6 100%) 1;
-  box-shadow: 0 0 15px rgba(143, 168, 255, 0.4);
+      #0096c7 0%,
+      #00c4cc 33%,
+      #ffd199 66%,
+      #f38827 100%) 1;
+  box-shadow: 0 0 15px rgba(0, 196, 204, 0.4);
 }
 
 .hologram-glow {
-  box-shadow: 0 0 20px rgba(143, 168, 255, 0.55), 0 0 35px rgba(216, 180, 254, 0.4);
+  box-shadow: 0 0 20px rgba(0, 196, 204, 0.55), 0 0 35px rgba(243, 136, 39, 0.4);
 }
 
 @keyframes hologramShine {
