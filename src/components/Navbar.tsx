@@ -13,8 +13,9 @@ export default function Navbar({
     <>
       <nav id="navbar" className="fixed top-0 left-0 w-full z-40 bg-white/70 backdrop-blur-md border-b border-[#CCCCCC] py-4 px-6 transition-all duration-300">
         <div className="max-w-[1440px] mx-auto flex justify-between items-center">
-          <a href="#" className="font-display text-sm tracking-[0.2em] font-black uppercase hover:opacity-60 transition-all duration-300">
-            MIA NGUYEN
+          <a href="#" className="flex items-center gap-2.5 font-display text-sm tracking-[0.2em] font-black uppercase hover:opacity-60 transition-all duration-300">
+            <img src="/assets/image/fav.ico" alt="Mia Nguyen Logo" className="w-6 h-6 object-contain" />
+            <span>MIA NGUYEN</span>
           </a>
 
           {/* Desktop Nav */}

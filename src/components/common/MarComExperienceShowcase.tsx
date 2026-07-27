@@ -36,38 +36,72 @@ export default function MarComExperienceShowcase() {
 
   // 1. Collage 1 & 2: The Open Run 2025 (Design & Photography)
   const openRunDesignImages = useMemo(() => {
-    return Object.keys(rawImages)
-      .filter(path => path.includes('The Open Run 2025/Design'))
-      .map(path => rawImages[path]);
+    const keys = Object.keys(rawImages).filter(path => path.includes('The Open Run 2025/Design'));
+    const quaTangKey = keys.find(path => path.includes('Qua tang') || path.includes('Qua%20tang'));
+    
+    let sortedKeys = keys;
+    if (quaTangKey) {
+      sortedKeys = [quaTangKey, ...keys.filter(k => k !== quaTangKey)];
+    }
+    return sortedKeys.map(path => rawImages[path]);
   }, []);
 
   const openRunDesignCards = useMemo(() => {
-    return openRunDesignImages.slice(0, 5).map((src, idx) => (
+    const keys = Object.keys(rawImages).filter(path => path.includes('The Open Run 2025/Design'));
+    const quaTangKey = keys.find(path => path.includes('Qua tang') || path.includes('Qua%20tang'));
+    
+    let stackKeys: string[];
+    if (quaTangKey) {
+      const others = keys.filter(k => k !== quaTangKey).slice(0, 4);
+      // Place quaTangKey as the LAST item so it renders at the TOP of the Stack
+      stackKeys = [...others, quaTangKey];
+    } else {
+      stackKeys = keys.slice(0, 5);
+    }
+
+    return stackKeys.map((path, idx) => (
       <img
         key={idx}
-        src={src}
+        src={rawImages[path]}
         alt={`The Open Run 2025 Design ${idx + 1}`}
         className="w-full h-full object-cover rounded-xl border border-[#CCCCCC]/60 shadow-md select-none"
       />
     ));
-  }, [openRunDesignImages]);
+  }, []);
 
   const openRunPhotoImages = useMemo(() => {
-    return Object.keys(rawImages)
-      .filter(path => path.includes('The Open Run 2025/Photography'))
-      .map(path => rawImages[path]);
+    const keys = Object.keys(rawImages).filter(path => path.includes('The Open Run 2025/Photography'));
+    const img9812Key = keys.find(path => path.includes('IMG_9812'));
+    
+    let sortedKeys = keys;
+    if (img9812Key) {
+      sortedKeys = [img9812Key, ...keys.filter(k => k !== img9812Key)];
+    }
+    return sortedKeys.map(path => rawImages[path]);
   }, []);
 
   const openRunPhotoCards = useMemo(() => {
-    return openRunPhotoImages.slice(0, 5).map((src, idx) => (
+    const keys = Object.keys(rawImages).filter(path => path.includes('The Open Run 2025/Photography'));
+    const img9812Key = keys.find(path => path.includes('IMG_9812'));
+    
+    let stackKeys: string[];
+    if (img9812Key) {
+      const others = keys.filter(k => k !== img9812Key).slice(0, 4);
+      // Place img9812Key as the LAST item so it renders at the TOP of the Stack
+      stackKeys = [...others, img9812Key];
+    } else {
+      stackKeys = keys.slice(0, 5);
+    }
+
+    return stackKeys.map((path, idx) => (
       <img
         key={idx}
-        src={src}
+        src={rawImages[path]}
         alt={`The Open Run 2025 Photography ${idx + 1}`}
         className="w-full h-full object-cover rounded-xl border border-[#CCCCCC]/60 shadow-md select-none"
       />
     ));
-  }, [openRunPhotoImages]);
+  }, []);
 
   // 2. Collage 2: Miss & Mister OU 2025
   const missMisterImages = useMemo(() => {
