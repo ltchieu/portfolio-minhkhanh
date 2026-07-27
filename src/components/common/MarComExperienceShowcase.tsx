@@ -38,27 +38,51 @@ export default function MarComExperienceShowcase() {
   // 1. Collage 1 & 2: The Open Run 2025 (Design & Photography)
   const openRunDesignImages = useMemo(() => {
     const keys = Object.keys(rawImages).filter(path => path.includes('The Open Run 2025/Design'));
-    const quaTangKey = keys.find(path => path.includes('Qua tang') || path.includes('Qua%20tang'));
 
-    let sortedKeys = keys;
-    if (quaTangKey) {
-      sortedKeys = [quaTangKey, ...keys.filter(k => k !== quaTangKey)];
-    }
+    // Prioritize near-square images (1:1 and near-square ratios) for Bounce Cards over wide banner images
+    const nearSquareKeywords = [
+      'Qua tang',
+      'FB Avt',
+      'Huy chuong Ao',
+      'Luu y tham gia',
+      'Bang tai tro_Agribank',
+      'Bang tai tro_LOF',
+      'Boc tham',
+      'Thu cam on',
+    ];
+
+    const getPriority = (path: string) => {
+      const idx = nearSquareKeywords.findIndex(kw => path.includes(kw));
+      return idx !== -1 ? idx : 999;
+    };
+
+    const sortedKeys = [...keys].sort((a, b) => getPriority(a) - getPriority(b));
     return sortedKeys.map(path => rawImages[path]);
   }, []);
 
   const openRunDesignCards = useMemo(() => {
     const keys = Object.keys(rawImages).filter(path => path.includes('The Open Run 2025/Design'));
-    const quaTangKey = keys.find(path => path.includes('Qua tang') || path.includes('Qua%20tang'));
 
-    let stackKeys: string[];
-    if (quaTangKey) {
-      const others = keys.filter(k => k !== quaTangKey).slice(0, 4);
-      // Place quaTangKey as the LAST item so it renders at the TOP of the Stack
-      stackKeys = [...others, quaTangKey];
-    } else {
-      stackKeys = keys.slice(0, 5);
-    }
+    const nearSquareKeywords = [
+      'Qua tang',
+      'FB Avt',
+      'Huy chuong Ao',
+      'Luu y tham gia',
+      'Bang tai tro_Agribank',
+      'Bang tai tro_LOF',
+      'Boc tham',
+      'Thu cam on',
+    ];
+
+    const getPriority = (path: string) => {
+      const idx = nearSquareKeywords.findIndex(kw => path.includes(kw));
+      return idx !== -1 ? idx : 999;
+    };
+
+    const sortedKeys = [...keys].sort((a, b) => getPriority(a) - getPriority(b));
+    const top5Keys = sortedKeys.slice(0, 5);
+    // Place the top item at the end of the stack array so it renders at the TOP of the mobile Stack
+    const stackKeys = [...top5Keys.slice(1), top5Keys[0]];
 
     return stackKeys.map((path, idx) => (
       <img
@@ -103,6 +127,9 @@ export default function MarComExperienceShowcase() {
       />
     ));
   }, []);
+
+  const openRunDesignImagesTop5 = useMemo(() => openRunDesignImages.slice(0, 5), [openRunDesignImages]);
+  const openRunPhotoImagesTop5 = useMemo(() => openRunPhotoImages.slice(0, 5), [openRunPhotoImages]);
 
   // 2. Collage 2: Miss & Mister OU 2025
   const missMisterImages = useMemo(() => {
@@ -255,28 +282,47 @@ export default function MarComExperienceShowcase() {
           </p>
         </div>
 
-        {/* 2 Collages Side-by-Side (Grid) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+        {/* 2 Collages Stacked Vertically: Design ABOVE, Photography BELOW */}
+        <div className="space-y-6">
 
-          {/* COLLAGE 1: DESIGN */}
+          {/* COLLAGE 1: DESIGN (ABOVE) */}
           <div className="bg-white p-4 sm:p-5 rounded-lg border border-[#CCCCCC]/60 flex flex-col justify-between space-y-4">
             <div className="space-y-1 border-b border-[#CCCCCC]/30 pb-3">
-              <div className="flex items-center justify-between">
-                <span className="font-narrow text-xs font-black text-[#111111] uppercase tracking-wider flex items-center gap-1.5">
-                  <i className="fa-solid fa-palette text-[#111111]"></i>
-                  Visual Collateral & Graphic Design ({openRunDesignImages.length} Assets)
-                </span>
-                <span className="font-mono text-[9px] text-[#5E5E5E]">SWIPE / CLICK</span>
+              <div className="flex items-center justify-between gap-2">
+                <div>
+                  <h4 className="font-narrow text-xs font-black text-[#111111] uppercase tracking-wider flex items-center gap-1.5">
+                    <i className="fa-solid fa-palette text-[#111111]"></i>
+                    Visual Collateral & Graphic Design ({openRunDesignImages.length} Assets)
+                  </h4>
+                  <p className="font-sans text-[10px] text-[#5E5E5E]">
+                    Hover over cards to trigger bounce animation; click photo to expand.
+                  </p>
+                </div>
+                <span className="font-mono text-[9px] text-[#5E5E5E] hidden sm:inline-block">HOVER / CLICK</span>
               </div>
               <p className="font-sans text-[11px] text-[#666666] line-clamp-2">
                 Elevator LEDs, contestant badges, background banners, standees, social posts & thank-you certificates.
               </p>
             </div>
 
-            {/* Stack Display */}
+            {/* Bounce Cards Display (Desktop: BounceCards, Mobile: Stack) */}
             <div className="w-full flex justify-center items-center py-4 overflow-hidden min-h-[250px]">
-              <Suspense fallback={<GallerySkeleton height="230px" />}>
-                <div className="flex justify-center items-center h-[230px] w-[210px] sm:w-[240px] relative my-2">
+              <Suspense fallback={<GallerySkeleton height="240px" />}>
+                {/* Desktop & Tablet view: BounceCards */}
+                <div className="hidden sm:flex justify-center items-center">
+                  <BounceCards
+                    images={openRunDesignImagesTop5}
+                    containerWidth={280}
+                    containerHeight={240}
+                    animationDelay={0.15}
+                    animationStagger={0.06}
+                    transformStyles={bounceTransformStyles}
+                    onCardClick={(idx) => openGalleryModal("The Open Run 2025 – Graphic & Brand Design", "Visual Branding & Graphic Design", openRunDesignImages, idx)}
+                  />
+                </div>
+
+                {/* Mobile view: Stack component */}
+                <div className="flex sm:hidden justify-center items-center h-[230px] w-[200px] relative my-2">
                   <Stack
                     cards={openRunDesignCards}
                     randomRotation={true}
@@ -316,25 +362,44 @@ export default function MarComExperienceShowcase() {
             </div>
           </div>
 
-          {/* COLLAGE 2: PHOTOGRAPHY */}
+          {/* COLLAGE 2: PHOTOGRAPHY (BELOW) */}
           <div className="bg-white p-4 sm:p-5 rounded-lg border border-[#CCCCCC]/60 flex flex-col justify-between space-y-4">
             <div className="space-y-1 border-b border-[#CCCCCC]/30 pb-3">
-              <div className="flex items-center justify-between">
-                <span className="font-narrow text-xs font-black text-[#111111] uppercase tracking-wider flex items-center gap-1.5">
-                  <i className="fa-solid fa-camera text-[#111111]"></i>
-                  Event Photography & Race Coverage ({openRunPhotoImages.length} Shots)
-                </span>
-                <span className="font-mono text-[9px] text-[#5E5E5E]">SWIPE / CLICK</span>
+              <div className="flex items-center justify-between gap-2">
+                <div>
+                  <h4 className="font-narrow text-xs font-black text-[#111111] uppercase tracking-wider flex items-center gap-1.5">
+                    <i className="fa-solid fa-camera text-[#111111]"></i>
+                    Event Photography & Race Coverage ({openRunPhotoImages.length} Shots)
+                  </h4>
+                  <p className="font-sans text-[10px] text-[#5E5E5E]">
+                    Hover over cards to trigger bounce animation; click photo to expand.
+                  </p>
+                </div>
+                <span className="font-mono text-[9px] text-[#5E5E5E] hidden sm:inline-block">HOVER / CLICK</span>
               </div>
               <p className="font-sans text-[11px] text-[#666666] line-clamp-2">
                 Live track action, finish-line celebrations, award presentations & backstage operations.
               </p>
             </div>
 
-            {/* Stack Display */}
+            {/* Bounce Cards Display (Desktop: BounceCards, Mobile: Stack) */}
             <div className="w-full flex justify-center items-center py-4 overflow-hidden min-h-[250px]">
-              <Suspense fallback={<GallerySkeleton height="230px" />}>
-                <div className="flex justify-center items-center h-[230px] w-[210px] sm:w-[240px] relative my-2">
+              <Suspense fallback={<GallerySkeleton height="240px" />}>
+                {/* Desktop & Tablet view: BounceCards */}
+                <div className="hidden sm:flex justify-center items-center">
+                  <BounceCards
+                    images={openRunPhotoImagesTop5}
+                    containerWidth={280}
+                    containerHeight={240}
+                    animationDelay={0.15}
+                    animationStagger={0.06}
+                    transformStyles={bounceTransformStyles}
+                    onCardClick={(idx) => openGalleryModal("The Open Run 2025 – Event Photography", "Event Operations & Photography", openRunPhotoImages, idx)}
+                  />
+                </div>
+
+                {/* Mobile view: Stack component */}
+                <div className="flex sm:hidden justify-center items-center h-[230px] w-[200px] relative my-2">
                   <Stack
                     cards={openRunPhotoCards}
                     randomRotation={true}
