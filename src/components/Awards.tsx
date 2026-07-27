@@ -85,7 +85,7 @@ export default function Awards() {
                 >
                   {/* Top Badge & Category Bar */}
                   <div className="p-6 pb-4 flex flex-wrap items-center justify-between gap-2 border-b border-[#CCCCCC]/30 bg-[#FAF9F6]">
-                    <span className="font-narrow text-[10px] font-black hologram-metal-text tracking-[0.25em] uppercase">
+                    <span className="font-narrow text-[13px] font-black hologram-metal-text tracking-[0.25em] uppercase">
                       {award.category}
                     </span>
                     <span className="font-mono text-xs font-bold bg-[#111111] text-white px-2.5 py-0.5 rounded">

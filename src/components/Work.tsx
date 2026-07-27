@@ -50,7 +50,7 @@ export default function Work() {
               <ScrollReveal direction="up" delay={bIdx * 0.1}>
                 <div className="bg-white border border-[#CCCCCC]/60 p-6 rounded-xl shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
                   <div className="space-y-1 max-w-2xl">
-                    <span className="font-narrow text-[10px] font-black hologram-metal-text tracking-[0.2em] uppercase block">
+                    <span className="font-narrow text-[13px] font-black hologram-metal-text tracking-[0.2em] uppercase block">
                       {brandSection.category}
                     </span>
                     <h3 className="font-display text-2xl sm:text-3xl text-[#111111] uppercase tracking-wide">

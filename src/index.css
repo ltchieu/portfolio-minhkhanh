@@ -42,13 +42,13 @@ html {
   background: linear-gradient(110deg,
       #0096c7 0%,
       #00c4cc 25%,
-      #73e0d7 50%,
-      #ffd199 75%,
+      #6fdbd2 50%,
+      #fabf76 75%,
       #f38827 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   display: inline-block;
-  filter: drop-shadow(0 0 8px rgba(0, 196, 204, 0.45)) drop-shadow(0 0 16px rgba(243, 136, 39, 0.35));
+  /* filter: drop-shadow(0 0 2px rgba(0, 196, 204, 0.45)) drop-shadow(0 0 16px rgba(243, 136, 39, 0.35)); */
 }
 
 .hologram-metal-bg {
